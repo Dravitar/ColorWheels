@@ -209,6 +209,7 @@ function updateAll(){
 		document.getElementById("addBlueButton").style.display = "";
 		document.getElementById("bluePrestigeButton").style.display = "none";
 	}
+	document.getElementById("bluePrestigeButton").style.opacity = getBluePrestige().gt(0)?1:0.6
 	document.getElementById("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
 	showTab(user.currentTab);
 }
