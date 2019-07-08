@@ -190,8 +190,8 @@ function updateAll(){
 		price=display(price);
 		let bLButtons = document.getElementsByClassName("breakLimitButton");
 		var bLButton;
-		for (var i = 0; i < bLButtons.length; i++) {
-			bLButton = bLButtons.item(i);
+		for (var j = 0; j < bLButtons.length; j++) {
+			bLButton = bLButtons.item(j);
 			if (user.blue.upgradeCount[2]>0) {
 				bLButton.style.display = 'block';
 			}
