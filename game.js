@@ -156,6 +156,18 @@ function load(){
 	return user;
 }
 
+function exportSave() {
+	let saveData = btoa(JSON.stringify(user))
+	// Do whatever to provide it to player
+}
+
+function importSave() {
+	let input = prompt("Paste your save below please")
+	if (!(input === null || input === "")) {
+		loadSave(input,true)
+	}
+}
+
 function updateAll(){
 	update("powerAmount", "Total Power: "+display(user.totPower));
 	if(user.blue.energy.gte(1)){
