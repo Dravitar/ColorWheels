@@ -110,7 +110,7 @@ function checkAddBlue() {
 			user.totPower=bigAdd(user.totPower,user.blue.addButtonPrice,0);
 			user.blue.index++;
 			document.getElementById("buttonSet"+user.blue.index).style.display="block";
-			user.blue.mults.push(1);
+			user.blue.mults.push(2);
 			user.blue.limits.push(10);
 			user.blue.buttonPrice.push(display("1e"+user.blue.index));
 			user.blue.addButtonPrice=bigMult(user.blue.addButtonPrice,10,1);
