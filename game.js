@@ -157,8 +157,14 @@ function load(){
 }
 
 function exportSave() {
-	let saveData = btoa(JSON.stringify(user))
-	// Do whatever to provide it to player
+	var tempInput = document.createElement("input"); //You have to create a new document element
+	tempInput.style = "position: absolute; left: -1000px; top: -1000px"; //Say it's out of the window view
+	tempInput.value = btoa(JSON.stringify(user)); //Fill it with the player save file
+	document.body.appendChild(tempInput); //Stick the window on the main document
+	tempInput.select(); //Select the window
+	document.execCommand("copy"); //Stick the contents of said window into the clipboard
+	document.body.removeChild(tempInput); //Delete the go-between window
+	alert("Save copied to clipboard"); //Tell the player it all worked
 }
 
 function importSave() {
