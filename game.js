@@ -113,7 +113,7 @@ function checkAddBlue() {
 }
 
 function getBluePrestige() {
-	if (user.totPower.gte(new Decimal(1e10))) return user.totPower.log10().minus(9);
+	if (user.totPower.gte(new Decimal(1e10))) return user.totPower.log10().div(10);
 	else return new Decimal(0);
 }
 
