@@ -7,7 +7,7 @@ function getDefaultUser() {
 			mults: [new Decimal(1)],
 			limits: [new Decimal(10)],
 			buttonPrice: [new Decimal(10)],
-			clicked: 0,
+			clicked: new Decimal(0),
 			upgrades:       ["CR","CU","LB","BB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ],
