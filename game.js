@@ -64,6 +64,7 @@ function getBlueButtonTotalMult() {
 	user.blue.mults.forEach(function(value) {
 		mult = mult.times(value)
 	});
+	mult = mult.times(user.blue.energy.plus(1));
 	return mult
 }
 
