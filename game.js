@@ -96,7 +96,7 @@ function checkUpgrade(color, dex) {
 }
 
 function canBuyUpgrade(color, index) {
-	return user[color].energy.gte(user[color].upgradePrice[index])
+	return user[color].energy.gte(user[color].upgradePrices[index])
 }
 
 function checkAddBlue() {
