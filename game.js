@@ -149,6 +149,7 @@ function showTab(tabName) { //Tab switching function
 function save(){
 	saveGame()
 	document.getElementById("savedInfo").style.display="inline";
+	document.getElementById("savedInfo").style.position="absolute";
 	function foo() {document.getElementById("savedInfo").style.display="none"}
 	setTimeout(foo, 2000);
 }
@@ -247,5 +248,5 @@ function startCycle(){
 	load();
 	updateAll();
 	setInterval(gameCycle, 10);
-	setInterval(save, 5000);
+	setInterval(save, 30000);
 }
