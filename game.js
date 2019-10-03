@@ -65,8 +65,8 @@ function getBlueButtonTotalMult() {
 		mult = mult.times(value)
 	});
 	mult = mult.times(user.blue.energy.plus(1));
-	update("blueEnergyMultBoost",user.blue.energy.plus(1));
-	return mult
+	update("blueEnergyMultBoost",display(user.blue.energy.plus(1)));
+	return mult;
 }
 
 function process(num) {
