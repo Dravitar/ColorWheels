@@ -181,6 +181,7 @@ function updateAll(){
 	if(user.blue.energy.gte(1)){
 		document.getElementById("blueEnergyArea").style.display = "";
 		document.getElementById("blueEnergyAmount").innerHTML = display(user.blue.energy);
+		document.getElementById("tabs").style.display = "";
 	}
 	else { document.getElementById("blueEnergyArea").style.display = "none";}
 	var dispMult = display(getBlueButtonTotalMult());
