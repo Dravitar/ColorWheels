@@ -83,8 +83,8 @@ function blueCycleUpg() {
 	var price=user.blue.tickMultPrice;
 	if(user.totPower.gte(price)) {
 		user.totPower = user.totPower.minus(price);
-		user.blue.tickMax.times(0.9);
-		user.blue.tickMultPrice.times(100);
+		user.blue.tickMax = user.blue.tickMax.times(0.9);
+		user.blue.tickMultPrice = user.blue.tickMultPrice.times(100);
 		update("blueCycleUpgCost", user.blue.tickMultPrice);
 	}
 }
