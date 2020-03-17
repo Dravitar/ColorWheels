@@ -79,7 +79,7 @@ function process(num) {
 	user.blue.tick=0;
 }
 
-function cycleUpg() {
+function blueCycleUpg() {
 	var price=user.blue.tickMultPrice;
 	if(user.totPower.gte(price)) {
 		user.totPower = user.totPower.minus(price);
