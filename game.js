@@ -4,15 +4,17 @@ function getDefaultUser() {
 		blue: {
 			tick:0,
 			tickMax:new Decimal(1000),
+			tickMultPrice:new Decimal(1e4),
+			tickMultCount:new Decimal(0),
 			mults: [new Decimal(1)],
 			limits: [new Decimal(10)],
 			buttonPrice: [new Decimal(10)],
 			clicked: new Decimal(0),
-			upgrades:       ["CR","CU","LB","BB"],
-			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ],
-			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ],
-			upgradeIncrease:[new Decimal(10)  ,new Decimal(10)  ,new Decimal(0)   ,new Decimal(50)  ],
-			bonuses:        [new Decimal(10)  ,new Decimal(1)   ,new Decimal(0)   ,new Decimal(0)   ],
+			upgrades:       ["CU","LB","BB"],
+			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ],
+			upgradePrices:  [new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ],
+			upgradeIncrease:[new Decimal(10)  ,new Decimal(0)   ,new Decimal(50)  ],
+			bonuses:        [new Decimal(1)   ,new Decimal(0)   ,new Decimal(0)   ],
 			addButtonPrice: new Decimal(100),
 			index: 1,
 			indexLimit: new Decimal(10),
@@ -21,6 +23,8 @@ function getDefaultUser() {
 		green: {
 			tick:new Decimal(0),
 			tickMax:new Decimal(1000),
+			tickMultPrice:new Decimal(1e4),
+			tickMultCount:new Decimal(0),
 			mults: [new Decimal(1)],
 			buttonPrice: [new Decimal(10)],
 			addButtonPrice: new Decimal(100),
@@ -75,6 +79,15 @@ function process(num) {
 	user.blue.tick=0;
 }
 
+function cycleUpg() {
+	var price=user.blue.tickMultPrice;
+	if(user.totPower.gte(price)) {
+		user.totPower = user.totPower.minus(price);
+		user.blue.tickMax.times(0.9);
+		user.blue.tickMultPrice.times(100);
+	}
+}
+	
 function checkButtonUpgrade(num) {
 	var price=user.blue.buttonPrice[num-1];
 	if(user.totPower.gte(price)&&user.blue.limits[num-1].gt(user.blue.mults[num-1])) {
