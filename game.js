@@ -179,6 +179,9 @@ function importSave() {
 
 function updateAll(){
 	update("powerAmount", "Total Power: "+display(user.totPower));
+	if(user.totPower.gte(1e4)){
+		document.getElementById("cycleReduc").style.display = "";
+	}
 	if(user.blue.energy.gte(1)){
 		document.getElementById("blueEnergyArea").style.display = "";
 		document.getElementById("blueEnergyAmount").innerHTML = display(user.blue.energy);
