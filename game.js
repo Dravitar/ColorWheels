@@ -16,7 +16,6 @@ function getDefaultUser() {
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ],
 			upgradeIncrease:[new Decimal(10)  ,new Decimal(0)   ,new Decimal(50)  ],
-			bonuses:        [new Decimal(1)   ,new Decimal(0)   ,new Decimal(0)   ],
 			addButtonPrice: new Decimal(100),
 			index: 1,
 			indexLimit: new Decimal(10),
@@ -46,7 +45,7 @@ function update(get, set) {
 function gameCycle(){
 	let now = new Date().getTime();
 	let diff = now - user.lastTick;
-	let tickMax = user.blue.tickMax.times(Decimal.pow(user.blue.bonuses[0],user.blue.upgradeCount[0]));
+	let tickMax = user.blue.tickMax.times(Decimal.pow(0.9,user.blue.tickMultCount));
 	user.blue.tick += diff;
 	if(user.blue.tick >= user.blue.tickMax) process(Decimal.round(new Decimal(user.blue.tick).div(user.blue.tickMax)));
 	update("blueCycle", `Reset Cycle: ${user.blue.tick}/${user.blue.tickMax}`);
@@ -55,7 +54,7 @@ function gameCycle(){
 }
 
 function blueClick(num) {
-	let mid=user.blue.bonuses[1].times(user.blue.upgradeCount[1]);
+	let mid=user.blue.upgradeCount[0];
 	if(mid.gt(new Decimal(0))){
 		user.blue.mults[num-1]=new Decimal(""+mid+user.blue.mults[num-1]);
 		if(user.blue.clicked.neq(new Decimal(0))) {
@@ -200,7 +199,7 @@ function updateAll(){
 	if(user.totPower.gte(1e4)){
 		$("blueCycleReduc").style.display = "";
 	}
-	if(user.blue.energy.gte(1)){
+	if(user.blue.energy.gte(0)){
 		$("blueEnergyArea").style.display = "";
 		$("blueEnergyAmount").innerHTML = display(user.blue.energy);
 		$("tabs").style.display = "";
@@ -256,6 +255,7 @@ function updateAll(){
 	else $("blueCycleReduc").style.opacity = 0.6;
 	$("bluePrestigeButton").style.opacity = getBluePrestige().gt(0)?1:0.6
 	$("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
+	$("currentCUBonus").innerHTML = user.blue.upgradeCount[0];
 	showTab(user.currentTab);
 }
 
