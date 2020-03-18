@@ -251,7 +251,7 @@ function updateAll(){
 		$("bluePrestigeButton").style.display = "none";
 	}
 	if(user.totPower.gte(user.blue.tickMultPrice)) $("blueCycleReduc").style.opacity = 1.0;
-	else $("blueCycleReduc:).style.opacity = 0.6;
+	else $("blueCycleReduc").style.opacity = 0.6;
 	$("bluePrestigeButton").style.opacity = getBluePrestige().gt(0)?1:0.6
 	$("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
 	showTab(user.currentTab);
