@@ -11,7 +11,7 @@ function getDefaultUser() {
 			mults: [new Decimal(1)],
 			limits: [new Decimal(10)],
 			buttonPrice: [new Decimal(10)],
-			clicked: new Decimal(0),
+			clicked: 0,
 			upgrades:       ["CU","LB","BB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ],
@@ -56,8 +56,8 @@ function gameCycle(){
 function blueClick(num) {
 	let mid=user.blue.upgradeCount[0];
 	if(mid.gt(new Decimal(0))){
-		user.blue.mults[num-1]=new Decimal(""+mid+user.blue.mults[num-1]);
-		if(user.blue.clicked.neq(new Decimal(0))) {
+		if(!num==user.blue.clicked) {
+			user.blue.mults[num-1]=new Decimal(""+mid+user.blue.mults[num-1]);
 			user.blue.mults[user.blue.clicked-1]=new Decimal(user.blue.mults[user.blue.clicked-1].toString().substring(1));
 		}
 	}
