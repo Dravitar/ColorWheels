@@ -1,3 +1,5 @@
+function $(x) { return document.getElementById(x); }
+
 function getDefaultUser() {
 	return {
 		totPower:new Decimal(0),
