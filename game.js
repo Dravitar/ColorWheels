@@ -38,7 +38,7 @@ function getDefaultUser() {
 var user = getDefaultUser();
 
 function update(get, set) {
-	document.getElementById(get).innerHTML=set;
+	$(get).innerHTML=set;
 }
 
 function gameCycle(){
@@ -85,6 +85,7 @@ function blueCycleUpg() {
 		user.totPower = user.totPower.minus(price);
 		user.blue.tickMax = user.blue.tickMax.times(0.9);
 		user.blue.tickMultPrice = user.blue.tickMultPrice.times(100);
+		user.blue.tickMultCount = user.blue.tickMultCount.plus(1);
 		update("blueCycleUpgCost", user.blue.tickMultPrice);
 	}
 }
@@ -118,7 +119,7 @@ function checkAddBlue() {
 		if(user.totPower.gte(user.blue.addButtonPrice)){
 			user.totPower = user.totPower.minus(user.blue.addButtonPrice)
 			user.blue.index++;
-			document.getElementById("buttonSet"+user.blue.index).style.display="block";
+			$("buttonSet"+user.blue.index).style.display="block";
 			user.blue.mults.push(new Decimal(2));
 			user.blue.limits.push(new Decimal(10));
 			user.blue.buttonPrice.push(Decimal.pow(new Decimal(10),new Decimal(user.blue.index)).times(new Decimal(2.5)));
@@ -143,6 +144,7 @@ function blueReset() {
 		user.blue.energy = energy;
 		user.blue.upgradeCount = count;
 		user.blue.upgradePrices = prices;
+		update("blueCycleUpgCost", new Decimal(1e4));
 		updateAll();
 	}
 }
@@ -162,9 +164,9 @@ function showTab(tabName) { //Tab switching function
 
 function save(){
 	saveGame()
-	document.getElementById("savedInfo").style.display="inline";
-	document.getElementById("savedInfo").style.position="absolute";
-	function foo() {document.getElementById("savedInfo").style.display="none"}
+	$("savedInfo").style.display="inline";
+	$("savedInfo").style.position="absolute";
+	function foo() {$("savedInfo").style.display="none"}
 	setTimeout(foo, 2000);
 }
 
@@ -194,19 +196,19 @@ function importSave() {
 function updateAll(){
 	update("powerAmount", "Total Power: "+display(user.totPower));
 	if(user.totPower.gte(1e4)){
-		document.getElementById("blueCycleReduc").style.display = "";
+		$("blueCycleReduc").style.display = "";
 	}
 	if(user.blue.energy.gte(1)){
-		document.getElementById("blueEnergyArea").style.display = "";
-		document.getElementById("blueEnergyAmount").innerHTML = display(user.blue.energy);
-		document.getElementById("tabs").style.display = "";
+		$("blueEnergyArea").style.display = "";
+		$("blueEnergyAmount").innerHTML = display(user.blue.energy);
+		$("tabs").style.display = "";
 	}
-	else { document.getElementById("blueEnergyArea").style.display = "none";}
+	else { $("blueEnergyArea").style.display = "none";}
 	var dispMult = display(getBlueButtonTotalMult());
 	update("powerMultArea", "Button Mult: x"+dispMult);
 	update("blueCycle", `Reset Cycle: ${user.blue.tick}/${user.blue.tickMax}`);
 	for(var i=1;i<user.blue.mults.length+1;i++){
-		document.getElementById("buttonSet"+i).style.display="block";
+		$("buttonSet"+i).style.display="block";
 		var name = "blueCircle" + i;
 		update(name, "x"+display(user.blue.mults[i-1]));
 		let bLButtons = document.getElementsByClassName("breakLimitButton");
@@ -225,31 +227,33 @@ function updateAll(){
 		}	
 	}
 	for(var i=user.blue.mults.length+1;i<=user.blue.indexLimit;i++){
-		document.getElementById("buttonSet"+i).style.display="none";
+		$("buttonSet"+i).style.display="none";
 	}
 	var dispAddBluePrice = display(user.blue.addButtonPrice);
 	update("addBlueButton", `Add another Blue Button<br/>Cost: ${dispAddBluePrice} Power`);
 	for(i=0;i<user.blue.buttonPrice.length;i++){
 		if(user.totPower.gte(user.blue.buttonPrice[i])||user.blue.mults[i].eq(user.blue.limits[1])) {
 			var j = i+1;
-			document.getElementById("upgrade"+j).style.opacity = 1.0;
+			$("upgrade"+j).style.opacity = 1.0;
 		}
 		else{
 			var j = i+1;
-			document.getElementById("upgrade"+j).style.opacity = 0.6;
+			$("upgrade"+j).style.opacity = 0.6;
 		}
 	}
-	if(user.totPower.gte(user.blue.addButtonPrice)) document.getElementById("addBlueButton").style.opacity = 1.0;
-	else document.getElementById("addBlueButton").style.opacity = 0.6;
+	if(user.totPower.gte(user.blue.addButtonPrice)) $("addBlueButton").style.opacity = 1.0;
+	else $("addBlueButton").style.opacity = 0.6;
 	if(user.blue.index>=user.blue.indexLimit) {
-		document.getElementById("addBlueButton").style.display = "none";
-		document.getElementById("bluePrestigeButton").style.display = "";
+		$("addBlueButton").style.display = "none";
+		$("bluePrestigeButton").style.display = "";
 	} else {
-		document.getElementById("addBlueButton").style.display = "";
-		document.getElementById("bluePrestigeButton").style.display = "none";
+		$("addBlueButton").style.display = "";
+		$("bluePrestigeButton").style.display = "none";
 	}
-	document.getElementById("bluePrestigeButton").style.opacity = getBluePrestige().gt(0)?1:0.6
-	document.getElementById("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
+	if(user.totPower.gte(user.blue.tickMultPrice)) $("blueCycleReduc").style.opacity = 1.0;
+	else $("blueCycleReduc:).style.opacity = 0.6;
+	$("bluePrestigeButton").style.opacity = getBluePrestige().gt(0)?1:0.6
+	$("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
 	showTab(user.currentTab);
 }
 
