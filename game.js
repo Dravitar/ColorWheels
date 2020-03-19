@@ -6,16 +6,16 @@ function getDefaultUser() {
 		blue: {
 			tick:0,
 			tickMax:new Decimal(1000),
-			tickMultPrice:new Decimal(1e4),
+			tickMultPrice:new Decimal(1.00e4),
 			tickMultCount:new Decimal(0),
 			mults: [new Decimal(1)],
 			limits: [new Decimal(10)],
 			buttonPrice: [new Decimal(10)],
 			clicked: 0,
-			upgrades:       ["CU","LB","BB"],
-			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ],
-			upgradePrices:  [new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ],
-			upgradeIncrease:[new Decimal(10)  ,new Decimal(0)   ,new Decimal(50)  ],
+			upgrades:       ["PB","CU","LB","BB","CPB","RB"],
+			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(100) ,new Decimal(50)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)],
 			addButtonPrice: new Decimal(100),
 			index: 1,
 			indexLimit: new Decimal(10),
@@ -54,7 +54,7 @@ function gameCycle(){
 }
 
 function blueClick(num) {
-	let mid=user.blue.upgradeCount[0];
+	let mid=user.blue.upgradeCount[1];
 	let old=user.blue.clicked;
 	user.blue.clicked=num;
 	console.log("test0");
@@ -76,7 +76,7 @@ function getBlueButtonTotalMult() {
 	user.blue.mults.forEach(function(value) {
 		mult = mult.times(value)
 	});
-	mult = mult.times(user.blue.energy.plus(1));
+	if(user.blue.upgradeCount[0].gt(0)){ mult = mult.times(user.blue.energy.plus(1));}
 	update("blueEnergyMultBoost",display(user.blue.energy.plus(1)));
 	return mult;
 }
@@ -110,6 +110,7 @@ function checkButtonUpgrade(num) {
 
 function checkUpgrade(color, dex) {
 	let index = user[color].upgrades.indexOf(dex);
+	if(user[color].upgradeIncrease[index]==0&&user[color].upgradeCount[index]==1) return;
 	if(canBuyUpgrade(color, index)){
 		user[color].energy = user[color].energy.minus(user[color].upgradePrices[index]);
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
@@ -123,10 +124,11 @@ function canBuyUpgrade(color, index) {
 }
 
 function checkAddBlue() {
-	if(user.blue.index<10){
+	if(user.blue.index<user.blue.indexLimit){
 		if(user.totPower.gte(user.blue.addButtonPrice)){
 			user.totPower = user.totPower.minus(user.blue.addButtonPrice)
 			user.blue.index++;
+			addBlueButton(user.blue.index);
 			$("buttonSet"+user.blue.index).style.display="block";
 			user.blue.mults.push(new Decimal(2));
 			user.blue.limits.push(new Decimal(10));
@@ -135,6 +137,28 @@ function checkAddBlue() {
 		}
 	}
 	updateAll();
+}
+
+function addBlueButton(n) {
+	eval("let buttonSet"+n+" = document.createElement('div');"+
+	    "let blueCircle"+n+" = document.createElement('button');"+
+	    "let upgrade"+n+" = document.createElement('button');"+
+	    "let break"+n+" = document.createElement('button');"+
+	    "buttonSet"+n+".class = 'lowerLayer';"+
+	    "buttonSet"+n+".style = 'display:block';"+
+	    "blueCircle"+n+".onclick = 'blueClick("+n+")';"+
+	    "blueCircle"+n+".class = 'blueButtonSmall';"+
+	    "blueCircle"+n+".innerHTML = 'x1';"+
+	    "upgrade"+n+".onclick = 'checkButtonUpgrade("+n+")';"+
+	    "upgrade"+n+".class = 'blueButtonSmall';"+
+	    "upgrade"+n+".innerHTML = 'Upgrade your Blue Button<br/>Cost: 100 Power';"+
+	    "break"+n+".onclick = 'breakUpgrade("+n+")';"+
+	    "break"+n+".class = 'breakLimitButton';"+
+	    "break"+n+".innerHTML = LIMIT BREAK!<br/>Cost: 5 <span style='color:darkBlue'>Energy</span>"+
+	    "$('buttonSet"+n+"').appendChild(blueCircle"+n+");"+
+	    "$('buttonSet"+n+"').appendChild(upgrade"+n+");"+
+	    "$('buttonSet"+n+"').appendChild(break"+n+");"+
+	    "$(buttonArea).appendChild(buttonSet"+n+");");
 }
 
 function getBluePrestige() {
@@ -203,6 +227,9 @@ function importSave() {
 
 function updateAll(){
 	update("powerAmount", "Total Power: "+display(user.totPower));
+	if(user.totPower.lt(1e4)){
+		$("blueCycleReduc").style.display = "none";
+	}
 	if(user.totPower.gte(1e4)){
 		$("blueCycleReduc").style.display = "";
 	}
