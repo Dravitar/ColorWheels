@@ -59,8 +59,10 @@ function blueClick(num) {
 	user.blue.clicked=num;
 	if(mid.gt(new Decimal(0))){
 		if(!num==old) {
+			console.log("test1");
 			user.blue.mults[num-1]=new Decimal(""+mid+user.blue.mults[num-1]);
 			if(old!==0){
+				console.log("test2");
 				user.blue.mults[old-1]=new Decimal(user.blue.mults[old-1].toString().substring(1));
 			}
 		}
@@ -90,7 +92,7 @@ function blueCycleUpg() {
 		user.blue.tickMax = user.blue.tickMax.times(0.9);
 		user.blue.tickMultPrice = user.blue.tickMultPrice.times(100);
 		user.blue.tickMultCount = user.blue.tickMultCount.plus(1);
-		update("blueCycleUpgCost", user.blue.tickMultPrice);
+		update("blueCycleUpgCost", display(user.blue.tickMultPrice));
 	}
 }
 	
