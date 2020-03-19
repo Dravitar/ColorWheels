@@ -57,6 +57,7 @@ function blueClick(num) {
 	let mid=user.blue.upgradeCount[0];
 	let old=user.blue.clicked;
 	user.blue.clicked=num;
+	console.log("test0");
 	if(mid.gt(new Decimal(0))){
 		if(!num==old) {
 			console.log("test1");
