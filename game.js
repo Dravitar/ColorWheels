@@ -55,7 +55,7 @@ function gameCycle(){
 
 function blueClick(num) {
 	let mid=user.blue.upgradeCount[0];
-	if(mid.gt(new Decimal(0))&&num!==0){
+	if(mid.gt(new Decimal(0))&&user.blue.clicked!==0){
 		if(!num==user.blue.clicked) {
 			user.blue.mults[num-1]=new Decimal(""+mid+user.blue.mults[num-1]);
 			user.blue.mults[user.blue.clicked-1]=new Decimal(user.blue.mults[user.blue.clicked-1].toString().substring(1));
