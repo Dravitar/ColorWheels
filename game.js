@@ -60,7 +60,9 @@ function blueClick(num) {
 	if(mid.gt(new Decimal(0))){
 		if(!num==old) {
 			user.blue.mults[num-1]=new Decimal(""+mid+user.blue.mults[num-1]);
-			user.blue.mults[old-1]=new Decimal(user.blue.mults[old-1].toString().substring(1));
+			if(old!==0){
+				user.blue.mults[old-1]=new Decimal(user.blue.mults[old-1].toString().substring(1));
+			}
 		}
 	}
 }
