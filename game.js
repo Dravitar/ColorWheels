@@ -60,7 +60,7 @@ function blueClick(num) {
 	console.log("test0");
 	if(mid.gt(new Decimal(0))){
 		console.log("test0.5");
-		if(!num==old) {
+		if(num!==old) {
 			console.log("test1");
 			user.blue.mults[num-1]=new Decimal(""+mid+user.blue.mults[num-1]);
 			if(old!==0){
