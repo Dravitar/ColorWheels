@@ -55,13 +55,14 @@ function gameCycle(){
 
 function blueClick(num) {
 	let mid=user.blue.upgradeCount[0];
-	if(mid.gt(new Decimal(0))&&user.blue.clicked!==0){
-		if(!num==user.blue.clicked) {
+	let old=user.blue.clicked;
+	user.blue.clicked=num;
+	if(mid.gt(new Decimal(0))){
+		if(!num==old) {
 			user.blue.mults[num-1]=new Decimal(""+mid+user.blue.mults[num-1]);
-			user.blue.mults[user.blue.clicked-1]=new Decimal(user.blue.mults[user.blue.clicked-1].toString().substring(1));
+			user.blue.mults[old-1]=new Decimal(user.blue.mults[old-1].toString().substring(1));
 		}
 	}
-	user.blue.clicked=num;
 }
 
 function getBlueButtonTotalMult() {
