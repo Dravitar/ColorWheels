@@ -17,7 +17,7 @@ function getDefaultUser() {
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)],
 			upgradeIncrease:[new Decimal(0)   ,new Decimal(100) ,new Decimal(50)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)],
 			addButtonPrice: new Decimal(100),
-			index: 1,
+			index: new Decimal(1),
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 		},
