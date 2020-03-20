@@ -307,7 +307,7 @@ function updateAll(){
 	else $("blueCycleReduc").style.opacity = 0.6;
 	$("bluePrestigeButton").style.opacity = getBluePrestige().gt(0)?1:0.6
 	$("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
-	$("currentCUBonus").innerHTML = user.blue.upgradeCount[0];
+	$("currentCPBBonus").innerHTML = user.blue.upgradeCount[5];
 	user.blue.upgrades.forEach(function(id){
 		let i = user.blue.upgrades.indexOf(id);
 		if(user.blue.upgradeCount[i].gt(0)&&user.blue.upgradeIncrease[i].lte(0)){
