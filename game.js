@@ -127,7 +127,7 @@ function checkAddBlue() {
 	if(user.blue.index<user.blue.indexLimit){
 		if(user.totPower.gte(user.blue.addButtonPrice)){
 			user.totPower = user.totPower.minus(user.blue.addButtonPrice)
-			user.blue.index++;
+			user.blue.index.plus(1);
 			if(user.blue.index.gt(10)){
 				addBlueButton(user.blue.index);
 			}
@@ -282,7 +282,7 @@ function updateAll(){
 	}
 	if(user.totPower.gte(user.blue.addButtonPrice)) $("addBlueButton").style.opacity = 1.0;
 	else $("addBlueButton").style.opacity = 0.6;
-	if(user.blue.index>=user.blue.indexLimit) {
+	if(user.blue.index.gt(user.blue.indexLimit)) {
 		$("addBlueButton").style.display = "none";
 		$("bluePrestigeButton").style.display = "";
 	} else {
