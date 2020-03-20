@@ -125,9 +125,6 @@ function checkUpgrade(color, dex) {
 		user[color].energy = user[color].energy.minus(user[color].upgradePrices[index]);
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
 		user[color].upgradePrices[index] = user[color].upgradePrices[index].times(user[color].upgradeIncrease[index]);
-		if(user[color].upgradeIncrease[index]==0) {
-			$(dex).style.background="darkGreen";
-		}
 	}
 	updateAll();
 }
