@@ -290,6 +290,9 @@ function updateAll(){
 			var j = i+1;
 			$("upgrade"+j).style.opacity = 0.6;
 		}
+		if(user.blue.upgradeCount[2].gt(0)){
+			$("break"+j).style.display = "";
+		}
 	}
 	if(user.totPower.gte(user.blue.addButtonPrice)) $("addBlueButton").style.opacity = 1.0;
 	else $("addBlueButton").style.opacity = 0.6;
