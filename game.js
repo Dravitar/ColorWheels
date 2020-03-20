@@ -312,7 +312,7 @@ function updateAll(){
 	$("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
 	$("currentCUBonus").innerHTML = user.blue.upgradeCount[0];
 	let ten = new Decimal(10);
-	for(int i=0;i<user.blue.upgrades.length; i++){
+	for(i=0;i<user.blue.upgrades.length;i++){
 		if(user.blue.upgradeCount.gt(0)&&user.blue.upgradeIncrease.lte(0)){
 			$(user.blue.upgrades[i]).style.background = "forestGreen";
 		}
