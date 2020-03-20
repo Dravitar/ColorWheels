@@ -315,6 +315,17 @@ function updateAll(){
 	$("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
 	$("currentCUBonus").innerHTML = user.blue.upgradeCount[0];
 	let ten = new Decimal(10);
+	for(int i=0;i<user.blue.upgrades.length; i++){
+		if(user.blue.upgradeCount.gt(0)&&user.blue.upgradeIncrease.lte(0)){
+			$(user.blue.upgrades[i]).style.background = "forestGreen";
+		}
+		if(user.blue.energy.gte(user.blue.upgradePrices[i])){
+			$(user.blue.upgrades[i]).style.opacity = 1.0;
+		}
+		else if(user.blue.energy.lt(user.blue.upgradePrices[i])){
+			$(user.blue.upgrades[i]).style.opacity = 0.6;
+		}
+	}
 	user.blue.indexLimit = ten.plus(user.blue.upgradeCount[3].times(10));
 	showTab(user.currentTab);
 }
