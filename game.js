@@ -128,8 +128,12 @@ function checkAddBlue() {
 		if(user.totPower.gte(user.blue.addButtonPrice)){
 			user.totPower = user.totPower.minus(user.blue.addButtonPrice)
 			user.blue.index++;
-			addBlueButton(user.blue.index);
-			$("buttonSet"+user.blue.index).style.display="block";
+			if(user.blue.index.gt(10)){
+				addBlueButton(user.blue.index);
+			}
+			else if(user.blue.index.lte(10)){
+				$("buttonSet"+user.blue.index).style.display="block";
+			}
 			user.blue.mults.push(new Decimal(2));
 			user.blue.limits.push(new Decimal(10));
 			user.blue.buttonPrice.push(Decimal.pow(new Decimal(10),new Decimal(user.blue.index)).times(new Decimal(2.5)));
@@ -290,6 +294,8 @@ function updateAll(){
 	$("bluePrestigeButton").style.opacity = getBluePrestige().gt(0)?1:0.6
 	$("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
 	$("currentCUBonus").innerHTML = user.blue.upgradeCount[0];
+	let ten = new Decimal(10);
+	user.blue.indexLimit = ten.plus(user.blue.upgradeCount[3].times(10));
 	showTab(user.currentTab);
 }
 
