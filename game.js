@@ -155,10 +155,10 @@ function addBlueButton(n) {
 	window["break"+n].onclick = 'breakUpgrade("+n+")';
 	window["break"+n].class = 'breakLimitButton';
 	window["break"+n].innerHTML = "LIMIT BREAK!<br/>Cost: 5 <span style='color:darkBlue'>Energy</span>"
-	$("buttonSet"+n).appendChild(blueCircle"+n+");
-	$("buttonSet"+n).appendChild(upgrade"+n+");
-	$("buttonSet"+n).appendChild(break"+n+");
-	$("buttonArea").appendChild(buttonSet"+n+");
+	$("buttonSet"+n).appendChild("blueCircle"+n);
+	$("buttonSet"+n).appendChild("upgrade"+n");
+	$("buttonSet"+n).appendChild("break"+n);
+	$("buttonArea").appendChild("buttonSet"+n);
 }
 
 function getBluePrestige() {
