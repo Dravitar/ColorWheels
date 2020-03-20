@@ -138,6 +138,7 @@ function checkAddBlue() {
 			else if(user.blue.index.lte(10)){
 				$("buttonSet"+user.blue.index).style.display="block";
 			}
+			console.log(user.blue.index);
 			user.blue.mults.push(new Decimal(2));
 			user.blue.limits.push(new Decimal(10));
 			user.blue.buttonPrice.push(Decimal.pow(new Decimal(10),new Decimal(user.blue.index)).times(new Decimal(2.5)));
