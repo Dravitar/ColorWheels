@@ -124,7 +124,7 @@ function canBuyUpgrade(color, index) {
 }
 
 function checkAddBlue() {
-	if(user.blue.index<user.blue.indexLimit){
+	if(user.blue.index.lt(user.blue.indexLimit)){
 		if(user.totPower.gte(user.blue.addButtonPrice)){
 			user.totPower = user.totPower.minus(user.blue.addButtonPrice)
 			user.blue.index.plus(1);
@@ -265,7 +265,8 @@ function updateAll(){
 			update("upgrade"+i, "Max Multiplier!");
 		}	
 	}
-	for(var i=user.blue.mults.length+1;i<=user.blue.indexLimit;i++){
+	let max = user.blue.indexLimit;
+	for(var i=user.blue.mults.length+1;i<=max;i++){
 		$("buttonSet"+i).style.display="none";
 	}
 	var dispAddBluePrice = display(user.blue.addButtonPrice);
@@ -284,9 +285,12 @@ function updateAll(){
 	else $("addBlueButton").style.opacity = 0.6;
 	if(user.blue.index.gt(user.blue.indexLimit)) {
 		$("addBlueButton").style.display = "none";
-		$("bluePrestigeButton").style.display = "";
 	} else {
 		$("addBlueButton").style.display = "";
+	}
+	if(user.totPower.gte(1e10)){
+		$("bluePrestigeButton").style.display = "";
+	} else {		
 		$("bluePrestigeButton").style.display = "none";
 	}
 	if(user.totPower.gte(user.blue.tickMultPrice)) $("blueCycleReduc").style.opacity = 1.0;
