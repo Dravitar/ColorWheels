@@ -237,7 +237,7 @@ function updateAll(){
 	if(user.totPower.gte(1e4)){
 		$("blueCycleReduc").style.display = "";
 	}
-	if(user.blue.energy.gte(0)){
+	if(user.blue.energy.gt(0)){
 		$("blueEnergyArea").style.display = "";
 		$("blueEnergyAmount").innerHTML = display(user.blue.energy);
 		$("tabs").style.display = "";
