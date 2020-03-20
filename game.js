@@ -80,6 +80,7 @@ function getBlueButtonTotalMult() {
 	}
 	if(user.blue.upgradeCount[5].gt(0)){
 		mult = mult.times(user.blue.resets.div(5).plus(1));
+		update("currentRBBonus",display(user.blue.resets.div(5).plus(1)));
 	}
 	return mult;
 }
