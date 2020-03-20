@@ -313,7 +313,7 @@ function updateAll(){
 	$("currentCUBonus").innerHTML = user.blue.upgradeCount[0];
 	let ten = new Decimal(10);
 	for(i=0;i<user.blue.upgrades.length;i++){
-		if(user.blue.upgradeCount.gt(0)&&user.blue.upgradeIncrease.lte(0)){
+		if(user.blue.upgradeCount[i].gt(0)&&user.blue.upgradeIncrease[i].lte(0)){
 			$(user.blue.upgrades[i]).style.background = "forestGreen";
 		}
 		if(user.blue.energy.gte(user.blue.upgradePrices[i])){
