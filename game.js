@@ -113,7 +113,7 @@ function checkButtonUpgrade(num) {
 function checkUpgrade(color, dex) {
 	let index = user[color].upgrades.indexOf(dex);
 	if(user[color].upgradeIncrease[index]==0&&user[color].upgradeCount[index]==1) {
-		$(dex).style.background-color="darkGreen";
+		$(dex).style.background="darkGreen";
 		return;
 	}
 	if(canBuyUpgrade(color, index)){
@@ -121,7 +121,7 @@ function checkUpgrade(color, dex) {
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
 		user[color].upgradePrices[index] = user[color].upgradePrices[index].times(user[color].upgradeIncrease[index]);
 		if(user[color].upgradeIncrease[index]==0) {
-			$(dex).style.background-color="darkGreen";
+			$(dex).style.background="darkGreen";
 		}
 	}
 	updateAll();
