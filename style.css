@@ -38,6 +38,14 @@
   vertical-align: middle;
 }
 
+.breakLimitButton {
+  border-radius: 25%;
+  border: 2px;
+  background-color: orange;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .topLayer {
   margin: auto;
   left: 0;
