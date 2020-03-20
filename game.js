@@ -20,6 +20,7 @@ function getDefaultUser() {
 			index: new Decimal(1),
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
+			resets: new Decimal(0),
 		},
 		green: {
 			tick:new Decimal(0),
@@ -30,6 +31,7 @@ function getDefaultUser() {
 			buttonPrice: [new Decimal(10)],
 			addButtonPrice: new Decimal(100),
 			index: new Decimal(1),
+			resets: new Decimal(0),
 		},
 		currentTab: "mainTab",
 		lastTick: new Date().getTime(),
@@ -78,8 +80,10 @@ function getBlueButtonTotalMult() {
 	});
 	if(user.blue.upgradeCount[0].gt(0)){ 
 		mult = mult.times(user.blue.energy.plus(1));
-		update("blueEnergyMultBoost",display(user.blue.energy.plus(1)));
+		update("currentPBBonus",display(user.blue.energy.plus(1)));
 	}
+	if(user.blue.upgradeCount[5].gt(0)){
+		mult = mult.times(user.blue.resets.div(5).plus(1));
 	return mult;
 }
 
@@ -184,11 +188,13 @@ function blueReset() {
 		let energy = user.blue.energy.plus(getBluePrestige());
 		let count = user.blue.upgradeCount;
 		let prices = user.blue.upgradePrices;
+		let resets = user.blue.resets.plus(1);
 		user.blue = getDefaultUser().blue;
 		user.totPower = new Decimal(0);
 		user.blue.energy = energy;
 		user.blue.upgradeCount = count;
 		user.blue.upgradePrices = prices;
+		user.blue.resets = resets;
 		update("blueCycleUpgCost", new Decimal(1e4));
 		updateAll();
 	}
@@ -248,7 +254,6 @@ function updateAll(){
 	}
 	if(user.blue.energy.gt(0)){
 		$("blueEnergyArea").style.display = "";
-		if(user.blue.upgradeCount[0].gt(0)){ $("blueEnergyBoostArea").style.display=""; }
 		$("blueEnergyAmount").innerHTML = display(user.blue.energy);
 		$("tabs").style.display = "";
 	}
