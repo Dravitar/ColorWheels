@@ -315,7 +315,7 @@ function updateAll(){
 		if(user.blue.energy.gte(user.blue.upgradePrices[i])){
 			$(id).style.opacity = 1.0;
 		}
-		else if(user.blue.energy.lt(user.blue.upgradePrices[i]))
+		else if(user.blue.energy.lt(user.blue.upgradePrices[i])){
 			$(id).style.opacity = 0.6;
 		}
 	});
