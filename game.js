@@ -117,6 +117,9 @@ function checkUpgrade(color, dex) {
 		user[color].energy = user[color].energy.minus(user[color].upgradePrices[index]);
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
 		user[color].upgradePrices[index] = user[color].upgradePrices[index].times(user[color].upgradeIncrease[index]);
+		if(user[color].upgradeIncrease[index]==0) {
+			$(dex).style.background-color="darkGreen";
+		}
 	}
 	updateAll();
 }
@@ -287,7 +290,7 @@ function updateAll(){
 	}
 	if(user.totPower.gte(user.blue.addButtonPrice)) $("addBlueButton").style.opacity = 1.0;
 	else $("addBlueButton").style.opacity = 0.6;
-	if(user.blue.index.gt(user.blue.indexLimit)) {
+	if(user.blue.index.gte(user.blue.indexLimit)) {
 		$("addBlueButton").style.display = "none";
 	} else {
 		$("addBlueButton").style.display = "";
