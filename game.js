@@ -116,6 +116,10 @@ function checkUpgrade(color, dex) {
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
 		user[color].upgradePrices[index] = user[color].upgradePrices[index].times(user[color].upgradeIncrease[index]);
 	}
+	if(dex=="PB"){
+		$("blueEnergyArea").innerHTML = $("blueEnergyArea").innerHTML + 
+			"boosting mult by:<span id='blueEnergyMultBoost'>1</span>x";
+	}
 	updateAll();
 }
 
