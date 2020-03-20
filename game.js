@@ -140,10 +140,10 @@ function checkAddBlue() {
 }
 
 function addBlueButton(n) {
-	let window["buttonSet"+n] = document.createElement('div');
-	let window["blueCircle"+n] = document.createElement('button');
-	let window["upgrade"+n] = document.createElement('button');
-	let window["break"+n] = document.createElement('button');
+	window["buttonSet"+n] = document.createElement('div');
+	window["blueCircle"+n] = document.createElement('button');
+	window["upgrade"+n] = document.createElement('button');
+	window["break"+n] = document.createElement('button');
 	window["buttonSet"+n].class = 'lowerLayer';
 	window["buttonSet"+n].style = 'display:block';
 	window["blueCircle"+n].onclick = 'blueClick("+n+")';
