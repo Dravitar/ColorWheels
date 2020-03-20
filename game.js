@@ -143,7 +143,7 @@ function checkAddBlue() {
 			console.log(user.blue.index);
 			user.blue.mults.push(new Decimal(2));
 			user.blue.limits.push(new Decimal(10));
-			user.blue.buttonPrice.push(Decimal.pow(new Decimal(10),new Decimal(user.blue.index)).times(new Decimal(2.5)));
+			user.blue.buttonPrice.push(Decimal.pow(new Decimal(10),user.blue.index).times(new Decimal(2.5)));
 			user.blue.addButtonPrice = user.blue.addButtonPrice.times(10);
 		}
 	}
