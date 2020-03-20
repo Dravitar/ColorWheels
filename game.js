@@ -140,25 +140,25 @@ function checkAddBlue() {
 }
 
 function addBlueButton(n) {
-	eval("let buttonSet"+n+" = document.createElement('div');"+
-	    "let blueCircle"+n+" = document.createElement('button');"+
-	    "let upgrade"+n+" = document.createElement('button');"+
-	    "let break"+n+" = document.createElement('button');"+
-	    "buttonSet"+n+".class = 'lowerLayer';"+
-	    "buttonSet"+n+".style = 'display:block';"+
-	    "blueCircle"+n+".onclick = 'blueClick("+n+")';"+
-	    "blueCircle"+n+".class = 'blueButtonSmall';"+
-	    "blueCircle"+n+".innerHTML = 'x1';"+
-	    "upgrade"+n+".onclick = 'checkButtonUpgrade("+n+")';"+
-	    "upgrade"+n+".class = 'blueButtonSmall';"+
-	    "upgrade"+n+".innerHTML = 'Upgrade your Blue Button<br/>Cost: 100 Power';"+
-	    "break"+n+".onclick = 'breakUpgrade("+n+")';"+
-	    "break"+n+".class = 'breakLimitButton';"+
-	    "break"+n+".innerHTML = LIMIT BREAK!<br/>Cost: 5 <span style='color:darkBlue'>Energy</span>"+
-	    "$('buttonSet"+n+"').appendChild(blueCircle"+n+");"+
-	    "$('buttonSet"+n+"').appendChild(upgrade"+n+");"+
-	    "$('buttonSet"+n+"').appendChild(break"+n+");"+
-	    "$(buttonArea).appendChild(buttonSet"+n+");");
+	let window["buttonSet"+n] = document.createElement('div');
+	let window["blueCircle"+n] = document.createElement('button');
+	let window["upgrade"+n] = document.createElement('button');
+	let window["break"+n] = document.createElement('button');
+	window["buttonSet"+n].class = 'lowerLayer';
+	window["buttonSet"+n].style = 'display:block';
+	window["blueCircle"+n].onclick = 'blueClick("+n+")';
+	window["blueCircle"+n].class = 'blueButtonSmall';
+	window["blueCircle"+n].innerHTML = 'x1';
+	window["upgrade"+n].onclick = 'checkButtonUpgrade("+n+")';
+	window["upgrade"+n].class = 'blueButtonSmall';
+	window["upgrade"+n].innerHTML = 'Upgrade your Blue Button<br/>Cost: 100 Power';
+	window["break"+n].onclick = 'breakUpgrade("+n+")';
+	window["break"+n].class = 'breakLimitButton';
+	window["break"+n].innerHTML = "LIMIT BREAK!<br/>Cost: 5 <span style='color:darkBlue'>Energy</span>"
+	$(window["buttonSet"+n]).appendChild(blueCircle"+n+");
+	$(window["buttonSet"+n]).appendChild(upgrade"+n+");
+	$(window["buttonSet"+n]).appendChild(break"+n+");
+	$("buttonArea").appendChild(buttonSet"+n+");
 }
 
 function getBluePrestige() {
