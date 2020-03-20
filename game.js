@@ -118,10 +118,6 @@ function checkUpgrade(color, dex) {
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
 		user[color].upgradePrices[index] = user[color].upgradePrices[index].times(user[color].upgradeIncrease[index]);
 	}
-	if(dex=="PB"){
-		$("blueEnergyArea").innerHTML = $("blueEnergyArea").innerHTML + 
-			"boosting mult by:<span id='blueEnergyMultBoost'>1</span>x";
-	}
 	updateAll();
 }
 
@@ -246,6 +242,7 @@ function updateAll(){
 	}
 	if(user.blue.energy.gt(0)){
 		$("blueEnergyArea").style.display = "";
+		if(user.blue.upgradeCount[0].gt(0)){ $("blueEnergyBoostArea").style.display=""; }
 		$("blueEnergyAmount").innerHTML = display(user.blue.energy);
 		$("tabs").style.display = "";
 	}
