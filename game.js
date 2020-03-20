@@ -15,7 +15,7 @@ function getDefaultUser() {
 			upgrades:       ["PB","CP","LB","BB","CPB","RB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0) ,new Decimal(50)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(50)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)],
 			addButtonPrice: new Decimal(100),
 			index: new Decimal(1),
 			indexLimit: new Decimal(10),
@@ -311,18 +311,19 @@ function updateAll(){
 	$("bluePrestigeButton").style.opacity = getBluePrestige().gt(0)?1:0.6
 	$("bluePrestigeAmount").innerHTML = display(getBluePrestige()) + " Energy";
 	$("currentCUBonus").innerHTML = user.blue.upgradeCount[0];
-	let ten = new Decimal(10);
-	for(i=0;i<user.blue.upgrades.length;i++){
+	user.blue.upgrades.forEach(function(id){
+		let i = user.blue.upgrades.indexOf(id);
 		if(user.blue.upgradeCount[i].gt(0)&&user.blue.upgradeIncrease[i].lte(0)){
-			$(user.blue.upgrades[i]).style.background = "forestGreen";
+			$(id).style.background = "forestGreen";
 		}
 		if(user.blue.energy.gte(user.blue.upgradePrices[i])){
-			$(user.blue.upgrades[i]).style.opacity = 1.0;
+			$(id).style.opacity = 1.0;
 		}
 		else if(user.blue.energy.lt(user.blue.upgradePrices[i])){
-			$(user.blue.upgrades[i]).style.opacity = 0.6;
+			$(id).style.opacity = 0.6;
 		}
-	}
+	});
+	let ten = new Decimal(10);
 	user.blue.indexLimit = ten.plus(user.blue.upgradeCount[3].times(10));
 	showTab(user.currentTab);
 }
