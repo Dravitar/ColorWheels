@@ -314,15 +314,12 @@ function updateAll(){
 	user.blue.upgrades.forEach(function(id){
 		let i = user.blue.upgrades.indexOf(id);
 		if(user.blue.upgradeCount[i].gt(0)&&user.blue.upgradeIncrease[i].lte(0)){
-			console.log("1 "+id);
 			$(id).style.background = "forestGreen";
 		}
 		if(user.blue.energy.gte(user.blue.upgradePrices[i])){
-			console.log("2 "+id);
 			$(id).style.opacity = 1.0;
 		}
-		else if(user.blue.energy.lt(user.blue.upgradePrices[i])){
-			console.log("3 "+id);
+		else if(user.blue.energy.lt(user.blue.upgradePrices[i]))
 			$(id).style.opacity = 0.6;
 		}
 	});
