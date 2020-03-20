@@ -129,7 +129,7 @@ function checkAddBlue() {
 	if(user.blue.index.lt(user.blue.indexLimit)){
 		if(user.totPower.gte(user.blue.addButtonPrice)){
 			user.totPower = user.totPower.minus(user.blue.addButtonPrice)
-			user.blue.index.plus(1);
+			user.blue.index = user.blue.index.plus(1);
 			if(user.blue.index.gt(10)){
 				addBlueButton(user.blue.index);
 			}
