@@ -112,7 +112,10 @@ function checkButtonUpgrade(num) {
 
 function checkUpgrade(color, dex) {
 	let index = user[color].upgrades.indexOf(dex);
-	if(user[color].upgradeIncrease[index]==0&&user[color].upgradeCount[index]==1) return;
+	if(user[color].upgradeIncrease[index]==0&&user[color].upgradeCount[index]==1) {
+		$(dex).style.background-color="darkGreen";
+		return;
+	}
 	if(canBuyUpgrade(color, index)){
 		user[color].energy = user[color].energy.minus(user[color].upgradePrices[index]);
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
