@@ -277,7 +277,7 @@ function updateAll(){
 		var name = "redCircle" + i;
 		update(name, "x"+display(user.red.mults[i-1]));
 		if (user.red.limits[i-1].gt(user.red.mults[i-1])) {
-			update("upgrade"+i, `Upgrade your Red button<br/>Cost: ${display(user.red.buttonPrice[i-1])} Power`);
+			update("upgrade"+i, "Upgrade your Red button<br/>Cost: "+display(user.red.buttonPrice[i-1])+" Power");
 		} else {
 			update("upgrade"+i, "Max Multiplier!");
 		}	
