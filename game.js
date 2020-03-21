@@ -15,6 +15,7 @@ function getDefaultUser() {
 			//All the above gets reset on a red reset
 			limits: [new Decimal(10)],
 			breakPrice: [new Decimal(3)],
+			brokenAmount: [new Decimal(0)],
 			clicked: 0,
 			upgrades:       ["PB","CP","LB","BB","CPB","RB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
@@ -144,6 +145,7 @@ function checkAddRed() {
 				$("buttonSet"+user.red.index).style.display="block";
 			}
 			console.log(user.red.index);
+			user.red.brokenAmount.push(new Decimal(0));
 			user.red.mults.push(new Decimal(2));
 			user.red.limits.push(new Decimal(10));
 			let j = parseInt(user.red.index.toString())-2;
@@ -185,6 +187,7 @@ function breakUpgrade(num) {
 		let name = "break"+num;
 		$(name).style.display = "none";
 		user.red.breakPrice[j] = user.red.breakPrice[j].times(25);
+		user.red.brokenAmount[j] = user.red.brokenAmount[j].plus(1);
 	}
 }
 
@@ -287,7 +290,7 @@ function updateAll(){
 	var bLButton;
 	for (var j = 0; j < bLButtons.length; j++) {
 		bLButton = bLButtons.item(j);
-		if (user.red.upgradeCount[2]>0) {
+		if (user.red.upgradeCount[2]>0&&user.red.brokenCount[j]<user.red.upgradeCount[2]) {
 			bLButton.style.display = 'block';
 		}
 		else bLButton.style.display = 'none';
@@ -325,6 +328,7 @@ function updateAll(){
 	}
 	if(user.totPower.gte(user.red.tickMultPrice)) $("redCycleReduc").style.opacity = 1.0;
 	else $("redCycleReduc").style.opacity = 0.6;
+	update("redCycleUpgCost", display(user.red.tickMultPrice));
 	$("redPrestigeButton").style.opacity = getRedPrestige().gt(0)?1:0.6
 	$("redPrestigeAmount").innerHTML = display(getRedPrestige()) + " Energy";
 	$("currentCPBBonus").innerHTML = user.red.upgradeCount[5];
