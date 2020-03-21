@@ -182,7 +182,7 @@ function breakUpgrade(num) {
 	if(user.red.energy.gte(user.red.breakPrice[j])) {
 		user.red.energy = user.red.energy.minus(user.red.breakPrice[j]);
 		user.red.limits[j] = user.red.limits[j].times(10);
-		let name = "break"+j;
+		let name = "break"+num;
 		$(name).style.display = "none";
 		user.red.breakPrice[j] = user.red.breakPrice[j].times(25);
 	}
