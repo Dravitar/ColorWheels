@@ -96,7 +96,7 @@ function blueCycleUpg() {
 	var price=user.blue.tickMultPrice;
 	if(user.totPower.gte(price)) {
 		user.totPower = user.totPower.minus(price);
-		user.blue.tickMax = user.blue.tickMax.times(0.9);
+		user.blue.tickMax = display(user.blue.tickMax.times(0.9));
 		user.blue.tickMultPrice = user.blue.tickMultPrice.times(100);
 		user.blue.tickMultCount = user.blue.tickMultCount.plus(1);
 		update("blueCycleUpgCost", display(user.blue.tickMultPrice));
