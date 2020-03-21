@@ -290,7 +290,7 @@ function updateAll(){
 	var bLButton;
 	for (var j = 0; j < bLButtons.length; j++) {
 		bLButton = bLButtons.item(j);
-		if (user.red.upgradeCount[2]>0&&user.red.brokenCount[j]<user.red.upgradeCount[2]) {
+		if (user.red.upgradeCount[2]>0&&user.red.brokenAmount[j]<user.red.upgradeCount[2]) {
 			bLButton.style.display = 'block';
 		}
 		else bLButton.style.display = 'none';
