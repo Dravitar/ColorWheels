@@ -23,127 +23,127 @@
 			</div>
 			<div id="mainTab" class="tab">
 				<div id="powerAmount">Total Power: 0</div>
-				<div id="blueEnergyArea" style="display:none, color:darkBlue">Total Blue Energy: 
-					<span id="blueEnergyAmount">0</span>
+				<div id="redEnergyArea" style="display:none, color:darkRed">Total Red Energy: 
+					<span id="redEnergyAmount">0</span>
 				</div>
 				<div id="powerMultArea" onClick="testStuff()">Button Mult: x1</div>
 				<div id="cycleArea">
-					<div id="blueCycle">Reset Cycle: 0/1000</div>
-					<button id="blueCycleReduc" style="display:none" class="upgrade" onClick="blueCycleUpg()">
+					<div id="redCycle">Reset Cycle: 0/1000</div>
+					<button id="redCycleReduc" style="display:none" class="upgrade" onClick="redCycleUpg()">
 						Reduce Cycle Limit by <span id="cycleReducAmount">10</span>%<br/>
-						Cost: <span id="blueCycleUpgCost">1e4</span> Power
+						Cost: <span id="redCycleUpgCost">1e4</span> Power
 					</button>
 				</div>
 				<div id="buttonArea">
 					<div id="buttonSet1" class="lowerLayer" style="display:block">
-						<button id="blueCircle1" onclick="blueClick(1)" class="blueButtonSmall">x1</button>
+						<button id="redCircle1" onclick="redClick(1)" class="redButtonSmall">x1</button>
 						<button id="upgrade1" onClick="checkButtonUpgrade(1)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 10 Power</button>
+							Upgrade your Red Button<br/>Cost: 10 Power</button>
 						<button id="break1" onClick="breakUpgrade(1)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet2" class="lowerLayer" style="display:none">
-						<button id="blueCircle2" onclick="blueClick(2)" class="blueButtonSmall">x1</button>
+						<button id="redCircle2" onclick="redClick(2)" class="redButtonSmall">x1</button>
 						<button id="upgrade2" onClick="checkButtonUpgrade(2)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 100 Power</button>
+							Upgrade your Red Button<br/>Cost: 100 Power</button>
 						<button id="break2" onClick="breakUpgrade(2)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet3" class="lowerLayer" style="display:none">
-						<button id="blueCircle3" onclick="blueClick(3)" class="blueButtonSmall">x1</button>
+						<button id="redCircle3" onclick="redClick(3)" class="redButtonSmall">x1</button>
 						<button id="upgrade3" onClick="checkButtonUpgrade(3)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 1e3 Power</button>
+							Upgrade your Red Button<br/>Cost: 1e3 Power</button>
 						<button id="break3" onClick="breakUpgrade(3)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet4" class="lowerLayer" style="display:none">
-						<button id="blueCircle4" onclick="blueClick(4)" class="blueButtonSmall">x1</button>
+						<button id="redCircle4" onclick="redClick(4)" class="redButtonSmall">x1</button>
 						<button id="upgrade4" onClick="checkButtonUpgrade(4)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 1e4 Power</button>
+							Upgrade your Red Button<br/>Cost: 1e4 Power</button>
 						<button id="break4" onClick="breakUpgrade(4)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet5" class="lowerLayer" style="display:none">
-						<button id="blueCircle5" onclick="blueClick(5)" class="blueButtonSmall">x1</button>
+						<button id="redCircle5" onclick="redClick(5)" class="redButtonSmall">x1</button>
 						<button id="upgrade5" onClick="checkButtonUpgrade(5)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 1e5 Power</button>
+							Upgrade your Red Button<br/>Cost: 1e5 Power</button>
 						<button id="break5" onClick="breakUpgrade(5)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet6" class="lowerLayer" style="display:none">
-						<button id="blueCircle6" onclick="blueClick(6)" class="blueButtonSmall">x1</button>
+						<button id="redCircle6" onclick="redClick(6)" class="redButtonSmall">x1</button>
 						<button id="upgrade6" onClick="checkButtonUpgrade(6)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 1e6 Power</button>
+							Upgrade your Red Button<br/>Cost: 1e6 Power</button>
 						<button id="break6" onClick="breakUpgrade(6)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet7" class="lowerLayer" style="display:none">
-						<button id="blueCircle7" onclick="blueClick(7)" class="blueButtonSmall">x1</button>
+						<button id="redCircle7" onclick="redClick(7)" class="redButtonSmall">x1</button>
 						<button id="upgrade7" onClick="checkButtonUpgrade(7)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 1e7 Power</button>
+							Upgrade your Red Button<br/>Cost: 1e7 Power</button>
 						<button id="break7" onClick="breakUpgrade(7)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet8" class="lowerLayer" style="display:none">
-						<button id="blueCircle8" onclick="blueClick(8)" class="blueButtonSmall">x1</button>
+						<button id="redCircle8" onclick="redClick(8)" class="redButtonSmall">x1</button>
 						<button id="upgrade8" onClick="checkButtonUpgrade(8)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 1e8 Power</button>
+							Upgrade your Red Button<br/>Cost: 1e8 Power</button>
 						<button id="break8" onClick="breakUpgrade(8)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet9" class="lowerLayer" style="display:none">
-						<button id="blueCircle9" onclick="blueClick(9)" class="blueButtonSmall">x1</button>
+						<button id="redCircle9" onclick="redClick(9)" class="redButtonSmall">x1</button>
 						<button id="upgrade9" onClick="checkButtonUpgrade(9)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 1e9 Power</button>
+							Upgrade your Red Button<br/>Cost: 1e9 Power</button>
 						<button id="break9" onClick="breakUpgrade(9)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 					<div id="buttonSet10" class="lowerLayer" style="display:none">
-						<button id="blueCircle10" onclick="blueClick(10)" class="blueButtonSmall">x1</button>
+						<button id="redCircle10" onclick="redClick(10)" class="redButtonSmall">x1</button>
 						<button id="upgrade10" onClick="checkButtonUpgrade(10)" style="opacity:0.6" class="upgrade">
-							Upgrade your Blue Button<br/>Cost: 1e10 Power</button>
+							Upgrade your Red Button<br/>Cost: 1e10 Power</button>
 						<button id="break10" onClick="breakUpgrade(10)" style="opacity:0.6, display:none" class="breakLimitButton">
-							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkBlue">Energy</span></button>
+							LIMIT BREAK!<br/>Cost: 5 <span style="color:darkRed">Energy</span></button>
 					</div>
 				</div>
 				<div class="topLayer">
-					<button id="addBlueButton" onClick="checkAddBlue()" style="opacity:0.6" class="upgrade">
-						Add another Blue Button<br/>Cost: 100 Power</button>
-					<button id="bluePrestigeButton" onClick="blueReset()" style="display:none" class="upgrade">
-						Reset your blue buttons and gain 
-						<span id="bluePrestigeAmount" style="color:darkBlue">0 Energy</span>
+					<button id="addRedButton" onClick="checkAddRed()" style="opacity:0.6" class="upgrade">
+						Add another Red Button<br/>Cost: 100 Power</button>
+					<button id="redPrestigeButton" onClick="redReset()" style="display:none" class="upgrade">
+						Reset your red buttons and gain 
+						<span id="redPrestigeAmount" style="color:darkRed">0 Energy</span>
 					</button>
 				</div>
 			</div>
 			<div id="energyTab" class="tab">
 				<div id="clickPowerSet" style="display:inline-block">
-					<button id="CP" onClick="checkUpgrade('blue','CP')" class="upgrade" style="display:block">
+					<button id="CP" onClick="checkUpgrade('red','CP')" class="upgrade" style="display:block">
 						Unlock Click Power. Give a boost to buttons you click directly.<br/>
-						Cost: 1 Blue <span style="color:darkBlue"> Energy</span>
+						Cost: 1 Red <span style="color:darkRed"> Energy</span>
 					</button>
-					<button id="CPB" onClick="checkUpgrade('blue','CPB')" class="upgrade" style="display:block">
+					<button id="CPB" onClick="checkUpgrade('red','CPB')" class="upgrade" style="display:block">
 						Upgrade your Click Power by <span id="CPBBonus">1</span>.<br/>
 						Current Bonus: <span id="currentCPBBonus">1</span><br/>
-						Cost: 100 Blue <span style="color:darkBlue"> Energy</span>
+						Cost: 100 Red <span style="color:darkRed"> Energy</span>
 					</button>
 				</div>
 				<div id="powerBoostSet" style="display:inline-block">
-					<button id="PB" onClick="checkUpgrade('blue','PB')" class="upgrade" style="display:block">
-						Blue <span style="color:darkBlue"> Energy</span> boosts total multiplier.<br/>
+					<button id="PB" onClick="checkUpgrade('red','PB')" class="upgrade" style="display:block">
+						Red <span style="color:darkRed"> Energy</span> boosts total multiplier.<br/>
 						Current Bonus: x<span id="currentPBBonus">1</span><br/>
-						Cost: 1 Blue <span style="color:darkBlue"> Energy</span>
+						Cost: 1 Red <span style="color:darkRed"> Energy</span>
 					</button>
-					<button id="RB" onClick="checkUpgrade('blue','RB')" class="upgrade" style="display:block">
-						Blue Resets boost total multiplier.<br/>
+					<button id="RB" onClick="checkUpgrade('red','RB')" class="upgrade" style="display:block">
+						Red Resets boost total multiplier.<br/>
 						Current Bonus: x<span id="currentRBBonus"1</span><br/>
-						Cost: 10 Blue <span style="color:darkBlue"> Energy</span>
+						Cost: 10 Red <span style="color:darkRed"> Energy</span>
 					</button>
 				</div>
-				<button id="LB" onClick="checkUpgrade('blue','LB')" class="upgrade">
-					Unlock the Limit Break upgrades for your buttons!<br/>Cost: 10 Blue <span style="color:darkBlue"> Energy</span>
+				<button id="LB" onClick="checkUpgrade('red','LB')" class="upgrade">
+					Unlock the Limit Break upgrades for your buttons!<br/>Cost: 10 Red <span style="color:darkRed"> Energy</span>
 				</button>
-				<button id="BB" onClick="checkUpgrade('blue','BB')" class="upgrade">
-					Break the Limit on your Button amount! <br/>Cost: 50 Blue <span style="color:darkBlue"> Energy</span>
+				<button id="BB" onClick="checkUpgrade('red','BB')" class="upgrade">
+					Break the Limit on your Button amount! <br/>Cost: 50 Red <span style="color:darkRed"> Energy</span>
 				</button>
 			</div>		
 		</div>
