@@ -11,6 +11,7 @@ function getDefaultUser() {
 			mults: [new Decimal(1)],
 			limits: [new Decimal(10)],
 			buttonPrice: [new Decimal(10)],
+			breakPrice: [new Decimal(3)],
 			clicked: 0,
 			upgrades:       ["PB","CP","LB","BB","CPB","RB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
@@ -144,6 +145,8 @@ function checkAddBlue() {
 			console.log(user.blue.index);
 			user.blue.mults.push(new Decimal(2));
 			user.blue.limits.push(new Decimal(10));
+			let j = index-1;
+			user.blue.breakPrice.push(Decimal.floor(user.blue.breakPrice[j].times(1.5)));
 			user.blue.buttonPrice.push(Decimal.pow(new Decimal(10),user.blue.index).times(new Decimal(2.5)));
 			user.blue.addButtonPrice = user.blue.addButtonPrice.times(10);
 		}
@@ -175,7 +178,13 @@ function addBlueButton(n) {
 
 function breakUpgrade(num) {
 	let j = num-1;
-	user.blue.limits[j] = user.blue.limits[j].times(10);
+	if(user.blue.energy.gte(user.blue.breakPrice[j])) {
+		user.blue.energy = user.blue.energy.minus(user.blue.breakPrice[j]);
+		user.blue.limits[j] = user.blue.limits[j].times(10);
+		let name = "break"+j;
+		$(name).style.display = "none";
+		user.blue.breakPrice[j] = user.blue.breakPrice[j].times(25);
+	}
 }
 
 function getBluePrestige() {
