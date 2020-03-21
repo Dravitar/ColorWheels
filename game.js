@@ -205,6 +205,7 @@ function redReset() {
 		user.red.buttonPrice = getDefaultUser().red.buttonPrice;
 		user.red.addButtonPrice = getDefaultUser().red.addButtonPrice;
 		user.red.index = getDefaultUser().red.index;
+		user.red.clicked = 0;
 		user.totPower = new Decimal(0);
 		update("redCycleUpgCost", new Decimal(1e4));
 		updateAll();
