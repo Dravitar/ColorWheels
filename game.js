@@ -195,7 +195,7 @@ function getRedPrestige() {
 
 function redReset() {
 	if(getRedPrestige().gte(1)){
-		luser.red.energy = user.red.energy.plus(getRedPrestige());
+		user.red.energy = user.red.energy.plus(getRedPrestige());
 		user.red.resets = user.red.resets.plus(1);
 		user.red.tick = getDefaultUser().red.tick;
 		user.red.tickMax = getDefaultUser().red.tickMax;
