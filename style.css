@@ -9,7 +9,7 @@
   width: 60px;
   border-radius: 10%;
   border: 1px;
-  background-color: darkCyan;
+  background-color: fireBrick;
 }
 
 .blueButtonSmall {
@@ -18,7 +18,7 @@
   width: 30px;
   border-radius: 50%;
   border: 2px;
-  background-color: darkCyan;
+  background-color: fireBrick;
 }
 
 .blueButton {
@@ -27,7 +27,7 @@
   width: 60px;
   border-radius: 50%;
   border: 2px;
-  background-color: darkCyan;
+  background-color: fireBrick;
 }
 
 .upgrade {
@@ -41,7 +41,7 @@
 .breakLimitButton {
   border-radius: 25%;
   border: 2px;
-  background-color: orange;
+  background-color: maroon;
   display: inline-block;
   vertical-align: middle;
 }
@@ -60,10 +60,10 @@
   vertical-align: top;
 }
 
-.greenButton {
+.orangeButton {
   height: 60px;
   width: 60px;
   border-radius: 50%;
   border: 1px;
-  background-color: green;
+  background-color: orangeRed;
 }
