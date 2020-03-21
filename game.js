@@ -199,7 +199,7 @@ function redReset() {
 		user.red.resets = user.red.resets.plus(1);
 		user.red.tick = getDefaultUser().red.tick;
 		user.red.tickMax = getDefaultUser().red.tickMax;
-		user.red.tickMaxPrice = getDefaultUser().red.tickMaxPrice;
+		user.red.tickMultPrice = getDefaultUser().red.tickMultPrice;
 		user.red.tickMultCount = getDefaultUser().red.tickMultCount;
 		user.red.mults = getDefaultUser().red.mults;
 		user.red.buttonPrice = getDefaultUser().red.buttonPrice;
