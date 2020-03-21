@@ -97,7 +97,7 @@ function redCycleUpg() {
 	var price=user.red.tickMultPrice;
 	if(user.totPower.gte(price)) {
 		user.totPower = user.totPower.minus(price);
-		user.red.tickMax = display(user.red.tickMax.times(0.9));
+		user.red.tickMax = user.red.tickMax.times(0.9);
 		user.red.tickMultPrice = user.red.tickMultPrice.times(100);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
@@ -271,7 +271,7 @@ function updateAll(){
 	else { $("redEnergyArea").style.display = "none";}
 	var dispMult = display(getRedButtonTotalMult());
 	update("powerMultArea", "Button Mult: x"+dispMult);
-	update("redCycle", `Reset Cycle: ${user.red.tick}/${user.red.tickMax}`);
+	update("redCycle", "Reset Cycle: "+display(user.red.tick)+"/"+display(user.red.tickMax));
 	for(var i=1;i<user.red.mults.length+1;i++){
 		$("buttonSet"+i).style.display="block";
 		var name = "redCircle" + i;
