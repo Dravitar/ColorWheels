@@ -146,7 +146,7 @@ function checkAddRed() {
 			console.log(user.red.index);
 			user.red.mults.push(new Decimal(2));
 			user.red.limits.push(new Decimal(10));
-			let j = index-1;
+			let j = user.red.index-1;
 			user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.5)));
 			user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 			user.red.addButtonPrice = user.red.addButtonPrice.times(10);
@@ -276,20 +276,20 @@ function updateAll(){
 		$("buttonSet"+i).style.display="block";
 		var name = "redCircle" + i;
 		update(name, "x"+display(user.red.mults[i-1]));
-		let bLButtons = document.getElementsByClassName("breakLimitButton");
-		var bLButton;
-		for (var j = 0; j < bLButtons.length; j++) {
-			bLButton = bLButtons.item(j);
-			if (user.red.upgradeCount[2]>0) {
-				bLButton.style.display = 'block';
-			}
-			else bLButton.style.display = 'none';
-		}
 		if (user.red.limits[i-1].gt(user.red.mults[i-1])) {
 			update("upgrade"+i, `Upgrade your Red button<br/>Cost: ${display(user.red.buttonPrice[i-1])} Power`);
 		} else {
 			update("upgrade"+i, "Max Multiplier!");
 		}	
+	}
+	let bLButtons = document.getElementsByClassName("breakLimitButton");
+	var bLButton;
+	for (var j = 0; j < bLButtons.length; j++) {
+		bLButton = bLButtons.item(j);
+		if (user.red.upgradeCount[2]>0) {
+			bLButton.style.display = 'block';
+		}
+		else bLButton.style.display = 'none';
 	}
 	let max = user.red.indexLimit;
 	for(var i=user.red.mults.length+1;i<=max;i++){
