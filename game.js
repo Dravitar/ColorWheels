@@ -146,7 +146,7 @@ function checkAddRed() {
 			console.log(user.red.index);
 			user.red.mults.push(new Decimal(2));
 			user.red.limits.push(new Decimal(10));
-			let j = parseInt(user.red.index.toString())-1;
+			let j = parseInt(user.red.index.toString())-2;
 			user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.5)));
 			user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 			user.red.addButtonPrice = user.red.addButtonPrice.times(10);
