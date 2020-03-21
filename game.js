@@ -173,6 +173,11 @@ function addBlueButton(n) {
 	$("buttonArea").appendChild($("buttonSet"+n));
 }
 
+function breakUpgrade(num) {
+	let j = num-1;
+	user.blue.limits[j] = user.blue.limits[j].times(10);
+}
+
 function getBluePrestige() {
 	if (user.totPower.gte(new Decimal(1e10))) return user.totPower.log10().minus(9).log2().plus(1);
 	else return new Decimal(0);
