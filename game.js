@@ -168,13 +168,13 @@ function addRedButton(n) {
 	newBreak.id = "break"+n;
 	newDiv.className = 'lowerLayer';
 	newDiv.style = 'display:block';
-	newRedCir.onclick = redClick(n);
+	newRedCir.setAttribute("onclick", "redClick("+n")");
 	newRedCir.className = 'redButtonSmall';
 	newRedCir.innerHTML = 'x1';
-	newUpgrade.onclick = checkButtonUpgrade(n);
+	newUpgrade.setAttribute("onclick", "checkButtonUpgrade("+n+")");
 	newUpgrade.className = 'upgrade';
 	newUpgrade.innerHTML = 'Upgrade your Red Button<br/>Cost: 100 Power';
-	newBreak.onclick = breakUpgrade(n);
+	newBreak.setAttribute("onclick", "breakUpgrade("+n+")");
 	newBreak.className = 'breakLimitButton';
 	newBreak.innerHTML = "Raise Limit to<span id='redLimit"+n+"'>100</span><br/>"+
 		"Cost: <span id='redBreakCost"+n+"'>3</span> <span style='color:darkRed'>Energy</span>";
@@ -269,6 +269,7 @@ function importSave() {
 }
 
 function updateAll(){
+	
 	update("powerAmount", "Total Power: "+display(user.totPower));
 	if(user.totPower.lt(1e4)){
 		$("redCycleReduc").style.display = "none";
