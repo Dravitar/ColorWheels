@@ -156,6 +156,15 @@ function checkAddRed() {
 	updateAll();
 }
 
+function checkNewButtons() {
+	for(var i=1;i<user.red.mults.length+1;i++){
+		var test = $("buttonSet"+i);
+		if(test == null){
+			addRedButton(i);
+		}
+	}
+}
+
 function addRedButton(n) {
 	var newDiv = document.createElement("div");
 	var newRedCir = document.createElement("button");
@@ -275,7 +284,6 @@ function importSave() {
 }
 
 function updateAll(){
-	
 	update("powerAmount", "Total Power: "+display(user.totPower));
 	if(user.totPower.lt(1e4)){
 		$("redCycleReduc").style.display = "none";
@@ -294,7 +302,7 @@ function updateAll(){
 	update("redCycle", "Reset Cycle: "+display(user.red.tick)+"/"+display(user.red.tickMax));
 	for(var i=1;i<user.red.mults.length+1;i++){
 		var test = $("buttonSet"+i);
-		if(typeof(test) == 'undefined' || test == null){
+		if(test == null){
 			addRedButton(i);
 		}
 		$("buttonSet"+i).style.display="block";
@@ -383,6 +391,7 @@ function clearSave(){
 
 function startCycle(){
 	load();
+	checkNewButtons();
 	updateAll();
 	setInterval(gameCycle, 10);
 	setInterval(save, 30000);
