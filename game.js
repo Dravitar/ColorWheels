@@ -287,6 +287,10 @@ function updateAll(){
 	update("powerMultArea", "Button Mult: x"+dispMult);
 	update("redCycle", "Reset Cycle: "+display(user.red.tick)+"/"+display(user.red.tickMax));
 	for(var i=1;i<user.red.mults.length+1;i++){
+		var test = $("buttonSet"+i);
+		if(typeof(test) == 'undefined' || test == null){
+			addRedButton(i);
+		}
 		$("buttonSet"+i).style.display="block";
 		var name = "redCircle" + i;
 		update(name, "x"+display(user.red.mults[i-1]));
