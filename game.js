@@ -157,7 +157,8 @@ function checkAddRed() {
 }
 
 function checkNewButtons() {
-	for(var i=1;i<user.red.mults.length+1;i++){
+	let max = user.red.mults.length+1;
+	for(var i=1;i<max;i++){
 		var test = $("buttonSet"+i);
 		if(test == null){
 			addRedButton(i);
