@@ -302,7 +302,10 @@ function updateAll(){
 	}
 	let max = user.red.indexLimit;
 	for(var i=user.red.mults.length+1;i<=max;i++){
-		$("buttonSet"+i).style.display="none";
+		if(typeof(element) != 'undefined' && element != null){
+			$("buttonSet"+i).style.display="none";
+		} 
+		else{ continue;	}
 	}
 	var dispAddRedPrice = display(user.red.addButtonPrice);
 	update("addRedButton", `Add another Red Button<br/>Cost: ${dispAddRedPrice} Power`);
