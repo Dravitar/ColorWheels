@@ -166,16 +166,16 @@ function addRedButton(n) {
 	newRedCir.id = "redCircle"+n;
 	newUpgrade.id = "upgrade"+n;
 	newBreak.id = "break"+n;
-	newDiv.class = 'lowerLayer';
+	newDiv.className = 'lowerLayer';
 	newDiv.style = 'display:block';
 	newRedCir.onclick = 'redClick('+n+')';
-	newRedCir.class = 'redButtonSmall';
+	newRedCir.className = 'redButtonSmall';
 	newRedCir.innerHTML = 'x1';
 	newUpgrade.onclick = 'checkButtonUpgrade('+n+')';
-	newUpgrade.class = 'redButtonSmall';
+	newUpgrade.className = 'redButtonSmall';
 	newUpgrade.innerHTML = 'Upgrade your Red Button<br/>Cost: 100 Power';
 	newBreak.onclick = 'breakUpgrade('+n+')';
-	newBreak.class = 'breakLimitButton';
+	newBreak.className = 'breakLimitButton';
 	newBreak.innerHTML = "Raise Limit to<span id='redLimit"+n+"'>100</span><br/>"+
 		"Cost: <span id='redBreakCost"+n+"'>3</span> <span style='color:darkRed'>Energy</span>";
 	newDiv.appendChild(newRedCir);
