@@ -178,9 +178,9 @@ function addRedButton(n) {
 	newBreak.class = 'breakLimitButton';
 	newBreak.innerHTML = "Raise Limit to<span id='redLimit"+n+"'>100</span><br/>"+
 		"Cost: <span id='redBreakCost"+n+"'>3</span> <span style='color:darkRed'>Energy</span>";
-	$("buttonSet"+n).appendChild(newRedCir);
-	$("buttonSet"+n).appendChild(newUpgrade);
-	$("buttonSet"+n).appendChild(newBreak);
+	newDiv.appendChild(newRedCir);
+	newDiv.appendChild(newUpgrade);
+	newDiv.appendChild(newBreak);
 	$("buttonArea").appendChild(newDiv);
 }
 
