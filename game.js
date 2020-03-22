@@ -168,7 +168,7 @@ function addRedButton(n) {
 	newBreak.id = "break"+n;
 	newDiv.className = 'lowerLayer';
 	newDiv.style = 'display:block';
-	newRedCir.setAttribute("onclick", "redClick("+n")");
+	newRedCir.setAttribute("onclick", "redClick("+n+")");
 	newRedCir.className = 'redButtonSmall';
 	newRedCir.innerHTML = 'x1';
 	newUpgrade.setAttribute("onclick", "checkButtonUpgrade("+n+")");
