@@ -191,7 +191,7 @@ function breakUpgrade(num) {
 		$(name).innerHTML = user.red.breakPrice[j];
 		user.red.brokenAmount[j] = user.red.brokenAmount[j].plus(1);
 		name = "redLimit"+num;
-		$(name).innerHTML = user.red.limits[j];
+		$(name).innerHTML = user.red.limits[j].times(10);
 	}
 }
 
