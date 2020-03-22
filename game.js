@@ -187,7 +187,11 @@ function breakUpgrade(num) {
 		let name = "break"+num;
 		$(name).style.display = "none";
 		user.red.breakPrice[j] = user.red.breakPrice[j].times(25);
+		name = "redBreakCost"+num;
+		$(name).innerHTML = user.red.breakPrice[j];
 		user.red.brokenAmount[j] = user.red.brokenAmount[j].plus(1);
+		name = "redLimit"+num;
+		$(name).innerHTML = user.red.limits[j];
 	}
 }
 
