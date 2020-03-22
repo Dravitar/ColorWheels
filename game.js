@@ -164,15 +164,16 @@ function addRedButton(n) {
 	window["break"+n] = document.createElement('button');
 	window["buttonSet"+n].class = 'lowerLayer';
 	window["buttonSet"+n].style = 'display:block';
-	window["redCircle"+n].onclick = 'redClick("+n+")';
+	window["redCircle"+n].onclick = 'redClick('+n+')';
 	window["redCircle"+n].class = 'redButtonSmall';
 	window["redCircle"+n].innerHTML = 'x1';
-	window["upgrade"+n].onclick = 'checkButtonUpgrade("+n+")';
+	window["upgrade"+n].onclick = 'checkButtonUpgrade('+n+')';
 	window["upgrade"+n].class = 'redButtonSmall';
 	window["upgrade"+n].innerHTML = 'Upgrade your Red Button<br/>Cost: 100 Power';
-	window["break"+n].onclick = 'breakUpgrade("+n+")';
+	window["break"+n].onclick = 'breakUpgrade('+n+')';
 	window["break"+n].class = 'breakLimitButton';
-	window["break"+n].innerHTML = "LIMIT BREAK!<br/>Cost: 5 <span style='color:darkRed'>Energy</span>"
+	window["break"+n].innerHTML = "Raise Limit to<span id='redLimit"+n+"'>100</span><br/>"+
+		"Cost: <span id='redBreakCost"+n+"'>3</span> <span style='color:darkRed'>Energy</span>";
 	$("buttonSet"+n).appendChild($("redCircle"+n));
 	$("buttonSet"+n).appendChild($("upgrade"+n));
 	$("buttonSet"+n).appendChild($("break"+n));
