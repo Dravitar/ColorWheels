@@ -314,12 +314,11 @@ function updateAll(){
 	var dispAddRedPrice = display(user.red.addButtonPrice);
 	update("addRedButton", `Add another Red Button<br/>Cost: ${dispAddRedPrice} Power`);
 	for(i=0;i<user.red.buttonPrice.length;i++){
+		var j = i+1;
 		if(user.totPower.gte(user.red.buttonPrice[i])||user.red.mults[i].eq(user.red.limits[1])) {
-			var j = i+1;
 			$("upgrade"+j).style.opacity = 1.0;
 		}
 		else{
-			var j = i+1;
 			$("upgrade"+j).style.opacity = 0.6;
 		}
 		if(user.red.upgradeCount[2].gt(0)){
