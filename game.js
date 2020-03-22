@@ -175,7 +175,7 @@ function addRedButton(n) {
 	newUpgrade.innerHTML = 'Upgrade your Red Button<br/>Cost: 100 Power';
 	newBreak.setAttribute("onclick", "breakUpgrade("+n+")");
 	newBreak.className = 'breakLimitButton';
-	newBreak.innerHTML = "Raise Limit to<span id='redLimit"+n+"'>100</span><br/>"+
+	newBreak.innerHTML = "Raise Limit to<span id='redLimit"+n+"'> 100</span><br/>"+
 		"Cost: <span id='redBreakCost"+n+"'>3</span> <span style='color:darkRed'>Energy</span>";
 	newDiv.appendChild(newRedCir);
 	newDiv.appendChild(newUpgrade);
@@ -184,7 +184,7 @@ function addRedButton(n) {
 	user.red.brokenAmount.push(new Decimal(0));
 	user.red.mults.push(new Decimal(2));
 	user.red.limits.push(new Decimal(10));
-	let j = parseInt(user.red.index.toString())-2;
+	let j = n-2;
 	user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.5)));
 	user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 	user.red.addButtonPrice = user.red.addButtonPrice.times(10);
