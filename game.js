@@ -221,7 +221,7 @@ function breakUpgrade(num) {
 }
 
 function getRedPrestige() {
-	if (user.totPower.gte(new Decimal(1e10))) return user.totPower.log10().minus(9).log2().plus(1);
+	if (user.totPower.gte(new Decimal(1e10))) return user.totPower.log10().minus(9).sqr();
 	else return new Decimal(0);
 }
 
