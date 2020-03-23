@@ -99,7 +99,7 @@ function redCycleUpg() {
 	if(user.totPower.gte(price)) {
 		user.totPower = user.totPower.minus(price);
 		user.red.tickMax = user.red.tickMax.times(0.9);
-		user.red.tickMultPrice = user.red.tickMultPrice.times(100);
+		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
 	}
