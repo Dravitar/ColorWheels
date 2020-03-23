@@ -110,7 +110,8 @@ function checkButtonUpgrade(num) {
 	if(user.totPower.gte(price)&&user.red.limits[num-1].gt(user.red.mults[num-1])) {
 		user.totPower = user.totPower.minus(price);
 		user.red.mults[num-1] = user.red.mults[num-1].plus(new Decimal(1));
-		user.red.buttonPrice[num-1] = price.times(new Decimal(2.5));
+		let priceIncrease = new Decimal(num+1).log10().times(1.5);
+		user.red.buttonPrice[num-1] = price.times(priceIncrease);
 	}
 	updateAll();
 }
@@ -147,7 +148,7 @@ function checkAddRed() {
 				user.red.mults.push(new Decimal(2));
 				user.red.limits.push(new Decimal(10));
 				let j = parseInt(user.red.index.toString())-2;
-				user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.5)));
+				user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.1)));
 				user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 				user.red.addButtonPrice = user.red.addButtonPrice.times(10);
 			}
