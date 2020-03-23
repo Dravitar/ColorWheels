@@ -161,12 +161,12 @@ function checkNewButtons() {
 	for(var i=1;i<max;i++){
 		var test = $("buttonSet"+i);
 		if(test == null){
-			addRedButton(i);
+			makeRedButton(i);
 		}
 	}
 }
 
-function addRedButton(n) {
+function makeRedButton(n) {
 	var newDiv = document.createElement("div");
 	var newRedCir = document.createElement("button");
 	var newUpgrade = document.createElement("button");
@@ -191,6 +191,10 @@ function addRedButton(n) {
 	newDiv.appendChild(newUpgrade);
 	newDiv.appendChild(newBreak);
 	$("buttonArea").appendChild(newDiv);
+}
+
+function addRedButton(n) {
+	makeRedButton(n);
 	user.red.brokenAmount.push(new Decimal(0));
 	user.red.mults.push(new Decimal(2));
 	user.red.limits.push(new Decimal(10));
