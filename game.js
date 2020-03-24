@@ -314,7 +314,7 @@ function updateAll(){
 		update("redCycle", `Reset Cycle: ${user.red.tick}/${user.red.tickMax}`);
 	}
 	else {
-		update("redCycle", `${user.red.tps} Cycles per second`);
+		update("redCycle", display(user.red.tps)+" Cycles per second");
 	}
 	for(var i=1;i<user.red.mults.length+1;i++){
 		$("buttonSet"+i).style.display="block";
