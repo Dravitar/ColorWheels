@@ -141,19 +141,6 @@ function checkAddRed() {
 			user.totPower = user.totPower.minus(user.red.addButtonPrice)
 			user.red.index = user.red.index.plus(1);
 			addRedButton(user.red.index);
-			/*if(user.red.index.gt(10)){
-				addRedButton(user.red.index);
-			}
-			else if(user.red.index.lte(10)){
-				$("buttonSet"+user.red.index).style.display="block";
-				user.red.brokenAmount.push(new Decimal(0));
-				user.red.mults.push(new Decimal(2));
-				user.red.limits.push(new Decimal(10));
-				let j = parseInt(user.red.index.toString())-2;
-				user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.1)));
-				user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
-				user.red.addButtonPrice = user.red.addButtonPrice.times(10);
-			}*/
 		}
 	}
 	updateAll();
@@ -184,7 +171,7 @@ function makeRedButton(n) {
 	newRedCir.className = 'redButtonSmall';
 	newRedCir.innerHTML = 'x1';
 	newUpgrade.setAttribute("onclick", "checkButtonUpgrade("+n+")");
-	newUpgrade.className = 'upgrade';
+	newUpgrade.className = 'multUpgrade';
 	newUpgrade.innerHTML = 'Upgrade your Red Button<br/>Cost: 100 Power';
 	newBreak.setAttribute("onclick", "breakUpgrade("+n+")");
 	newBreak.className = 'breakLimitButton';
