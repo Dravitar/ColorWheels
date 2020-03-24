@@ -35,22 +35,23 @@
 							Reduce Cycle Limit by <span id="cycleReducAmount">10</span>%<br/>
 						Cost: <span id="redCycleUpgCost">1e4</span> Power
 						</button>
-						<button id="redCycleMax" style="display:none" class="multUpgrade" onClick="redCycleMax()">
+						<button id="redCycleMax" class="multUpgrade" onClick="redCycleMax()">
 							Buy Max
 						</button>
 					</div>
 				</div>
 				<div id="buttonArea">
 					<div id="buttonSet1" class="lowerLayer" style="display:block">
-						<button id="redCircle1" onclick="redClick(1)" class="redButtonSmall">x1</button>
+						<div><button id="redCircle1" onclick="redClick(1)" class="redButtonSmall">x1</button></div>
 						<div>
 							<button id="upgrade1" onClick="checkButtonUpgrade(1)" style="opacity:0.6" class="multUpgrade">
 								Upgrade your Red Button<br/>Cost: 10 Power</button>
 							<button id="max1" onClick="maxRedMult(1)" class="multUpgrade">
 								Max Mult</button>
 						</div>
-						<button id="break1" onClick="breakUpgrade(1)" style="opacity:0.6, display:none" class="breakLimitButton">
+						<div><button id="break1" onClick="breakUpgrade(1)" style="opacity:0.6, display:none" class="breakLimitButton">
 							Raise Limit to <span id="redLimit1">100</span><br/>Cost: <span id="redBreakCost1">3</span> <span style="color:darkRed">Energy</span></button>
+						</div>
 					</div>
 				</div>
 				<div class="topLayer">
