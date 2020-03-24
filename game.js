@@ -54,12 +54,6 @@ function gameCycle(){
 	let tickMax = user.red.tickMax.times(Decimal.pow(0.9,user.red.tickMultCount));
 	user.red.tick += diff;
 	if(user.red.tick >= user.red.tickMax) process(Decimal.round(new Decimal(user.red.tick).div(user.red.tickMax)));
-	if(user.red.tps.lt(10)){
-		update("redCycle", `Reset Cycle: ${user.red.tick}/${user.red.tickMax}`);
-	}
-	else {
-		update("redCycle", `${user.red.tps} Cycles per second`);
-	}
 	user.lastTick = now;
 	updateAll();
 }
@@ -316,7 +310,12 @@ function updateAll(){
 	else { $("redEnergyArea").style.display = "none";}
 	var dispMult = display(getRedButtonTotalMult());
 	update("powerMultArea", "Button Mult: x"+dispMult);
-	update("redCycle", "Reset Cycle: "+display(user.red.tick)+"/"+display(user.red.tickMax));
+	if(user.red.tps.lt(10)){
+		update("redCycle", `Reset Cycle: ${user.red.tick}/${user.red.tickMax}`);
+	}
+	else {
+		update("redCycle", `${user.red.tps} Cycles per second`);
+	}
 	for(var i=1;i<user.red.mults.length+1;i++){
 		$("buttonSet"+i).style.display="block";
 		var name = "redCircle" + i;
