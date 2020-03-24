@@ -303,7 +303,7 @@ function updateAll(){
 	var dispMult = display(getRedButtonTotalMult());
 	update("powerMultArea", "Button Mult: x"+dispMult);
 	if(user.red.tps.lt(10)){
-		update("redCycle", `Reset Cycle: ${user.red.tick}/${user.red.tickMax}`);
+		update("redCycle", "Reset Cycle: "+display(user.red.tick)+"/"+display(user.red.tickMax));
 	}
 	else {
 		update("redCycle", display(user.red.tps)+" Cycles per second");
