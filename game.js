@@ -222,7 +222,7 @@ function getRedPrestige() {
 function redReset() {
 	if(getRedPrestige().gte(1)){
 		for(i=2;i<user.red.mults.length+1;i++){
-			$("buttonSet"+i).style.display="none";
+			$("buttonSet"+i).remove();
 		}
 		user.red.energy = user.red.energy.plus(getRedPrestige());
 		user.red.resets = user.red.resets.plus(1);
