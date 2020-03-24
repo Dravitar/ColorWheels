@@ -4,12 +4,12 @@
   left: 0;
 }
 
-.firstButton {
-  height: 60px;
+.tabBtn {
+  height: 20px;
   width: 60px;
   border-radius: 10%;
   border: 1px;
-  background-color: fireBrick;
+  background-color: grey;
 }
 
 .redButtonSmall {
@@ -31,6 +31,8 @@
 }
 
 .upgrade {
+  height: 100px;
+  width: 130px;
   border-radius: 10%;
   border: 2px;
   background-color: grey;
