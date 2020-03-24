@@ -140,7 +140,8 @@ function checkAddRed() {
 		if(user.totPower.gte(user.red.addButtonPrice)){
 			user.totPower = user.totPower.minus(user.red.addButtonPrice)
 			user.red.index = user.red.index.plus(1);
-			if(user.red.index.gt(10)){
+			addRedButton(user.red.index);
+			/*if(user.red.index.gt(10)){
 				addRedButton(user.red.index);
 			}
 			else if(user.red.index.lte(10)){
@@ -152,7 +153,7 @@ function checkAddRed() {
 				user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.1)));
 				user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 				user.red.addButtonPrice = user.red.addButtonPrice.times(10);
-			}
+			}*/
 		}
 	}
 	updateAll();
