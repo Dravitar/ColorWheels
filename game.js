@@ -6,6 +6,7 @@ function getDefaultUser() {
 		red: {
 			tick:0,
 			tickMax:new Decimal(1000),
+			tps:new Decimal(1),
 			tickMultPrice:new Decimal(1.00e4),
 			tickMultCount:new Decimal(0),
 			mults: [new Decimal(1)],
@@ -50,10 +51,15 @@ function update(get, set) {
 function gameCycle(){
 	let now = new Date().getTime();
 	let diff = now - user.lastTick;
+	let tps = user.red.tps.times(Decimal.pow(1.1,user.red.tickMultCount));
 	let tickMax = user.red.tickMax.times(Decimal.pow(0.9,user.red.tickMultCount));
 	user.red.tick += diff;
 	if(user.red.tick >= user.red.tickMax) process(Decimal.round(new Decimal(user.red.tick).div(user.red.tickMax)));
-	update("redCycle", `Reset Cycle: ${user.red.tick}/${user.red.tickMax}`);
+	if(tps.lt(10)){
+		update("redCycle", `Reset Cycle: ${user.red.tick}/${user.red.tickMax}`);
+	}
+	else {
+		update("redCycle", `${user.red.tps} Cycles per second`);
 	user.lastTick = now;
 	updateAll();
 }
@@ -235,6 +241,7 @@ function redReset() {
 		user.red.resets = user.red.resets.plus(1);
 		user.red.tick = getDefaultUser().red.tick;
 		user.red.tickMax = getDefaultUser().red.tickMax;
+		user.red.tps = getDefaultUser().red.tps;
 		user.red.tickMultPrice = getDefaultUser().red.tickMultPrice;
 		user.red.tickMultCount = getDefaultUser().red.tickMultCount;
 		user.red.mults = getDefaultUser().red.mults;
