@@ -60,6 +60,7 @@ function gameCycle(){
 	}
 	else {
 		update("redCycle", `${user.red.tps} Cycles per second`);
+	}
 	user.lastTick = now;
 	updateAll();
 }
