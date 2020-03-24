@@ -51,11 +51,10 @@ function update(get, set) {
 function gameCycle(){
 	let now = new Date().getTime();
 	let diff = now - user.lastTick;
-	let tps = user.red.tps.times(Decimal.pow(1.1,user.red.tickMultCount));
 	let tickMax = user.red.tickMax.times(Decimal.pow(0.9,user.red.tickMultCount));
 	user.red.tick += diff;
 	if(user.red.tick >= user.red.tickMax) process(Decimal.round(new Decimal(user.red.tick).div(user.red.tickMax)));
-	if(tps.lt(10)){
+	if(user.red.tps.lt(10)){
 		update("redCycle", `Reset Cycle: ${user.red.tick}/${user.red.tickMax}`);
 	}
 	else {
@@ -106,6 +105,7 @@ function redCycleUpg() {
 	if(user.totPower.gte(price)) {
 		user.totPower = user.totPower.minus(price);
 		user.red.tickMax = user.red.tickMax.times(0.9);
+		user.red.tps = user.red.tps.times(1.1);
 		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
