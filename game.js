@@ -94,6 +94,10 @@ function process(num) {
 	user.red.tick=0;
 }
 
+function testStuff() {
+	process(1000);
+}
+
 function redCycleUpg() {
 	var price=user.red.tickMultPrice;
 	if(user.totPower.gte(price)) {
