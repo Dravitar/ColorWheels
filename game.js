@@ -314,7 +314,7 @@ function updateAll(){
 		update("redCycle", display(user.red.tps)+" Cycles per second");
 	}
 	for(var i=1;i<user.red.mults.length+1;i++){
-		$("buttonSet"+i).style.display="block";
+		$("buttonSet"+i).style.display="flex";
 		var name = "redCircle" + i;
 		update(name, "x"+display(user.red.mults[i-1]));
 		if (user.red.limits[i-1].gt(user.red.mults[i-1])) {
