@@ -126,6 +126,12 @@ function checkButtonUpgrade(num) {
 	updateAll();
 }
 
+function maxRedMult(num) {
+	while(user.totPower.gte(user.red.buttonPrice[num-1])&&user.red.limits[num-1].gt(user.red.mults[num-1])) {
+		checkButtonUpgrade(num);
+	}
+}
+
 function checkUpgrade(color, dex) {
 	let index = user[color].upgrades.indexOf(dex);
 	if(user[color].upgradeIncrease[index]==0&&user[color].upgradeCount[index]==1) {
@@ -168,26 +174,35 @@ function checkNewButtons() {
 function makeRedButton(n) {
 	var newDiv = document.createElement("div");
 	var newRedCir = document.createElement("button");
+	var newDiv2 = document.createElement("div");
 	var newUpgrade = document.createElement("button");
+	var newMax = document.createElement("button");
 	var newBreak = document.createElement("button");
 	newDiv.id = "buttonSet"+n;
 	newRedCir.id = "redCircle"+n;
 	newUpgrade.id = "upgrade"+n;
+	newMax.id = "max"+n;
 	newBreak.id = "break"+n;
 	newDiv.className = 'lowerLayer';
-	newDiv.style = 'display:block';
+	newDiv.style = 'display:flex;justify-content:center';
 	newRedCir.setAttribute("onclick", "redClick("+n+")");
 	newRedCir.className = 'redButtonSmall';
 	newRedCir.innerHTML = 'x1';
+	newDiv2.style = 'display:flex;flex-direction:column;justify-content:space-evenly';
 	newUpgrade.setAttribute("onclick", "checkButtonUpgrade("+n+")");
 	newUpgrade.className = 'multUpgrade';
 	newUpgrade.innerHTML = 'Upgrade your Red Button<br/>Cost: 100 Power';
+	newMax.setAttribute("onclick", "maxRedMult("+n+")");
+	newMax.className = "multUpgrade";
+	newMax.innerHTML = "Max Mult";
 	newBreak.setAttribute("onclick", "breakUpgrade("+n+")");
 	newBreak.className = 'breakLimitButton';
 	newBreak.innerHTML = "Raise Limit to<span id='redLimit"+n+"'> 100</span><br/>"+
 		"Cost: <span id='redBreakCost"+n+"'>3</span> <span style='color:darkRed'>Energy</span>";
 	newDiv.appendChild(newRedCir);
-	newDiv.appendChild(newUpgrade);
+	newDiv2.appendChild(newUpgrade);
+	newDiv2.appendChild(newMax);
+	newDiv.appendChild(newDiv2);
 	newDiv.appendChild(newBreak);
 	$("buttonArea").appendChild(newDiv);
 }
