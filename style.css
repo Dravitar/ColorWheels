@@ -40,6 +40,14 @@
   vertical-align: middle;
 }
 
+.multUpgrade {
+  border-radius: 10%;
+  border: 2px;
+  background-color: grey;
+  display: inline-block;
+  vertical-align: middle;
+}
+  
 .breakLimitButton {
   border-radius: 25%;
   border: 2px;
