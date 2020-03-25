@@ -21,7 +21,7 @@ function getDefaultUser() {
 			upgrades:       ["PB","CP","LB","BB","CPB","RB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(50)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)],
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -107,6 +107,12 @@ function redCycleUpg() {
 		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
+	}
+}
+
+function redCycleMax() {
+	while(user.totPower.gte(user.red.tickMultPrice)){
+		redCycleUpg();
 	}
 }
 	
