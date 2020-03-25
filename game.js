@@ -172,6 +172,12 @@ function checkAddRed() {
 	updateAll();
 }
 
+function buyMaxRed() {
+	while(user.red.index.lt(user.red.indexLimit)&&user.totPower.gte(user.red.addButtonPrice)){
+		checkAddRed();
+	}
+}
+
 function checkNewButtons() {
 	let max = user.red.mults.length+1;
 	for(var i=1;i<max;i++){
