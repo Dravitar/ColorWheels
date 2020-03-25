@@ -59,10 +59,15 @@ function gameCycle(){
 }
 
 function redClick(num) {
-	let mid=user.red.upgradeCount[1];
+	var mid=1;
+	var what=new Decimal(user.red.upgradeCount[1]);
+	while(what.gt(0)){
+		mid = mid+"0";
+		what = what.minus(1);
+	}
 	let old=user.red.clicked;
 	user.red.clicked=num;
-	if(mid.gt(new Decimal(0))){
+	if(user.red.upgradeCount[1].gte(0)){
 		if(num!==old) {
 			user.red.mults[num-1]=new Decimal(""+mid+user.red.mults[num-1]);
 			if(old!==0){
