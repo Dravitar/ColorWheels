@@ -281,6 +281,16 @@ function redReset() {
 	}
 }
 
+function checkKey(event) {
+	if(event.key == "m"){
+		buyMaxRed();
+		for(i=user.red.mults.length;i>0;i--){
+			maxRedMult(i);
+		}
+		redCycleMax();
+	}
+}
+
 function showTab(tabName) { //Tab switching function
 	var tabs = document.getElementsByClassName('tab');
 	var tab;
