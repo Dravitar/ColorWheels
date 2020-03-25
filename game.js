@@ -385,6 +385,12 @@ function updateAll(){
 		}
 		if(user.red.upgradeCount[2].gt(0)){
 			$("break"+j).style.display = "";
+			if(user.red.energy.gte(user.red.breakPrice[i])){
+				$("break"+j).style.opacity = 1.0;
+			}
+			else {
+				$("break"+j).style.opacity = 0.6;
+			}
 			$("redBreakCost"+j).innerHTML = user.red.breakPrice[i];
 			$("redLimit"+j).innerHTML = user.red.limits[i].times(10);
 		}
