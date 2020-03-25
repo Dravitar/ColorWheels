@@ -320,10 +320,10 @@ function importSave() {
 function updateAll(){
 	update("powerAmount", "Total Power: "+display(user.totPower));
 	if(user.totPower.lt(1e4)){
-		$("redCycleReduc").style.display = "none";
+		$("cycleUpgBit").style.display = "none";
 	}
 	if(user.totPower.gte(1e4)){
-		$("redCycleReduc").style.display = "";
+		$("cycleUpgBit").style.display = "";
 	}
 	if(user.red.energy.gt(0)){
 		$("redEnergyArea").style.display = "";
