@@ -8,7 +8,7 @@
 		<title>Color Wheels</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body style="text-align:center; background-color:black; color:white" onLoad="startCycle()">
+	<body style="text-align:center; background-color:black; color:white" onLoad="startCycle()" onKeyDown="checkKey()">
 		<div class="wrapper">
 			<div id="tabs">
 				<button id="menuTabButton" onClick="showTab('menuTab')" class="tabBtn">Menu</button>
@@ -49,7 +49,7 @@
 							<button id="max1" onClick="maxRedMult(1)" class="multUpgrade">
 								Max Mult</button>
 						</div>
-						<button id="break1" onClick="breakUpgrade(1)" style="opacity:0.6; display:none" class="breakLimitButton">
+						<button id="break1" onClick="breakUpgrade(1)" style="display:none" class="breakLimitButton">
 							Raise Limit to <span id="redLimit1">100</span><br/>
 							Cost: <span id="redBreakCost1">3</span> <span style="color:darkRed">Energy</span>
 						</button>
@@ -70,28 +70,29 @@
 				<div id="clickPowerSet" style="display:inline-block">
 					<button id="CP" onClick="checkUpgrade('red','CP')" class="upgrade" style="display:block">
 						Unlock Click Power. Give a boost to buttons you click directly.<br/>
-						Cost: 1 Red <span style="color:darkRed"> Energy</span>
+						Cost: <span id="CPCost">1</span> Red <span style="color:darkRed"> Energy</span>
 					</button>
 					<button id="CPB" onClick="checkUpgrade('red','CPB')" class="upgrade" style="display:block">
 						Upgrade your Click Power by <span id="CPBBonus">1</span>.<br/>
 						Current Bonus: <span id="currentCPBBonus">1</span><br/>
-						Cost: 100 Red <span style="color:darkRed"> Energy</span>
+						Cost: <span id="CPBCost">100</span> Red <span style="color:darkRed"> Energy</span>
 					</button>
 				</div>
 				<div id="powerBoostSet" style="display:inline-block">
 					<button id="PB" onClick="checkUpgrade('red','PB')" class="upgrade" style="display:block">
 						Red <span style="color:darkRed"> Energy</span> boosts total multiplier.<br/>
 						Current Bonus: x<span id="currentPBBonus">1</span><br/>
-						Cost: 1 Red <span style="color:darkRed"> Energy</span>
+						Cost: <span id="PBCost">1</span> Red <span style="color:darkRed"> Energy</span>
 					</button>
 					<button id="RB" onClick="checkUpgrade('red','RB')" class="upgrade" style="display:block">
 						Red Resets boost total multiplier.<br/>
 						Current Bonus: x<span id="currentRBBonus"1</span><br/>
-						Cost: 10 Red <span style="color:darkRed"> Energy</span>
+						Cost: <span id="RBCost">10</span> Red <span style="color:darkRed"> Energy</span>
 					</button>
 				</div>
 				<button id="LB" onClick="checkUpgrade('red','LB')" class="upgrade">
-					Unlock the Limit Break upgrades for your buttons!<br/>Cost: 10 Red <span style="color:darkRed"> Energy</span>
+					Unlock the Limit Break upgrades for your buttons!<br/>
+					Cost: <span id="LBCost">10</span> Red <span style="color:darkRed"> Energy</span>
 				</button>
 				<button id="BB" onClick="checkUpgrade('red','BB')" class="upgrade">
 					Break the Limit on your Button amount! <br/>Cost: 50 Red <span style="color:darkRed"> Energy</span>
