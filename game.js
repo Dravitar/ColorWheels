@@ -220,11 +220,13 @@ function makeRedButton(n) {
 
 function addRedButton(n) {
 	makeRedButton(n);
-	user.red.brokenAmount.push(new Decimal(0));
+	if(user.red.brokenAmount[n-1] == null){
+		user.red.brokenAmount.push(new Decimal(0));
+		let j = n-2;
+		user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.5)));
+	}
 	user.red.mults.push(new Decimal(2));
 	user.red.limits.push(new Decimal(10));
-	let j = n-2;
-	user.red.breakPrice.push(Decimal.floor(user.red.breakPrice[j].times(1.5)));
 	user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 	user.red.addButtonPrice = user.red.addButtonPrice.times(10);
 }
