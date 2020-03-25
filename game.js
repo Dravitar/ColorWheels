@@ -60,7 +60,7 @@ function gameCycle(){
 
 function redClick(num) {
 	var mid=1;
-	var what=new Decimal(user.red.upgradeCount[1]);
+	var what=new Decimal(user.red.upgradeCount[4]);
 	while(what.gt(0)){
 		mid = mid+"0";
 		what = what.minus(1);
