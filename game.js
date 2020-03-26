@@ -116,10 +116,11 @@ function redCycleUpg() {
 		let mid = new Decimal(0);
 		let count = new Decimal(user.red.upgradeCount[6]);
 		while(count.gte(0)){
-		      mid = fibo2;
-		      fibo2 = fibo+mid;
-		      fibo = mid;
-		      count = count.minus(1);
+			mid = fibo2;
+			fibo2 = fibo+mid;
+			fibo = mid;
+			count = count.minus(1);
+			console.log(fibo2,count);
 		}
 		user.totPower = user.totPower.minus(price);
 		user.red.tickMax = new Decimal(1000).times(Decimal.pow(0.9,fibo2));
