@@ -25,6 +25,7 @@ function getDefaultUser() {
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
+			buttonSetExpanded = 0;
 		},
 		orange: {
 			tick:new Decimal(0),
@@ -46,6 +47,10 @@ var user = getDefaultUser();
 
 function update(get, set) {
 	$(get).innerHTML=set;
+}
+
+function insertAfter(newNode, referenceNode){
+	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
 function gameCycle(){
@@ -221,7 +226,13 @@ function makeRedButton(n) {
 	newDiv2.appendChild(newMax);
 	newDiv.appendChild(newDiv2);
 	newDiv.appendChild(newBreak);
-	$("buttonArea").appendChild(newDiv);
+	if(n%10==0){
+		var last = n.toString.slice(0,-1);
+		insertAfter(newDiv, $("buttonGroup"+last));
+	}
+	else {
+		insertAfter(newDiv, $("buttonSet"+n));
+	}
 }
 
 function addRedButton(n) {
@@ -236,6 +247,12 @@ function addRedButton(n) {
 	user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 	user.red.addButtonPrice = user.red.addButtonPrice.times(10);
 }
+
+function minimizeAll() {
+	for(i=1;i<user.red.mults;i++){
+		??????????????????????
+	}
+	}
 
 function breakUpgrade(num) {
 	let j = num-1;
