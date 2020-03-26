@@ -18,10 +18,10 @@ function getDefaultUser() {
 			breakPrice: [new Decimal(3)],
 			brokenAmount: [new Decimal(0)],
 			clicked: 0,
-			upgrades:       ["PB","CP","LB","BB","CPB","RB"],
-			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
-			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)],
+			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB"],
+			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)    ,new Decimal(3)],
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -56,7 +56,7 @@ function insertAfter(newNode, referenceNode){
 function gameCycle(){
 	let now = new Date().getTime();
 	let diff = now - user.lastTick;
-	let tickMax = user.red.tickMax.times(Decimal.pow(0.9,user.red.tickMultCount));
+	//let tickMax = user.red.tickMax.times(Decimal.pow(0.9,user.red.tickMultCount));
 	user.red.tick += diff;
 	if(user.red.tick >= user.red.tickMax) process(Decimal.round(new Decimal(user.red.tick).div(user.red.tickMax)));
 	user.lastTick = now;
