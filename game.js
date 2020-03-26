@@ -226,13 +226,14 @@ function makeRedButton(n) {
 	newDiv2.appendChild(newMax);
 	newDiv.appendChild(newDiv2);
 	newDiv.appendChild(newBreak);
-	if(n%10==0){
+	/*if(n%10==0){
 		var last = n.toString().slice(0,-1);
 		insertAfter(newDiv, $("buttonGroup"+last));
 	}
 	else {
 		insertAfter(newDiv, $("buttonSet"+n));
-	}
+	}*/
+	$("buttonArea").appendChild(newDiv);
 }
 
 function addRedButton(n) {
