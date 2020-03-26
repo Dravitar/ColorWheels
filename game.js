@@ -111,9 +111,19 @@ function testStuff() {
 function redCycleUpg() {
 	var price=user.red.tickMultPrice;
 	if(user.totPower.gte(price)) {
+		let fibo = new Decimal(1);
+		let fibo2 = new Decimal(1);
+		let mid = new Decimal(0);
+		let count = new Decimal(user.red.upgradeCount[6]);
+		while(count.gte(0)){
+		      mid = fibo2;
+		      fibo2 = fibo+mid;
+		      fibo = mid;
+		      count = count.minus(1);
+		}
 		user.totPower = user.totPower.minus(price);
-		user.red.tickMax = user.red.tickMax.times(0.9);
-		user.red.tps = user.red.tps.times(1.1);
+		user.red.tickMax = user.red.tickMax.times(Decimal.pow(0.9,fibo2));
+		user.red.tps = user.red.tps.times(Decimal.pow(1.1,fibo2));
 		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
