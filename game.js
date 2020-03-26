@@ -117,7 +117,7 @@ function redCycleUpg() {
 		let count = new Decimal(user.red.upgradeCount[6]);
 		while(count.gte(0)){
 			mid = fibo2;
-			fibo2 = fibo+mid;
+			fibo2 = fibo.plus(mid);
 			fibo = mid;
 			count = count.minus(1);
 			console.log(fibo2,count);
