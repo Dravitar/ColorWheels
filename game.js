@@ -25,7 +25,7 @@ function getDefaultUser() {
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
-			buttonSetExpanded = 0,
+			buttonSetExpanded: 0,
 		},
 		orange: {
 			tick:new Decimal(0),
