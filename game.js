@@ -124,6 +124,7 @@ function redCycleUpg() {
 		user.totPower = user.totPower.minus(price);
 		user.red.tickMax = user.red.tickMax.times(Decimal.pow(0.9,fibo2));
 		user.red.tps = user.red.tps.times(Decimal.pow(1.1,fibo2));
+		$("cycleReducAmount").innerHTML = 
 		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
