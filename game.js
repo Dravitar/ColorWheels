@@ -122,9 +122,10 @@ function redCycleUpg() {
 		      count = count.minus(1);
 		}
 		user.totPower = user.totPower.minus(price);
-		user.red.tickMax = user.red.tickMax.times(Decimal.pow(0.9,fibo2));
-		user.red.tps = user.red.tps.times(Decimal.pow(1.1,fibo2));
-		$("cycleReducAmount").innerHTML = 
+		user.red.tickMax = new Decimal(1000).times(Decimal.pow(0.9,fibo2));
+		let boost = Decimal.pow(1.1,fibo2)
+		user.red.tps = new Decimal(1).times(Decimal.pow(1.1,fibo2));
+		$("cycleReducAmount").innerHTML = display(boost);
 		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
