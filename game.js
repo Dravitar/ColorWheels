@@ -442,6 +442,7 @@ function updateAll(){
 	$("currentCPBBonus").innerHTML = user.red.upgradeCount[5];
 	user.red.upgrades.forEach(function(id){
 		let i = user.red.upgrades.indexOf(id);
+		console.log(id+"Cost");
 		$(id+"Cost").innerHTML = user.red.upgradePrices[i];
 		if(user.red.upgradeCount[i].gt(0)&&user.red.upgradeIncrease[i].lte(0)){
 			$(id).style.background = "forestGreen";
