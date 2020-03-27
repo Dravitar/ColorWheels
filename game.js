@@ -71,7 +71,7 @@ function redClick(num) {
 	}
 	let old=user.red.clicked;
 	user.red.clicked=num;
-	if(user.red.upgradeCount[1].gte(0)){
+	if(user.red.upgradeCount[1].gt(0)){
 		if(num!==old) {
 			user.red.mults[num-1]=new Decimal(""+mid+user.red.mults[num-1]);
 			if(old!==0){
@@ -316,7 +316,7 @@ function checkKey(event) {
 		for(i=user.red.mults.length;i>0;i--){
 			checkButtonUpgrade(i);
 		}
-		redCycleUpgrade();
+		redCycleUpg();
 	}
 }
 
