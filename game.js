@@ -469,6 +469,13 @@ function updateAll(){
 	let ten = new Decimal(10);
 	user.red.indexLimit = ten.plus(user.red.upgradeCount[3].times(10));
 	showTab(user.currentTab);
+	$("redButtonCount").innerHTML = user.red.mults.length;
+	if(user.red.totPower.gt($("maxTotPower").innerHTML)){
+		$("maxTotPower").innerHTML = user.red.totPower;
+	}
+	if(user.red.energy.gt($("maxRedEnergy").innerHTML)){
+		$("maxRedEnergy").innerHTMK = user.red.energy;
+	}
 }
 
 function clearSave(){
