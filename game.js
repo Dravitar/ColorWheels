@@ -70,7 +70,6 @@ function redClick(num) {
 		mid = mid+"0";
 		what = what.minus(1);
 	}
-	$("currentCPBBonus").innerHTML = mid;
 	let old=user.red.clicked;
 	user.red.clicked=num;
 	if(user.red.upgradeCount[1].gte(0)){
@@ -121,12 +120,10 @@ function redCycleUpg() {
 			fibo2 = fibo.plus(mid);
 			fibo = mid;
 			count = count.minus(1);
-			console.log(fibo2,count);
 		}
 		user.totPower = user.totPower.minus(price);
 		user.red.tickMax = user.red.tickMax.times(Decimal.pow(0.9,fibo2));
 		let boost = Decimal.pow(1.1,fibo2).times(10);
-		console.log(boost);
 		user.red.tps = user.red.tps.times(Decimal.pow(1.1,fibo2));
 		$("cycleReducAmount").innerHTML = display(boost);
 		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
