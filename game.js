@@ -473,7 +473,7 @@ function updateAll(){
 		$("maxTotPower").innerHTML = display(user.totPower);
 	}
 	if(user.red.energy.gt($("maxRedEnergy").innerHTML)){
-		$("maxRedEnergy").innerHTMK = user.red.energy;
+		$("maxRedEnergy").innerHTML = user.red.energy;
 	}
 }
 
