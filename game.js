@@ -123,10 +123,10 @@ function redCycleUpg() {
 			console.log(fibo2,count);
 		}
 		user.totPower = user.totPower.minus(price);
-		user.red.tickMax = new Decimal(1000).times(Decimal.pow(0.9,fibo2));
+		user.red.tickMax = user.red.tickMax.times(Decimal.pow(0.9,fibo2));
 		let boost = Decimal.pow(1.1,fibo2).times(10);
 		console.log(boost);
-		user.red.tps = new Decimal(1).times(Decimal.pow(1.1,fibo2));
+		user.red.tps = user.red.tps.times(Decimal.pow(1.1,fibo2));
 		$("cycleReducAmount").innerHTML = display(boost);
 		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
