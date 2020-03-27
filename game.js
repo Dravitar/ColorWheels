@@ -461,6 +461,7 @@ function updateAll(){
 		if(user.red.upgradeCount[i].gt(0)&&user.red.upgradeIncrease[i].lte(0)){
 			$(id).style.background = "forestGreen";
 		}
+		else{$(id).style.background = "grey";}
 		if(user.red.energy.gte(user.red.upgradePrices[i])){
 			$(id).style.opacity = 1.0;
 		}
