@@ -318,6 +318,9 @@ function checkKey(event) {
 		}
 		redCycleUpg();
 	}
+	if(event.key == "r"){
+		redReset();
+	}
 }
 
 function showTab(tabName) { //Tab switching function
