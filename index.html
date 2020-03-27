@@ -12,6 +12,7 @@
 		<div class="wrapper">
 			<div id="tabs">
 				<button id="menuTabButton" onClick="showTab('menuTab')" class="tabBtn">Menu</button>
+				<button id="statsTabButton" onClick="showTab('statsTab')" class="tabBtn">Stats</button>
 				<button id="mainTabButton" onClick="showTab('mainTab')" class="tabBtn">Buttons</button>
 				<button id="energyTabButton" onClick="showTab('energyTab')" class="tabBtn">Energy</button>
 				<div id="savedInfo" style="display:none; position:absolute">Game saved!</div>
@@ -20,7 +21,12 @@
 				<div><button id="saveButton" onClick="save()" class="upgrade">Save your game</button></div>
 				<div><button id="exportButton" onClick="exportSave()" class="upgrade">Export your save</button></div>
 				<div><button id="importButton" onClick="importSave()" class="upgrade">Import a save</button></div>
-				<div<button id="clearButton" onClick="clearSave()" class="upgrade">Delete your save file</button></div>
+				<div><button id="clearButton" onClick="clearSave()" class="upgrade" style="color:red">Delete your save file</button></div>
+			</div>
+			<div id="statsTab" class="tab">
+				<p id="redButtonStat">You have <span id="redButtonCount">1</span> Red Button(s).</p>
+				<p id="totPowerStat">You have reached a maximum of <span id="maxTotPower">0</span> total Power.</p>
+				<p id="redEnergyStat">You have reached a maximum of <span id="maxRedEnergy">0</span> total <span style="color:darkRed">Energy</span>.</p>
 			</div>
 			<div id="mainTab" class="tab">
 				<div id="powerAmount">You have <span id="powerAmount" style="font-size:x-large">0</span> total Power.</div>
