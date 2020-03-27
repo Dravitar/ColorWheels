@@ -21,13 +21,14 @@
   background-color: fireBrick;
 }
 
-.redButton {
+.redButtonCombined {
   margin: auto;
   height: 60px;
   width: 60px;
   border-radius: 50%;
   border: 2px;
-  background-color: fireBrick;
+  background-color: rgba(178, 34, 34, 1);
+  box-shadow: 0 5px 15px rgba(178, 34, 34, .4);
 }
 
 .upgrade {
