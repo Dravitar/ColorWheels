@@ -21,7 +21,7 @@ function getDefaultUser() {
 			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)  ,new Decimal(50)  ,new Decimal(1e3) ,new Decimal(0)    ,new Decimal(3)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)  ,new Decimal(50)  ,new Decimal(10)   ,new Decimal(0)   ,new Decimal(3)],
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -70,6 +70,7 @@ function redClick(num) {
 		mid = mid+"0";
 		what = what.minus(1);
 	}
+	$("currentCPBBonus").innerHTML = mid;
 	let old=user.red.clicked;
 	user.red.clicked=num;
 	if(user.red.upgradeCount[1].gte(0)){
