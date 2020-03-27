@@ -21,7 +21,7 @@ function getDefaultUser() {
 			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)  ,new Decimal(20)  ,new Decimal(10)   ,new Decimal(0)   ,new Decimal(3)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)  ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(3)],
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
