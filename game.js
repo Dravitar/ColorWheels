@@ -471,7 +471,7 @@ function updateAll(){
 	showTab(user.currentTab);
 	$("redButtonCount").innerHTML = user.red.mults.length;
 	if(user.totPower.gt($("maxTotPower").innerHTML)){
-		$("maxTotPower").innerHTML = user.totPower;
+		$("maxTotPower").innerHTML = display(user.totPower);
 	}
 	if(user.red.energy.gt($("maxRedEnergy").innerHTML)){
 		$("maxRedEnergy").innerHTMK = user.red.energy;
