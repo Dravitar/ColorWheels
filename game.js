@@ -312,11 +312,11 @@ function redReset() {
 
 function checkKey(event) {
 	if(event.key == "m"){
-		buyMaxRed();
+		checkAddRed();
 		for(i=user.red.mults.length;i>0;i--){
-			maxRedMult(i);
+			checkButtonUpgrade(i);
 		}
-		redCycleMax();
+		redCycleUpgrade();
 	}
 }
 
