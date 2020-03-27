@@ -479,10 +479,10 @@ function updateAll(){
 
 function clearSave(){
 	if(confirm("Do you really want to delete your save?\nThis cannot be undone.")){
-		user = getDefaultUser();
 		for(i=2;i<user.red.mults.length+1;i++){
 			$("buttonSet"+i).style.display="none";
 		}
+		user = getDefaultUser();
 		updateAll();
 		localStorage.removeItem("colorWheelsSave");
 	}
