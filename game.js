@@ -85,11 +85,10 @@ function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
 	var index=0;
 	for(i=0;i<user.red.mults.length;i++){
-		let x = new Decimal(user.red.mults[i]);
-		if(x.equals(user.red.limits[i])){
-			x = x.pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10)));
+		if(user.red.mults[i].equals(user.red.limits[i])){
+			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
-		mult = mult.times(x);
+		else { mult = mult.times(user.red.mults[i]);}
 	}
 	/*user.red.mults.forEach(function(value) {
 		let x = new Decimal(value);
@@ -104,7 +103,7 @@ function getRedButtonTotalMult() {
 		update("currentPBBonus",display(user.red.energy.plus(1)));
 	}
 	if(user.red.upgradeCount[5].gt(0)){
-		mult = mult.times(user.red.resets.div(5).plus(1));
+		mult = mult.times(user.red.resets.times(5).plus(1));
 		update("currentRBBonus",display(user.red.resets.times(5).plus(1)));
 	}
 	return mult;
