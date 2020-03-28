@@ -67,15 +67,15 @@ function redClick(num) {
 		var mid=1;
 		var what=new Decimal(user.red.upgradeCount[4]);
 		while(what.gt(0)){
-			mid = mid+"0";
+			mid = mid.times(10);
 			what = what.minus(1);
 		}
 		let old=user.red.clicked;
 		user.red.clicked=num;
 		if(num!==old) {
-			user.red.mults[num-1]=new Decimal(""+mid+user.red.mults[num-1]);
+			user.red.mults[num-1]=red.mults[num-1].times(mid);
 			if(old!==0){
-				user.red.mults[old-1]=new Decimal(user.red.mults[old-1].toString().substring(1));
+				user.red.mults[old-1]=user.red.mults[old-1].div(mid);
 			}
 		}
 	}
@@ -85,10 +85,11 @@ function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
 	var index=new Decimal(0);
 	user.red.mults.forEach(function(value) {
-		if(value.equals(user.red.limits[index])){
-			value = value.pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10)));
+		let x = new Decimal(value);
+		if(x.equals(user.red.limits[index])){
+			x = x.pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10)));
 		}
-		mult = mult.times(value);
+		mult = mult.times(x);
 		index=index.plus(1);
 	});
 	if(user.red.upgradeCount[0].gt(0)){ 
