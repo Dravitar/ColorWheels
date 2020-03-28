@@ -134,7 +134,7 @@ function redCycleUpg() {
 		if(user.red.tickMultCount.gt(50)){
 			let num = new Decimal(user.red.tickMultCount);
 			while(num.gt(49)){
-				increase = increase.sqr();
+				increase = increase.times(10);
 				num = num.minus(50);
 			}
 		}
