@@ -322,7 +322,9 @@ function checkKey(event) {
 	if(event.key == "m"){
 		checkAddRed();
 		for(i=user.red.mults.length;i>0;i--){
-			checkButtonUpgrade(i);
+			if(user.red.mults[i].lt(user.red.limits[i])){
+				checkButtonUpgrade(i);
+			}
 		}
 		redCycleUpg();
 	}
