@@ -97,7 +97,7 @@ function getRedButtonTotalMult() {
 	}
 	if(user.red.upgradeCount[5].gt(0)){
 		mult = mult.times(user.red.resets.div(5).plus(1));
-		update("currentRBBonus",display(user.red.resets.div(5).plus(1)));
+		update("currentRBBonus",display(user.red.resets.times(5).plus(1)));
 	}
 	return mult;
 }
