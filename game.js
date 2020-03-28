@@ -64,7 +64,7 @@ function gameCycle(){
 
 function redClick(num) {
 	if(user.red.upgradeCount[1].gt(0)){
-		var mid=1;
+		var mid=new Decimal(1);
 		var what=new Decimal(user.red.upgradeCount[4]);
 		while(what.gt(0)){
 			mid = mid.times(10);
