@@ -17,7 +17,8 @@ function getDefaultUser() {
 			limits: [new Decimal(10)],
 			breakPrice: [new Decimal(3)],
 			brokenAmount: [new Decimal(0)],
-			clicked: 0,	//0    1    2    3    4     5    6     7     8
+			clickedBoost: new Decimal(0),
+			clickedIndex: 0,//0    1    2    3    4     5    6     7     8
 			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5)],
@@ -70,8 +71,9 @@ function redClick(num) {
 			mid = mid.times(10);
 			what = what.minus(1);
 		}
-		let old=user.red.clicked;
-		user.red.clicked=num;
+		let old=user.red.clickedIndex;
+		user.red.clickedIndex=num;
+		user.red.clickedBoost=user.red.mults[num-1];
 		if(num!==old) {
 			user.red.mults[num-1]=user.red.mults[num-1].times(mid);
 			if(old!==0){
@@ -86,6 +88,9 @@ function getRedButtonTotalMult() {
 	var index=0;
 	for(i=0;i<user.red.mults.length;i++){
 		if(user.red.mults[i].equals(user.red.limits[i])){
+			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
+		}
+		if(user.red.clickedIndex==i&&user.red.clickedBoost.equals(user.red.limits[i])){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
@@ -161,9 +166,9 @@ function checkButtonUpgrade(num) {
 	var price=user.red.buttonPrice[num-1];
 	if(user.totPower.gte(price)&&user.red.limits[num-1].gt(user.red.mults[num-1])) {
 		user.totPower = user.totPower.minus(price);
-		if(user.red.clicked == num) {user.red.mults[num-1]=new Decimal(user.red.mults[num-1].toString().substring(1));}
+		if(user.red.clickedIndex == num) {user.red.mults[num-1]=new Decimal(user.red.mults[num-1].toString().substring(1));}
 		user.red.mults[num-1] = user.red.mults[num-1].plus(new Decimal(1));
-		if(user.red.clicked == num) {
+		if(user.red.clickedIndex == num) {
 			let mid = user.red.upgradeCount[1];
 			user.red.mults[num-1]=new Decimal(""+mid+user.red.mults[num-1]);
 		}
@@ -323,7 +328,8 @@ function redReset() {
 		user.red.buttonPrice = getDefaultUser().red.buttonPrice;
 		user.red.addButtonPrice = getDefaultUser().red.addButtonPrice;
 		user.red.index = getDefaultUser().red.index;
-		user.red.clicked = 0;
+		user.red.clickedBoost = new Decimal(0);
+		user.red.clickedIndex = 0;
 		user.totPower = new Decimal(0);
 		update("redCycleUpgCost", new Decimal(1e4));
 		updateAll();
