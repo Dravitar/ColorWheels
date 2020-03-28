@@ -85,7 +85,7 @@ function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
 	var index=new Decimal(0);
 	user.red.mults.forEach(function(value) {
-		if(value.eq(user.red.limits(index))){
+		if(value.equals(user.red.limits(index))){
 			value = value.pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10)));
 		}
 		mult = mult.times(value);
