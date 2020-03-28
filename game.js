@@ -17,11 +17,11 @@ function getDefaultUser() {
 			limits: [new Decimal(10)],
 			breakPrice: [new Decimal(3)],
 			brokenAmount: [new Decimal(0)],
-			clicked: 0,
-			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU"],
-			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
-			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(10)   ,new Decimal(1e3)],
+			clicked: 0,	//0    1    2    3    4     5    6     7     8
+			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB"],
+			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(1e3), new Decimal(10)],
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -83,8 +83,13 @@ function redClick(num) {
 
 function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
+	var index=new Decimal(0);
 	user.red.mults.forEach(function(value) {
-		mult = mult.times(value)
+		if(value.eq(user.red.limits(index))){
+			value = value.pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10)));
+		}
+		mult = mult.times(value);
+		index=index.plus(1);
 	});
 	if(user.red.upgradeCount[0].gt(0)){ 
 		mult = mult.times(user.red.energy.plus(1));
@@ -406,7 +411,11 @@ function updateAll(){
 		if (user.red.limits[i-1].gt(user.red.mults[i-1])) {
 			update("upgrade"+i, "Upgrade your Red button<br/>Cost: "+display(user.red.buttonPrice[i-1])+" Power");
 		} else {
-			update("upgrade"+i, "Max Multiplier!");
+			if(user.red.upgradeCount[8].eq(0)){
+				update("upgrade"+i, "Max Multiplier!");
+			} else{
+				update("upgrade"+i, "Max boosted to: ^"+user.red.upgradeCount[8].div(10).plus(1));
+			}
 		}	
 	}
 	let bLButtons = document.getElementsByClassName("breakLimitButton");
