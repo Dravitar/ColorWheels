@@ -63,7 +63,7 @@ function gameCycle(){
 }
 
 function redClick(num) {
-	if(user.red.upgradeCount[4].gt(0)){
+	if(user.red.upgradeCount[1].gt(0)){
 		var mid=1;
 		var what=new Decimal(user.red.upgradeCount[4]);
 		while(what.gt(0)){
@@ -72,12 +72,10 @@ function redClick(num) {
 		}
 		let old=user.red.clicked;
 		user.red.clicked=num;
-		if(user.red.upgradeCount[1].gt(0)){
-			if(num!==old) {
-				user.red.mults[num-1]=new Decimal(""+mid+user.red.mults[num-1]);
-				if(old!==0){
-					user.red.mults[old-1]=new Decimal(user.red.mults[old-1].toString().substring(1));
-				}
+		if(num!==old) {
+			user.red.mults[num-1]=new Decimal(""+mid+user.red.mults[num-1]);
+			if(old!==0){
+				user.red.mults[old-1]=new Decimal(user.red.mults[old-1].toString().substring(1));
 			}
 		}
 	}
