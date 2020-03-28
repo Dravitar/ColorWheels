@@ -125,7 +125,15 @@ function redCycleUpg() {
 		let boost = Decimal.pow(1.1,fibo2).times(10);
 		user.red.tps = user.red.tps.times(Decimal.pow(new Decimal(1).div(0.9),fibo2));
 		$("cycleReducAmount").innerHTML = display(boost);
-		user.red.tickMultPrice = user.red.tickMultPrice.times(10);
+		let increase = new Decimal(10);
+		if(user.red.tickMultCount.gt(50)){
+			let num = new Decimal(user.red.tickMultCount);
+			while(num.gt(0)){
+				increase = increase.sqr();
+				num = num.minus(50);
+			}
+		}
+		user.red.tickMultPrice = user.red.tickMultPrice.times(increase);
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
 	}
