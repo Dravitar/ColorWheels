@@ -454,8 +454,8 @@ function updateAll(){
 			else {
 				$("break"+j).style.opacity = 0.6;
 			}
-			$("redBreakCost"+j).innerHTML = user.red.breakPrice[i];
-			$("redLimit"+j).innerHTML = user.red.limits[i].times(10);
+			$("redBreakCost"+j).innerHTML = display(user.red.breakPrice[i]);
+			$("redLimit"+j).innerHTML = display(user.red.limits[i].times(10));
 		}
 	}
 	if(user.totPower.gte(user.red.addButtonPrice)) $("addRedButton").style.opacity = 1.0;
