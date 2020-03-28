@@ -83,14 +83,14 @@ function redClick(num) {
 
 function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
-	var index=new Decimal(0);
+	var index=0;
 	user.red.mults.forEach(function(value) {
 		let x = new Decimal(value);
 		if(x.equals(user.red.limits[index])){
 			x = x.pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10)));
 		}
 		mult = mult.times(x);
-		index=index.plus(1);
+		index++;
 	});
 	if(user.red.upgradeCount[0].gt(0)){ 
 		mult = mult.times(user.red.energy.plus(1));
