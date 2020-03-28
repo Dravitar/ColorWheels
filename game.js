@@ -328,7 +328,7 @@ function checkKey(event) {
 		checkAddRed();
 		for(i=user.red.mults.length;i>0;i--){
 			if(user.red.mults[i-1].lt(user.red.limits[i-1])){
-				checkButtonUpgrade(i);
+				maxRedMult(i);
 			}
 		}
 		redCycleUpg();
