@@ -72,7 +72,7 @@ function redClick(num) {
 			what = what.minus(1);
 		}
 		let old=user.red.clickedIndex;
-		user.red.clickedIndex=num;
+		user.red.clickedIndex=num-1;
 		user.red.clickedBoost=user.red.mults[num-1];
 		if(num!==old) {
 			user.red.mults[num-1]=user.red.mults[num-1].times(mid);
