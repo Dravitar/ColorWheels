@@ -18,7 +18,7 @@ function getDefaultUser() {
 			breakPrice: [new Decimal(3)],
 			brokenAmount: [new Decimal(0)],
 			clickedBoost: new Decimal(0),
-			clickedIndex: 0,//0    1    2    3    4     5    6     7     8
+			clickedIndex: -1,//0    1    2    3    4     5    6     7     8
 			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5)],
