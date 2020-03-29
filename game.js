@@ -3,6 +3,7 @@ function $(x) { return document.getElementById(x); }
 function getDefaultUser() {
 	return {
 		totPower:new Decimal(0),
+		maxTotPower:new Decimal(0),
 		red: {
 			tick:0,
 			tickMax:new Decimal(1000),
@@ -89,7 +90,7 @@ function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
 	for(i=0;i<user.red.mults.length;i++){
 		if(user.red.upgradeCount[9].gt(0)){
-			mult = mult.times(user.totPower.log10().log10().plus(1));
+			mult = mult.times(user.maxTotPower.log10().log10().plus(1));
 		}
 		if(user.red.isMaxed[i]=1){
 			mult = (mult.times(user.red.mults[i]).pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
@@ -505,8 +506,9 @@ function updateAll(){
 	user.red.indexLimit = ten.plus(user.red.upgradeCount[3].times(10));
 	showTab(user.currentTab);
 	$("redButtonCount").innerHTML = user.red.mults.length;
-	if(user.totPower.gt($("maxTotPower").innerHTML)){
+	if(user.totPower.gt(user.maxTotPower)){
 		$("maxTotPower").innerHTML = display(user.totPower);
+		user.maxTotPower = new Decimal(user.totPower);
 	}
 	if(user.red.energy.gt($("maxRedEnergy").innerHTML)){
 		$("maxRedEnergy").innerHTML = display(user.red.energy);
