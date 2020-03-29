@@ -98,12 +98,12 @@ function getRedButtonTotalMult() {
 		else { mult = mult.times(user.red.mults[i]);}
 	}
 	if(user.red.upgradeCount[0].gt(0)){ 
-		mult = mult.times(user.red.energy.pow(user.red.upgradeCount[0]).plus(1)));
+		mult = mult.times(user.red.energy.pow(user.red.upgradeCount[0]).plus(1));
 		update("currentPBBonus",display(user.red.energy.pow(user.red.upgradeCount[0]).plus(1)));
 	}
 	if(user.red.upgradeCount[5].gt(0)){
 		mult = mult.times(user.red.resets.times(Decimal.pow(5,user.red.upgradeCount[5]).plus(1)));
-		update("currentRBBonus",display(user.red.resets.times(Decimal.pow(5,user.red.upgradeCount[5]).plus(1)));
+		update("currentRBBonus",display(user.red.resets.times(Decimal.pow(5,user.red.upgradeCount[5]).plus(1))));
 	}
 	return mult;
 }
