@@ -513,6 +513,9 @@ function updateAll(){
 		$("maxRedEnergy").innerHTML = display(user.red.energy);
 	}
 	user.red.limits.length = user.red.mults.length;
+	for(i=0;i<user.red.limits.length;i++){
+		user.red.limits[i]=Decimal.pow(10,user.red.brokenAmount[i].plus(1));
+	}
 }
 
 function clearSave(){
