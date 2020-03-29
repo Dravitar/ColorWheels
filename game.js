@@ -90,7 +90,7 @@ function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
 	for(i=0;i<user.red.mults.length;i++){
 		if(user.red.upgradeCount[9].gt(0)){
-			mult = mult.times(user.maxTotPower.log10().log10().plus(1));
+			mult = mult.times(user.maxTotPower.log10().log10().times(2).plus(1));
 		}
 		if((user.red.buttonsPurchased[i].plus(2)).equals(user.red.limits[i])){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
