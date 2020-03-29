@@ -274,6 +274,7 @@ function addRedButton(n) {
 	}
 	user.red.mults.push(new Decimal(2));
 	user.red.limits.push(new Decimal(10));
+	user.red.isMaxed.push(0);
 	user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 	user.red.addButtonPrice = user.red.addButtonPrice.times(10);
 }
@@ -324,6 +325,7 @@ function redReset() {
 		user.red.index = getDefaultUser().red.index;
 		user.red.clickedBoost = new Decimal(0);
 		user.red.clickedIndex = -1;
+		user.red.isMaxed = getDefaultUser().red.isMaxed;
 		user.totPower = new Decimal(0);
 		update("redCycleUpgCost", new Decimal(1e4));
 		updateAll();
