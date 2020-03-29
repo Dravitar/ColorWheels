@@ -24,7 +24,7 @@ function getDefaultUser() {
 			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB","SC"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5) ,new Decimal(1e5) ,new Decimal(1e3)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(1e3), new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)],
+			upgradeIncrease:[new Decimal(1e5)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(1e3), new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)],
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -98,8 +98,8 @@ function getRedButtonTotalMult() {
 		else { mult = mult.times(user.red.mults[i]);}
 	}
 	if(user.red.upgradeCount[0].gt(0)){ 
-		mult = mult.times(user.red.energy.plus(1));
-		update("currentPBBonus",display(user.red.energy.plus(1)));
+		mult = mult.times(user.red.energy.plus(1).times(user.red.upgradeCount[0]));
+		update("currentPBBonus",display(user.red.energy.plus(1).times(user.red.upgradeCount[0])));
 	}
 	if(user.red.upgradeCount[5].gt(0)){
 		mult = mult.times(user.red.resets.times(5).plus(1));
