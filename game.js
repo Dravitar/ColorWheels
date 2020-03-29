@@ -491,6 +491,7 @@ function updateAll(){
 	$("redPrestigeAmount").innerHTML = display(getRedPrestige()) + " Energy";
 	$("currentCPBBonus").innerHTML = user.red.upgradeCount[4];
 	update("currentMBBonus", user.red.upgradeCount[8].div(10).plus(1));
+	$("currentSCBonus").innerHTML = user.red.upgradeCount[10].times(10);
 	user.red.upgrades.forEach(function(id){
 		let i = user.red.upgrades.indexOf(id);
 		$(id+"Cost").innerHTML = user.red.upgradePrices[i];
