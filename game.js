@@ -429,7 +429,7 @@ function updateAll(){
 				update("upgrade"+i, "Max Multiplier!");
 			} else{
 				if(user.red.limits[i-1].equals(user.red.buttonsPurchased[i-1])){
-					update("upgrade"+i, "Max boosted to: ^"+user.red.upgradeCount[8].div(10).plus(1));
+					update("upgrade"+i, "Max boosted to: ^"+display(user.red.upgradeCount[8].div(10).plus(1)));
 				} else{
 					update("upgrade"+i, "Max not boosted");
 				}
