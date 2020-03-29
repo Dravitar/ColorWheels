@@ -93,7 +93,7 @@ function getRedButtonTotalMult() {
 			mult = mult.times(user.maxTotPower.log10().log10().plus(1));
 		}
 		if(user.red.isMaxed[i]=1){
-			mult = (mult.times(user.red.mults[i]).pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
+			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
 	}
@@ -428,7 +428,6 @@ function updateAll(){
 				update("upgrade"+i, "Max Multiplier!");
 			} else{
 				update("upgrade"+i, "Max boosted to: ^"+user.red.upgradeCount[8].div(10).plus(1));
-				update("currentMBBonus", user.red.upgradeCount[8].div(10).plus(1));
 			}
 		}	
 	}
@@ -488,6 +487,7 @@ function updateAll(){
 	$("redPrestigeButton").style.opacity = getRedPrestige().gt(0)?1:0.6
 	$("redPrestigeAmount").innerHTML = display(getRedPrestige()) + " Energy";
 	$("currentCPBBonus").innerHTML = user.red.upgradeCount[4];
+	update("currentMBBonus", user.red.upgradeCount[8].div(10).plus(1));
 	user.red.upgrades.forEach(function(id){
 		let i = user.red.upgrades.indexOf(id);
 		$(id+"Cost").innerHTML = user.red.upgradePrices[i];
