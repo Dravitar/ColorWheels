@@ -166,11 +166,10 @@ function checkButtonUpgrade(num) {
 	var price=user.red.buttonPrice[num-1];
 	if(user.totPower.gte(price)&&user.red.limits[num-1].gt(user.red.mults[num-1])) {
 		user.totPower = user.totPower.minus(price);
-		if(user.red.clickedIndex == num) {user.red.mults[num-1]=new Decimal(user.red.mults[num-1].toString().substring(1));}
+		if(user.red.clickedIndex == num) {user.red.mults[num-1]=user.red.mults[num-1].div(Decimal.pow(10,user.red.upgradeCount[4]));}
 		user.red.mults[num-1] = user.red.mults[num-1].plus(new Decimal(1));
 		if(user.red.clickedIndex == num) {
-			let mid = user.red.upgradeCount[1];
-			user.red.mults[num-1]=new Decimal(""+mid+user.red.mults[num-1]);
+			user.red.mults[num-1]=user.red.mults[num-1].times(Decimal.pow(10,user.red.upgradeCount[4]));
 		}
 		let priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
 		user.red.buttonPrice[num-1] = price.times(priceIncrease);
