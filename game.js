@@ -12,7 +12,7 @@ function getDefaultUser() {
 			tickMultCount:new Decimal(0),
 			mults: [new Decimal(1)],
 			buttonPrice: [new Decimal(10)],
-			isMaxed: [0],
+			buttonsPurchased: [0],
 			addButtonPrice: new Decimal(100),
 			index: new Decimal(1),
 			//All the above gets reset on a red reset
@@ -92,7 +92,7 @@ function getRedButtonTotalMult() {
 		if(user.red.upgradeCount[9].gt(0)){
 			mult = mult.times(user.maxTotPower.log10().log10().plus(1));
 		}
-		if(user.red.isMaxed[i]=1){
+		if(user.red.buttonsPurchased[i].equals(user.red.limits[i])){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
@@ -167,10 +167,7 @@ function checkButtonUpgrade(num) {
 		}
 		let priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
 		user.red.buttonPrice[num-1] = price.times(priceIncrease);
-		if(user.red.mults[num-1].equals(user.red.limits[num-1])){
-			user.red.isMaxed[num-1]=1;
-		}
-		else{user.red.isMaxed[num-1]=0;}
+		user.red.buttonsPurchased[num-1]++;
 	}
 	updateAll();
 }
@@ -278,7 +275,7 @@ function addRedButton(n) {
 	}
 	user.red.mults.push(new Decimal(2));
 	user.red.limits.push(new Decimal(10));
-	user.red.isMaxed.push(0);
+	user.red.buttonsPurchased.push(0);
 	user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 	user.red.addButtonPrice = user.red.addButtonPrice.times(10);
 }
@@ -302,7 +299,7 @@ function breakUpgrade(num) {
 		user.red.brokenAmount[j] = user.red.brokenAmount[j].plus(1);
 		name = "redLimit"+num;
 		$(name).innerHTML = user.red.limits[j].times(10);
-		user.red.isMaxed[j] = 0;
+		user.red.ibuttonsPurchased[j] = 0;
 	}
 }
 
@@ -329,7 +326,7 @@ function redReset() {
 		user.red.index = getDefaultUser().red.index;
 		user.red.clickedBoost = new Decimal(0);
 		user.red.clickedIndex = -1;
-		user.red.isMaxed = getDefaultUser().red.isMaxed;
+		user.red.buttonsPurchased = getDefaultUser().red.buttonsPurchased;
 		user.totPower = new Decimal(0);
 		update("redCycleUpgCost", new Decimal(1e4));
 		updateAll();
@@ -427,7 +424,11 @@ function updateAll(){
 			if(user.red.upgradeCount[8].eq(0)){
 				update("upgrade"+i, "Max Multiplier!");
 			} else{
-				update("upgrade"+i, "Max boosted to: ^"+user.red.upgradeCount[8].div(10).plus(1));
+				if(user.red.limits[i-1].equals(user.red.buttonsPurchased[i-1])){
+					update("upgrade"+i, "Max boosted to: ^"+user.red.upgradeCount[8].div(10).plus(1));
+				} else{
+					update("upgrade"+i, "Max not boosted");
+				}
 			}
 		}	
 	}
