@@ -512,6 +512,8 @@ function updateAll(){
 	if(user.red.energy.gt($("maxRedEnergy").innerHTML)){
 		$("maxRedEnergy").innerHTML = display(user.red.energy);
 	}
+	//I don't know why the things below here are required, but something else is weird and
+	//these functions fix the weirdness.
 	user.red.limits.length = user.red.mults.length;
 	for(i=0;i<user.red.limits.length;i++){
 		user.red.limits[i]=Decimal.pow(10,user.red.brokenAmount[i].plus(1));
