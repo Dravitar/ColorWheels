@@ -511,6 +511,7 @@ function updateAll(){
 	if(user.red.energy.gt($("maxRedEnergy").innerHTML)){
 		$("maxRedEnergy").innerHTML = display(user.red.energy);
 	}
+	$("currentTPBBonus").innerHTML = display(user.totPower.log10().log10().plus(1));
 	//I don't know why the things below here are required, but something else is weird and
 	//these functions fix the weirdness.
 	user.red.limits.length = user.red.mults.length;
