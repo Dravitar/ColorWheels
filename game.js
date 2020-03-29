@@ -329,7 +329,7 @@ function redReset() {
 		user.red.addButtonPrice = getDefaultUser().red.addButtonPrice;
 		user.red.index = getDefaultUser().red.index;
 		user.red.clickedBoost = new Decimal(0);
-		user.red.clickedIndex = 0;
+		user.red.clickedIndex = -1;
 		user.totPower = new Decimal(0);
 		update("redCycleUpgCost", new Decimal(1e4));
 		updateAll();
