@@ -11,6 +11,7 @@ function getDefaultUser() {
 			tickMultCount:new Decimal(0),
 			mults: [new Decimal(1)],
 			buttonPrice: [new Decimal(10)],
+			isMaxed: [0],
 			addButtonPrice: new Decimal(100),
 			index: new Decimal(1),
 			//All the above gets reset on a red reset
@@ -86,24 +87,12 @@ function redClick(num) {
 
 function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
-	var index=0;
 	for(i=0;i<user.red.mults.length;i++){
-		if(user.red.mults[i].equals(user.red.limits[i])){
-			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
-		}
-		else if(user.red.clickedIndex==i&&user.red.clickedBoost.equals(user.red.limits[i])){
+		if(user.red.isMaxed[i]=1){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
 	}
-	/*user.red.mults.forEach(function(value) {
-		let x = new Decimal(value);
-		if(x.equals(user.red.limits[index])){
-			x = x.pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10)));
-		}
-		mult = mult.times(x);
-		index++;
-	});*/
 	if(user.red.upgradeCount[0].gt(0)){ 
 		mult = mult.times(user.red.energy.plus(1));
 		update("currentPBBonus",display(user.red.energy.plus(1)));
@@ -174,6 +163,10 @@ function checkButtonUpgrade(num) {
 		}
 		let priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
 		user.red.buttonPrice[num-1] = price.times(priceIncrease);
+		if(user.red.mults[num-1].equals(user.red.limits[num-1])){
+			user.red.isMaxed[num-1]=1;
+		}
+		else{user.red.isMaxed[num-1]=0;}
 	}
 	updateAll();
 }
@@ -304,6 +297,7 @@ function breakUpgrade(num) {
 		user.red.brokenAmount[j] = user.red.brokenAmount[j].plus(1);
 		name = "redLimit"+num;
 		$(name).innerHTML = user.red.limits[j].times(10);
+		user.red.isMaxed[j] = 0;
 	}
 }
 
