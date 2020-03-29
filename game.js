@@ -73,12 +73,13 @@ function redClick(num) {
 		}
 		let old=user.red.clickedIndex+1;
 		user.red.clickedIndex=num-1;
+		if(old!==0){
+			user.red.mults[old-1]=user.red.clickedBoost;
+		}
 		user.red.clickedBoost=user.red.mults[num-1];
 		if(num!==old) {
 			user.red.mults[num-1]=user.red.mults[num-1].times(mid);
-			if(old!==0){
-				user.red.mults[old-1]=user.red.mults[old-1].div(mid);
-			}
+			
 		}
 	}
 }
