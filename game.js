@@ -20,11 +20,11 @@ function getDefaultUser() {
 			breakPrice: [new Decimal(3)],
 			brokenAmount: [new Decimal(0)],
 			clickedBoost: new Decimal(0),
-			clickedIndex: -1,//0    1    2    3    4     5    6     7     8    9
-			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB"],
-			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
-			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5) ,new Decimal(1e5)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(1e3), new Decimal(3)   ,new Decimal(0)],
+			clickedIndex: -1,//0    1    2    3    4     5    6     7     8    9    10
+			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB","SC"],
+			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5) ,new Decimal(1e5) ,new Decimal(1e3)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(1e3), new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)],
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -120,7 +120,8 @@ function testStuff() {
 
 function redCycleUpg() {
 	var price=user.red.tickMultPrice;
-	if(user.totPower.gte(price)) {
+	var free=user.red.upgradeCount[10].times(10);
+	if(user.totPower.gte(price)||free.gt(0)) {
 		let fibo = new Decimal(1);
 		let fibo2 = new Decimal(1);
 		let mid = new Decimal(0);
@@ -131,7 +132,7 @@ function redCycleUpg() {
 			fibo = mid;
 			count = count.minus(1);
 		}
-		user.totPower = user.totPower.minus(price);
+		if(free.equals(0)){user.totPower = user.totPower.minus(price);}
 		user.red.tickMax = user.red.tickMax.times(Decimal.pow(0.9,fibo2));
 		let boost = Decimal.pow(1.1,fibo2).times(10);
 		user.red.tps = user.red.tps.times(Decimal.pow(new Decimal(1).div(0.9),fibo2));
@@ -144,9 +145,11 @@ function redCycleUpg() {
 				num = num.minus(50);
 			}
 		}
-		user.red.tickMultPrice = user.red.tickMultPrice.times(increase);
+		if(free.equals(0)){user.red.tickMultPrice = user.red.tickMultPrice.times(increase);}
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
-		update("redCycleUpgCost", display(user.red.tickMultPrice));
+		if(free.equals(0)){
+			update("redCycleUpgCost", display(user.red.tickMultPrice));
+		}else{update("redCycleUpgCost", "Free!")}
 	}
 }
 
