@@ -512,6 +512,7 @@ function updateAll(){
 	if(user.red.energy.gt($("maxRedEnergy").innerHTML)){
 		$("maxRedEnergy").innerHTML = display(user.red.energy);
 	}
+	user.red.limits.length = user.red.mults.length;
 }
 
 function clearSave(){
