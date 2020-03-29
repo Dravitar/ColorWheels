@@ -120,7 +120,7 @@ function testStuff() {
 
 function redCycleUpg() {
 	var price=user.red.tickMultPrice;
-	var free=user.red.upgradeCount[10].times(10);
+	var free=new Decimal($("freeCycleUpgrades").innerHTML);
 	if(user.totPower.gte(price)||free.gt(0)) {
 		let fibo = new Decimal(1);
 		let fibo2 = new Decimal(1);
@@ -150,6 +150,7 @@ function redCycleUpg() {
 		if(free.equals(0)){
 			update("redCycleUpgCost", display(user.red.tickMultPrice));
 		}else{update("redCycleUpgCost", "Free!")}
+		$("freeCycleUpgrades").innerHTML = free.minus(1);
 	}
 }
 
@@ -331,6 +332,7 @@ function redReset() {
 		user.red.buttonsPurchased = getDefaultUser().red.buttonsPurchased;
 		user.totPower = new Decimal(0);
 		update("redCycleUpgCost", new Decimal(1e4));
+		$("freeCycleUpgrades").innerHTML = new Decimal($("currentSCBonus").innerHTML);
 		updateAll();
 	}
 }
