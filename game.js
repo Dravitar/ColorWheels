@@ -90,7 +90,7 @@ function getRedButtonTotalMult() {
 		if(user.red.mults[i].equals(user.red.limits[i])){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
-		if(user.red.clickedIndex==i&&user.red.clickedBoost.equals(user.red.limits[i])){
+		else if(user.red.clickedIndex==i&&user.red.clickedBoost.equals(user.red.limits[i])){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
