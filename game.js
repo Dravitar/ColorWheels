@@ -496,7 +496,7 @@ function updateAll(){
 	$("redPrestigeButton").style.opacity = getRedPrestige().gt(0)?1:0.6
 	$("redPrestigeAmount").innerHTML = display(getRedPrestige()) + " Energy";
 	$("currentCPBBonus").innerHTML = user.red.upgradeCount[4];
-	update("currentMBBonus", user.red.upgradeCount[8].div(10).plus(1));
+	update("currentMBBonus", display(user.red.upgradeCount[8].div(10).plus(1)));
 	$("currentSCBonus").innerHTML = user.red.upgradeCount[10].times(10);
 	user.red.upgrades.forEach(function(id){
 		let i = user.red.upgrades.indexOf(id);
