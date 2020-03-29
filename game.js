@@ -92,7 +92,7 @@ function getRedButtonTotalMult() {
 		if(user.red.upgradeCount[9].gt(0)){
 			mult = mult.times(user.maxTotPower.log10().log10().plus(1));
 		}
-		if(user.red.buttonsPurchased[i].equals(user.red.limits[i])){
+		if((user.red.buttonsPurchased[i].plus(2)).equals(user.red.limits[i])){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
@@ -423,7 +423,7 @@ function updateAll(){
 			if(user.red.upgradeCount[8].eq(0)){
 				update("upgrade"+i, "Max Multiplier!");
 			} else{
-				if(user.red.limits[i-1].equals(user.red.buttonsPurchased[i-1])){
+				if(user.red.limits[i-1].equals(user.red.buttonsPurchased[i-1].plus(2))){
 					update("upgrade"+i, "Max boosted to: ^"+user.red.upgradeCount[8].div(10).plus(1));
 				} else{
 					update("upgrade"+i, "Max not boosted");
