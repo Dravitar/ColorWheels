@@ -19,11 +19,11 @@ function getDefaultUser() {
 			breakPrice: [new Decimal(3)],
 			brokenAmount: [new Decimal(0)],
 			clickedBoost: new Decimal(0),
-			clickedIndex: -1,//0    1    2    3    4     5    6     7     8
-			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB"],
-			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
-			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5)],
-			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(1e3), new Decimal(10)],
+			clickedIndex: -1,//0    1    2    3    4     5    6     7     8    9
+			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB"],
+			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5) ,new Decimal(1e5)],
+			upgradeIncrease:[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(1e3), new Decimal(3)   ,new Decimal(0)],
 			indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -88,8 +88,11 @@ function redClick(num) {
 function getRedButtonTotalMult() {
 	var mult=new Decimal(1);
 	for(i=0;i<user.red.mults.length;i++){
+		if(user.red.upgradeCount[9].gt(0)){
+			mult = mult.times(user.totPower.log10().log10().plus(1));
+		}
 		if(user.red.isMaxed[i]=1){
-			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
+			mult = (mult.times(user.red.mults[i]).pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
 	}
