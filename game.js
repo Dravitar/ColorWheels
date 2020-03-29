@@ -488,7 +488,11 @@ function updateAll(){
 	}
 	if(user.totPower.gte(user.red.tickMultPrice)) $("redCycleReduc").style.opacity = 1.0;
 	else $("redCycleReduc").style.opacity = 0.6;
-	update("redCycleUpgCost", display(user.red.tickMultPrice));
+	if(new Decimal($("freeCycleUpgrades").innerHTML).gt(0)){
+		update("redCycleUpgCost", "Free!");
+	}else{
+		update("redCycleUpgCost", display(user.red.tickMultPrice));
+	}
 	$("redPrestigeButton").style.opacity = getRedPrestige().gt(0)?1:0.6
 	$("redPrestigeAmount").innerHTML = display(getRedPrestige()) + " Energy";
 	$("currentCPBBonus").innerHTML = user.red.upgradeCount[4];
