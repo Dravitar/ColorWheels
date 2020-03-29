@@ -500,7 +500,7 @@ function updateAll(){
 	$("currentSCBonus").innerHTML = user.red.upgradeCount[10].times(10);
 	user.red.upgrades.forEach(function(id){
 		let i = user.red.upgrades.indexOf(id);
-		$(id+"Cost").innerHTML = user.red.upgradePrices[i];
+		$(id+"Cost").innerHTML = display(user.red.upgradePrices[i]);
 		if(user.red.upgradeCount[i].gt(0)&&user.red.upgradeIncrease[i].lte(0)){
 			$(id).style.background = "forestGreen";
 		}
