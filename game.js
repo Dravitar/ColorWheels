@@ -167,7 +167,7 @@ function checkButtonUpgrade(num) {
 		}
 		let priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
 		user.red.buttonPrice[num-1] = price.times(priceIncrease);
-		user.red.buttonsPurchased[num-1]=user.red.buttonPurchased[num-1].plus(1);
+		user.red.buttonsPurchased[num-1]=user.red.buttonsPurchased[num-1].plus(1);
 	}
 	updateAll();
 }
