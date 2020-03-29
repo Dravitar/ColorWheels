@@ -132,7 +132,7 @@ function redCycleUpg() {
 			fibo = mid;
 			count = count.minus(1);
 		}
-		if(free.equals(0)){user.totPower = user.totPower.minus(price);}
+		if(free.lte(0)){user.totPower = user.totPower.minus(price);}
 		user.red.tickMax = user.red.tickMax.times(Decimal.pow(0.9,fibo2));
 		let boost = Decimal.pow(1.1,fibo2).times(10);
 		user.red.tps = user.red.tps.times(Decimal.pow(new Decimal(1).div(0.9),fibo2));
@@ -145,12 +145,12 @@ function redCycleUpg() {
 				num = num.minus(50);
 			}
 		}
-		if(free.equals(0)){user.red.tickMultPrice = user.red.tickMultPrice.times(increase);}
+		if(free.lte(0)){user.red.tickMultPrice = user.red.tickMultPrice.times(increase);}
 		user.red.tickMultCount = user.red.tickMultCount.plus(1);
-		if(free.equals(0)){
+		if(free.lte(0)){
 			update("redCycleUpgCost", display(user.red.tickMultPrice));
 		}else{update("redCycleUpgCost", "Free!")}
-		$("freeCycleUpgrades").innerHTML = free.minus(1);
+		if(free.gt(0)){$("freeCycleUpgrades").innerHTML = free.minus(1);}
 	}
 }
 
