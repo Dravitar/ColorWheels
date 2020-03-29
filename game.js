@@ -12,7 +12,7 @@ function getDefaultUser() {
 			tickMultCount:new Decimal(0),
 			mults: [new Decimal(1)],
 			buttonPrice: [new Decimal(10)],
-			buttonsPurchased: [new Decimal(0)],
+			buttonsPurchased: [new Decimal(1)],
 			addButtonPrice: new Decimal(100),
 			index: new Decimal(1),
 			//All the above gets reset on a red reset
@@ -92,7 +92,7 @@ function getRedButtonTotalMult() {
 		if(user.red.upgradeCount[9].gt(0)){
 			mult = mult.times(user.maxTotPower.log10().log10().times(2).plus(1));
 		}
-		if((user.red.buttonsPurchased[i].plus(2)).equals(user.red.limits[i])){
+		if((user.red.buttonsPurchased[i]).equals(user.red.limits[i])){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
@@ -279,7 +279,7 @@ function addRedButton(n) {
 	}
 	user.red.mults.push(new Decimal(2));
 	user.red.limits.push(new Decimal(10));
-	user.red.buttonsPurchased.push(new Decimal(0));
+	user.red.buttonsPurchased.push(new Decimal(2));
 	user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 	user.red.addButtonPrice = user.red.addButtonPrice.times(10);
 }
@@ -428,7 +428,7 @@ function updateAll(){
 			if(user.red.upgradeCount[8].eq(0)){
 				update("upgrade"+i, "Max Multiplier!");
 			} else{
-				if(user.red.limits[i-1].equals(user.red.buttonsPurchased[i-1].plus(2))){
+				if(user.red.limits[i-1].equals(user.red.buttonsPurchased[i-1])){
 					update("upgrade"+i, "Max boosted to: ^"+user.red.upgradeCount[8].div(10).plus(1));
 				} else{
 					update("upgrade"+i, "Max not boosted");
