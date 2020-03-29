@@ -12,7 +12,7 @@ function getDefaultUser() {
 			tickMultCount:new Decimal(0),
 			mults: [new Decimal(1)],
 			buttonPrice: [new Decimal(10)],
-			buttonsPurchased: [0],
+			buttonsPurchased: [new Decimal(0)],
 			addButtonPrice: new Decimal(100),
 			index: new Decimal(1),
 			//All the above gets reset on a red reset
@@ -167,7 +167,7 @@ function checkButtonUpgrade(num) {
 		}
 		let priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
 		user.red.buttonPrice[num-1] = price.times(priceIncrease);
-		user.red.buttonsPurchased[num-1]++;
+		user.red.buttonsPurchased[num-1]=user.red.buttonPurchased[num-1].plus(1);
 	}
 	updateAll();
 }
@@ -275,7 +275,7 @@ function addRedButton(n) {
 	}
 	user.red.mults.push(new Decimal(2));
 	user.red.limits.push(new Decimal(10));
-	user.red.buttonsPurchased.push(0);
+	user.red.buttonsPurchased.push(new Decimal(0));
 	user.red.buttonPrice.push(Decimal.pow(new Decimal(10),user.red.index).times(new Decimal(2.5)));
 	user.red.addButtonPrice = user.red.addButtonPrice.times(10);
 }
@@ -299,7 +299,6 @@ function breakUpgrade(num) {
 		user.red.brokenAmount[j] = user.red.brokenAmount[j].plus(1);
 		name = "redLimit"+num;
 		$(name).innerHTML = user.red.limits[j].times(10);
-		user.red.ibuttonsPurchased[j] = 0;
 	}
 }
 
