@@ -39,9 +39,15 @@ function getDefaultUser() {
 			buttonPrice: [new Decimal(10)],
 			addButtonPrice: new Decimal(100),
 			index: new Decimal(1),
+			upgrades:	["ORB"],
+			upgradeCount:	[new Decimal(0)],
+			upgradePrices:	[new Decimal(1)],
+			upgradeIncrease:[new Decimal(1e5)],
+			energy: new Decimal(0),
 			resets: new Decimal(0),
 		},
 		currentTab: "mainTab",
+		currentSubTab: "redEnergyTab",
 		lastTick: new Date().getTime(),
 	};
 }
@@ -94,6 +100,9 @@ function getRedButtonTotalMult() {
 		}
 		if((user.red.buttonsPurchased[i]).equals(user.red.limits[i])){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
+		}
+		if(user.orange.upgradeCount[0].gt(0)){
+			mult = mult.times(user.red.mults[i].pow(Decimal.plus(1,user.orange.resets.div(5))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
 	}
@@ -311,6 +320,11 @@ function getRedPrestige() {
 	else return new Decimal(0);
 }
 
+function getOrangePrestige() {
+	if (user.totPower.gte(new Decimal(1e308))) return user.totPower.log10().minus(307).pow(0.5);
+	else return new Decimal(0);
+}
+
 function redReset() {
 	if(getRedPrestige().gte(1)){
 		for(i=2;i<user.red.mults.length+1;i++){
@@ -333,6 +347,17 @@ function redReset() {
 		user.totPower = new Decimal(0);
 		update("redCycleUpgCost", new Decimal(1e4));
 		$("freeCycleUpgrades").innerHTML = new Decimal($("currentSCBonus").innerHTML);
+		updateAll();
+	}
+}
+
+function redBigReset() {
+	if(getOrangePrestige().gte(0)){
+		for(i=2;i<user.red.mults.length+1;i++){
+			$("buttonSet"+i).remove();
+		}
+		user.orange.energy = user.orange.energy.plus(getOrangePrestige());
+		user.red = getDefaultUser().red;
 		updateAll();
 	}
 }
@@ -362,6 +387,19 @@ function showTab(tabName) { //Tab switching function
 			user.currentTab = tabName;
 		}
 		else tab.style.display = 'none';
+	}
+}
+
+function showSubTab(tabName) {
+	var subTabs = document.getElementByClassName('subTab');
+	var subTab;
+	for(var i=0;i<subTabs.length;i++){
+		subTab = subTabs.item(i);
+		if(subTab.id === tabName){
+			subTab.style.display = "inline-block";
+			user.currentSubTab = tabName;
+		}
+		else subTab.style.display = 'none';
 	}
 }
 
@@ -523,7 +561,14 @@ function updateAll(){
 	if(user.red.energy.gt($("maxRedEnergy").innerHTML)){
 		$("maxRedEnergy").innerHTML = display(user.red.energy);
 	}
+	if(user.orange.energy.gt($("maxOrangeEnergy").innerHTML)){
+		$("maxOrangeEnergy").innerHTML = display(user.orange.energy);
 	$("currentTPBBonus").innerHTML = display(user.maxTotPower.log10().log10().times(2).plus(1));
+	//ORANG STUF NAOW WOW
+	if(user.totPower.gte(new Decimal(1e308))){
+		$("redButtonPrestigeButton").style.display = "block";
+		$("orangePrestigeAmount").html = getOrangePrestige();
+	}
 	//I don't know why the things below here are required, but something else is weird and
 	//these functions fix the weirdness.
 	user.red.limits.length = user.red.mults.length;
