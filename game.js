@@ -44,7 +44,8 @@ function getDefaultUser() {
 			upgradeCount:	[new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:	[new Decimal(1)   ,new Decimal(10)],
 			upgradeIncrease:[new Decimal(1e5) ,new Decimal(0)],
-			energy: new Decimal(0),
+			upgradeMax:     [new Decimal(0)   ,new Decimal(0)],
+                        energy: new Decimal(0),
 			resets: new Decimal(0),
 		},
 		currentTab: "mainTab",
@@ -613,6 +614,7 @@ function updateAll(){
 		$("energyTabs").style.display = "";
 		$("orangeEnergyArea").style.display = "";
 		$("orangeEnergyAmount").innerHTML = display(user.orange.energy);
+                $("orangeEnergyTabBtn").style.display = "";
 	}
 	user.orange.upgrades.forEach(function(id){
 		let i = user.orange.upgrades.indexOf(id);
