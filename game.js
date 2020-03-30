@@ -182,7 +182,6 @@ function checkButtonUpgrade(num) {
 		user.red.buttonPrice[num-1] = price.times(priceIncrease);
 		user.red.buttonsPurchased[num-1]=user.red.buttonsPurchased[num-1].plus(1);
 	}
-	updateAll();
 }
 
 function maxRedMult(num) {
@@ -217,7 +216,6 @@ function checkAddRed() {
 			addRedButton(user.red.index);
 		}
 	}
-	updateAll();
 }
 
 function buyMaxRed() {
@@ -372,15 +370,25 @@ function redBigReset() {
 	}
 }
 
+function maxEverything() {
+checkAddRed();
+for(i=user.red.mults.length;i>0;i--){
+if(user.red.buttonsPurchased[i-1].lt(user.red.limits[i-1])) {
+maxRedMult(i);
+}
+}
+redCycleMax();
+}
+
 function checkKey(event) {
 	if(event.key == "m"){
 		checkAddRed();
 		for(i=user.red.mults.length;i>0;i--){
-			if(user.red.mults[i-1].lt(user.red.limits[i-1])){
+			if(user.red.buttonsPurchased[i-1].lt(user.red.limits[i-1])){
 				maxRedMult(i);
 			}
 		}
-		redCycleUpg();
+		redCycleMax();
 	}
 	if(event.key == "r"){
 		redReset();
