@@ -16,10 +16,11 @@
 				<button id="mainTabButton" onClick="showTab('mainTab')" class="tabBtn">Buttons</button>
 				<button id="energyTabButton" onClick="showTab('energyTab')" class="tabBtn">Energy</button>
 				<div id="savedInfo" style="display:none; position:absolute">Game saved!</div>
+				<div id="powerAmount">You have <span id="powerAmount" style="font-size:x-large">0</span> total Power.</div>
 				<div id="redEnergyArea" style="display:none; color:darkRed">Total Red Energy: 
 					<span id="redEnergyAmount">0</span>
 				</div>
-				<div id="orangeEnergyArea" style="display:none; color:RedOrange">Total Orange Energy: 
+				<div id="orangeEnergyArea" style="display:none; color:OrangeRed">Total Orange Energy: 
 					<span id="orangeEnergyAmount">0</span>
 				</div>
 				
@@ -34,10 +35,9 @@
 				<p id="redButtonStat">You have <span id="redButtonCount">1</span> Red Button(s).</p>
 				<p id="totPowerStat">You have reached a maximum of <span id="maxTotPower">0</span> total Power.</p>
 				<p id="redEnergyStat">You have reached a maximum of <span id="maxRedEnergy">0</span> total <span style="color:darkRed">Energy</span>.</p>
-				<p id="orangeEnergyStat" style="display:none">You have reached a maximum of <span id="maxOrangeEnergy">0</span> total <span style="color:RedOrange">Energy</span>.</p>
+				<p id="orangeEnergyStat" style="display:none">You have reached a maximum of <span id="maxOrangeEnergy">0</span> total <span style="color:OrangeRed">Energy</span>.</p>
 			</div>
 			<div id="mainTab" class="tab">
-				<div id="powerAmount">You have <span id="powerAmount" style="font-size:x-large">0</span> total Power.</div>
 				<div id="powerMultArea" onClick="testStuff()">Button Mult: x1</div>
 				<div id="cycleArea">
 					<div id="redCycle">Reset Cycle: 0/1000</div>
@@ -154,7 +154,7 @@
 						<button id="ORB" onClick="checkUpgrade('orange','ORB')" class="upgrade">
 							Orange resets boost red button multipliers.<br/>
 							Current Bonus: ^<span id="currentORBBonus">1</span><br/>
-							Cost: <span id="ORBCost">1</span> Orange <span style="color:RedOrange"> Energy</span>
+							Cost: <span id="ORBCost">1</span> Orange <span style="color:OrangeRed"> Energy</span>
 						</button>
 					</div>
 				</div>
