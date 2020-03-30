@@ -357,6 +357,7 @@ function redBigReset() {
 			$("buttonSet"+i).remove();
 		}
 		user.orange.energy = user.orange.energy.plus(getOrangePrestige());
+		user.orange.resets = user.orange.resets.plus(1);
 		user.red = getDefaultUser().red;
 		$("energyTabs").style.display="";
 		$("orangeEnergyTab").style.display="";
