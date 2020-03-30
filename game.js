@@ -394,7 +394,7 @@ function showTab(tabName) { //Tab switching function
 }
 
 function showSubTab(tabName) {
-	var subTabs = document.getElementByClassName('subTab');
+	var subTabs = document.getElementsByClassName('subTab');
 	var subTab;
 	for(var i=0;i<subTabs.length;i++){
 		subTab = subTabs.item(i);
