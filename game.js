@@ -536,6 +536,9 @@ function updateAll(){
 	} if(user.totPower.gte(1e308)){
 		$("redButtonPrestigeButton").style.display = "";
 	}
+	if(user.red.energy.gt(0)){
+		$("redEnergyTab").style.display = "inline-block";
+	}
 	if(user.totPower.gte(user.red.tickMultPrice)) $("redCycleReduc").style.opacity = 1.0;
 	else $("redCycleReduc").style.opacity = 0.6;
 	if(new Decimal($("freeCycleUpgrades").innerHTML).gt(0)){
