@@ -321,7 +321,7 @@ function getRedPrestige() {
 }
 
 function getOrangePrestige() {
-	if (user.totPower.gte(new Decimal(1e308))) return user.totPower.log10().minus(307).pow(0.5);
+	if (user.totPower.gte(new Decimal(1e308))) return user.totPower.log10().div(154).minus(1);
 	else return new Decimal(0);
 }
 
