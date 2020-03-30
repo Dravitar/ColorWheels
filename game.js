@@ -371,7 +371,7 @@ function redBigReset() {
 }
 
 function maxEverything() {
-checkAddRed();
+buyMaxRed();
 for(i=user.red.mults.length;i>0;i--){
 if(user.red.buttonsPurchased[i-1].lt(user.red.limits[i-1])) {
 maxRedMult(i);
