@@ -567,6 +567,7 @@ function updateAll(){
 	}
 	if(user.orange.energy.gt($("maxOrangeEnergy").innerHTML)){
 		$("maxOrangeEnergy").innerHTML = display(user.orange.energy);
+	}
 	$("currentTPBBonus").innerHTML = display(user.maxTotPower.log10().log10().times(2).plus(1));
 	//ORANG STUF NAOW WOW
 	if(user.totPower.gte(new Decimal(1e308))){
