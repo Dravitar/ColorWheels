@@ -579,7 +579,7 @@ function updateAll(){
 	*/
 	if(user.totPower.gte(new Decimal(1e308))){
 		$("redButtonPrestigeButton").style.display = "block";
-		$("orangePrestigeAmount").innerHTML = getOrangePrestige();
+		$("orangePrestigeAmount").innerHTML = display(getOrangePrestige());
 	}
 	else{
 		$("redButtonPrestigeButton").style.display="none";
