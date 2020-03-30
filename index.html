@@ -16,6 +16,13 @@
 				<button id="mainTabButton" onClick="showTab('mainTab')" class="tabBtn">Buttons</button>
 				<button id="energyTabButton" onClick="showTab('energyTab')" class="tabBtn">Energy</button>
 				<div id="savedInfo" style="display:none; position:absolute">Game saved!</div>
+				<div id="redEnergyArea" style="display:none; color:darkRed">Total Red Energy: 
+					<span id="redEnergyAmount">0</span>
+				</div>
+				<div id="orangeEnergyArea" style="display:none; color:RedOrange">Total Orange Energy: 
+					<span id="orangeEnergyAmount">0</span>
+				</div>
+				
 			</div>
 			<div id="menuTab" class="tab" style="display:none">
 				<div><button id="saveButton" onClick="save()" class="upgrade">Save your game</button></div>
@@ -31,9 +38,6 @@
 			</div>
 			<div id="mainTab" class="tab">
 				<div id="powerAmount">You have <span id="powerAmount" style="font-size:x-large">0</span> total Power.</div>
-				<div id="redEnergyArea" style="display:none; color:darkRed">Total Red Energy: 
-					<span id="redEnergyAmount">0</span>
-				</div>
 				<div id="powerMultArea" onClick="testStuff()">Button Mult: x1</div>
 				<div id="cycleArea">
 					<div id="redCycle">Reset Cycle: 0/1000</div>
@@ -85,7 +89,7 @@
 					<button id="orangeEnergyTabBtn" onClick="showSubTab('orangeEnergyTab')" class="tabBtn">
 						<span style="color:OrangeRed">Orange</span>
 					</button>
-				<div id="redEnergyTab" class="subTab">
+				<div id="redEnergyTab" class="subTab"> 
 					<div id="clickPowerSet" style="display:inline-block">
 						<button id="CP" onClick="checkUpgrade('red','CP')" class="upgrade" style="display:block">
 							Unlock Click Power. Give a boost to buttons you click directly.<br/>
