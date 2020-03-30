@@ -199,7 +199,7 @@ function checkUpgrade(color, dex) {
 		$(dex).style.background="darkGreen";
 		return;
 	}
-	if(canBuyUpgrade(color, index)&&(maxUpgrades==0||user[color].upgradeCount[index].lt(maxUpgrades)){
+	if(canBuyUpgrade(color, index)&&(maxUpgrades==0||user[color].upgradeCount[index].lt(maxUpgrades))){
 		user[color].energy = user[color].energy.minus(user[color].upgradePrices[index]);
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
 		user[color].upgradePrices[index] = user[color].upgradePrices[index].times(user[color].upgradeIncrease[index]);
