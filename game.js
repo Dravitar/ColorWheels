@@ -579,7 +579,7 @@ function updateAll(){
 	*/
 	if(user.totPower.gte(new Decimal(1e308))){
 		$("redButtonPrestigeButton").style.display = "block";
-		$("orangePrestigeAmount").html = getOrangePrestige();
+		$("orangePrestigeAmount").innerHTML = getOrangePrestige();
 	}
 	else{
 		$("redButtonPrestigeButton").style.display="none";
@@ -587,6 +587,7 @@ function updateAll(){
 	if(user.orange.resets.gt(0)){
 		$("energyTabs").style.display = "";
 		$("orangeEnergyArea").style.display = "";
+		$("orangeEnergyAmount").innerHTML = display(user.orange.energy);
 	}
 	user.orange.upgrades.forEach(function(id){
 		let i = user.orange.upgrades.indexOf(id);
