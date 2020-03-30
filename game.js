@@ -537,7 +537,8 @@ function updateAll(){
 		$("redButtonPrestigeButton").style.display = "";
 	}
 	if(user.red.energy.gt(0)){
-		$("redEnergyTab").style.display = "inline-block";
+		$("energyTabButton").style.display = "";
+		$("redEnergyTabBtn").style.display = "inline-block";
 	}
 	if(user.totPower.gte(user.red.tickMultPrice)) $("redCycleReduc").style.opacity = 1.0;
 	else $("redCycleReduc").style.opacity = 0.6;
