@@ -358,6 +358,8 @@ function redBigReset() {
 		}
 		user.orange.energy = user.orange.energy.plus(getOrangePrestige());
 		user.red = getDefaultUser().red;
+		$("energyTabs").style.display="inline-block";
+		$("orangeEnergyTab").style.display="";
 		updateAll();
 	}
 }
@@ -521,6 +523,8 @@ function updateAll(){
 	}
 	if(user.totPower.gte(1e10)){
 		$("redPrestigeButton").style.display = "";
+	} if(user.totPower.gte(1e308)){
+		$("redButtonPrestigeButton").style.display = "";
 	} else {		
 		$("redPrestigeButton").style.display = "none";
 	}
