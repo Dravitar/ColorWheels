@@ -24,8 +24,9 @@ function getDefaultUser() {
 			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB","SC"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5) ,new Decimal(1e5) ,new Decimal(1e3)],
-			upgradeIncrease:[new Decimal(1e5)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(1e3)   ,new Decimal(10)  ,new Decimal(1e3), new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)],
-			indexLimit: new Decimal(10),
+			upgradeIncrease:[new Decimal(1e5) ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(1e3) ,new Decimal(10)  ,new Decimal(1e3) ,new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)],
+			upgradeMax:     [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(9)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+                        indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
 			buttonSetExpanded: 0,
@@ -192,11 +193,13 @@ function maxRedMult(num) {
 
 function checkUpgrade(color, dex) {
 	let index = user[color].upgrades.indexOf(dex);
+        var maxUpgrades=0;
+        if(user[color].upgradeMax[num-1].gt(0)) maxUpgrades=user[color].upgradeMax[num-1];
 	if(user[color].upgradeIncrease[index]==0&&user[color].upgradeCount[index]==1) {
 		$(dex).style.background="darkGreen";
 		return;
 	}
-	if(canBuyUpgrade(color, index)){
+	if(canBuyUpgrade(color, index)&&(maxUpgrades==0||user[color].upgradeCount[index].lt(maxUpgrades)){
 		user[color].energy = user[color].energy.minus(user[color].upgradePrices[index]);
 		user[color].upgradeCount[index] = user[color].upgradeCount[index].plus(1);
 		user[color].upgradePrices[index] = user[color].upgradePrices[index].times(user[color].upgradeIncrease[index]);
@@ -562,7 +565,11 @@ function updateAll(){
 	$("currentSCBonus").innerHTML = user.red.upgradeCount[10].times(10);
 	user.red.upgrades.forEach(function(id){
 		let i = user.red.upgrades.indexOf(id);
-		$(id+"Cost").innerHTML = display(user.red.upgradePrices[i]);
+                if(user.red.upgradeCount[i].lt(user.red.upgradeMax[i])){
+                        $(id+"Cost").innerHTML = display(user.red.upgradePrices[i]);
+                } else{
+                        $(id+"Cost").innerHTML = "Maxed!"
+                }
 		if(user.red.upgradeCount[i].gt(0)&&user.red.upgradeIncrease[i].lte(0)){
 			$(id).style.background = "forestGreen";
 		}
