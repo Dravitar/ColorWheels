@@ -524,10 +524,10 @@ function updateAll(){
 	}
 	if(user.totPower.gte(1e10)){
 		$("redPrestigeButton").style.display = "";
-	} if(user.totPower.gte(1e308)){
-		$("redButtonPrestigeButton").style.display = "";
 	} else {		
 		$("redPrestigeButton").style.display = "none";
+	} if(user.totPower.gte(1e308)){
+		$("redButtonPrestigeButton").style.display = "";
 	}
 	if(user.totPower.gte(user.red.tickMultPrice)) $("redCycleReduc").style.opacity = 1.0;
 	else $("redCycleReduc").style.opacity = 0.6;
