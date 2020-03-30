@@ -581,6 +581,21 @@ function updateAll(){
 	if(user.orange.resets.gt(0)){
 		$("energyTabs").style.display = "";
 	}
+	user.orange.upgrades.forEach(function(id){
+		let i = user.orange.upgrades.indexOf(id);
+		$(id+"Cost").innerHTML = display(user.orange.upgradePrices[i]);
+		if(user.orange.upgradeCount[i].gt(0)&&user.orange.upgradeIncrease[i].lte(0)){
+			$(id).style.background = "forestGreen";
+		}
+		else{$(id).style.background = "grey";}
+		if(user.orange.energy.gte(user.orange.upgradePrices[i])){
+			$(id).style.opacity = 1.0;
+		}
+		else if(user.orange.energy.lt(user.orange.upgradePrices[i])){
+			$(id).style.opacity = 0.6;
+		}
+	});
+	$("currentORBBonus").innerHTML = user.orange.resets.div(5).plus(1);
 	//I don't know why the things below here are required, but something else is weird and
 	//these functions fix the weirdness.
 	user.red.limits.length = user.red.mults.length;
