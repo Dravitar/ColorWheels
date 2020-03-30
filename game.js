@@ -98,7 +98,7 @@ function getRedButtonTotalMult() {
 		if(user.red.upgradeCount[9].gt(0)){
 			mult = mult.times(user.maxTotPower.log10().log10().times(2).plus(1));
 		}
-		if((user.red.buttonsPurchased[i]).equals(user.red.limits[i])){
+		if((user.red.buttonsPurchased[i]).equals(user.red.limits[i])&&user.upgradeCount[8].gt(0)){
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		if(user.orange.upgradeCount[0].gt(0)){
