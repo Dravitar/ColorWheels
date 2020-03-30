@@ -572,6 +572,11 @@ function updateAll(){
 	}
 	$("currentTPBBonus").innerHTML = display(user.maxTotPower.log10().log10().times(2).plus(1));
 	//ORANG STUF NAOW WOW
+	/*
+	**
+	**
+	**
+	*/
 	if(user.totPower.gte(new Decimal(1e308))){
 		$("redButtonPrestigeButton").style.display = "block";
 		$("orangePrestigeAmount").html = getOrangePrestige();
@@ -581,6 +586,7 @@ function updateAll(){
 	}
 	if(user.orange.resets.gt(0)){
 		$("energyTabs").style.display = "";
+		$("orangeEnergyArea").style.display = "";
 	}
 	user.orange.upgrades.forEach(function(id){
 		let i = user.orange.upgrades.indexOf(id);
