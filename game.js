@@ -39,10 +39,10 @@ function getDefaultUser() {
 			buttonPrice: [new Decimal(10)],
 			addButtonPrice: new Decimal(100),
 			index: new Decimal(1),
-			upgrades:	["ORB"],
-			upgradeCount:	[new Decimal(0)],
-			upgradePrices:	[new Decimal(1)],
-			upgradeIncrease:[new Decimal(1e5)],
+			upgrades:	["ORB","BPB"],
+			upgradeCount:	[new Decimal(0)   ,new Decimal(0)],
+			upgradePrices:	[new Decimal(1)   ,new Decimal(10)],
+			upgradeIncrease:[new Decimal(1e5) ,new Decimal(0)],
 			energy: new Decimal(0),
 			resets: new Decimal(0),
 		},
@@ -316,7 +316,13 @@ function breakUpgrade(num) {
 }
 
 function getRedPrestige() {
-	if (user.totPower.gte(new Decimal(1e10))) return user.totPower.log10().minus(9).pow(user.red.upgradeCount[7].div(2.5).plus(2));
+	if (user.totPower.gte(new Decimal(1e10))){
+		if(user.orange.upgradeCount[1].gt(0)){
+			return user.totPower.log10().minus(9).pow(user.red.upgradeCount[7].div(2.5).plus(2)).pow(1.5);
+		} else{
+			return user.totPower.log10().minus(9).pow(user.red.upgradeCount[7].div(2.5).plus(2));
+		}
+	}
 	else return new Decimal(0);
 }
 
