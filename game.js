@@ -194,7 +194,7 @@ function maxRedMult(num) {
 function checkUpgrade(color, dex) {
 	let index = user[color].upgrades.indexOf(dex);
         var maxUpgrades=0;
-        if(user[color].upgradeMax[num-1].gt(0)) maxUpgrades=user[color].upgradeMax[num-1];
+        if(user[color].upgradeMax[index].gt(0)) maxUpgrades=user[color].upgradeMax[index];
 	if(user[color].upgradeIncrease[index]==0&&user[color].upgradeCount[index]==1) {
 		$(dex).style.background="darkGreen";
 		return;
