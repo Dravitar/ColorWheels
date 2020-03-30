@@ -360,6 +360,7 @@ function redBigReset() {
 		user.red = getDefaultUser().red;
 		$("energyTabs").style.display="inline-block";
 		$("orangeEnergyTab").style.display="";
+		user.totPower = new Decimal(0);
 		updateAll();
 	}
 }
