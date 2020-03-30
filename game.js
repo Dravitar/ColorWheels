@@ -102,7 +102,7 @@ function getRedButtonTotalMult() {
 			mult = mult.times(user.red.mults[i].pow(new Decimal(1).plus(user.red.upgradeCount[8].div(10))));
 		}
 		if(user.orange.upgradeCount[0].gt(0)){
-			mult = mult.times(user.red.mults[i].pow(Decimal.plus(1,user.orange.resets.div(5))));
+			mult = mult.times(user.red.mults[i].pow(Decimal.plus(1,user.orange.resets.div(10))));
 		}
 		else { mult = mult.times(user.red.mults[i]);}
 	}
@@ -595,7 +595,7 @@ function updateAll(){
 			$(id).style.opacity = 0.6;
 		}
 	});
-	$("currentORBBonus").innerHTML = user.orange.resets.div(5).plus(1);
+	$("currentORBBonus").innerHTML = display(user.orange.resets.div(10).plus(1));
 	//I don't know why the things below here are required, but something else is weird and
 	//these functions fix the weirdness.
 	user.red.limits.length = user.red.mults.length;
