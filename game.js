@@ -358,7 +358,7 @@ function redBigReset() {
 		}
 		user.orange.energy = user.orange.energy.plus(getOrangePrestige());
 		user.red = getDefaultUser().red;
-		$("energyTabs").style.display="inline-block";
+		$("energyTabs").style.display="";
 		$("orangeEnergyTab").style.display="";
 		user.totPower = new Decimal(0);
 		updateAll();
