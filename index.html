@@ -14,7 +14,7 @@
 				<button id="menuTabButton" onClick="showTab('menuTab')" class="tabBtn">Menu</button>
 				<button id="statsTabButton" onClick="showTab('statsTab')" class="tabBtn">Stats</button>
 				<button id="mainTabButton" onClick="showTab('mainTab')" class="tabBtn">Buttons</button>
-				<button id="energyTabButton" onClick="showTab('energyTab')" class="tabBtn">Energy</button>
+				<button id="energyTabButton" onClick="showTab('energyTab')" style="display:none" class="tabBtn">Energy</button>
 				<div id="savedInfo" style="display:none; position:absolute">Game saved!</div>
 				<div id="powerAmount">You have <span id="powerAmount" style="font-size:x-large">0</span> total Power.</div>
 				<div id="redEnergyArea" style="display:none; color:darkRed">Total Red Energy: 
@@ -82,11 +82,11 @@
 				</div>
 			</div>
 			<div id="energyTab" class="tab">
-				<div id="energyTabs" style="display:none">
-					<button id="redEnergyTabBtn" onClick="showSubTab('redEnergyTab')" class="tabBtn">
+				<div id="energyTabs">
+					<button id="redEnergyTabBtn" onClick="showSubTab('redEnergyTab')" style="display:none" class="tabBtn">
 						<span style="color:darkRed">Red</span>
 					</button>
-					<button id="orangeEnergyTabBtn" onClick="showSubTab('orangeEnergyTab')" class="tabBtn">
+					<button id="orangeEnergyTabBtn" onClick="showSubTab('orangeEnergyTab')" style="display:none" class="tabBtn">
 						<span style="color:OrangeRed">Orange</span>
 					</button>
 				<div id="redEnergyTab" class="subTab"> 
