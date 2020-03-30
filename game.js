@@ -565,7 +565,7 @@ function updateAll(){
 	$("currentSCBonus").innerHTML = user.red.upgradeCount[10].times(10);
 	user.red.upgrades.forEach(function(id){
 		let i = user.red.upgrades.indexOf(id);
-                if(user.red.upgradeCount[i].lt(user.red.upgradeMax[i])){
+                if(user.red.upgradeMax[i].equals(0)||user.red.upgradeCount[i].lt(user.red.upgradeMax[i])){
                         $(id+"Cost").innerHTML = display(user.red.upgradePrices[i]);
                 } else{
                         $(id+"Cost").innerHTML = "Maxed!"
