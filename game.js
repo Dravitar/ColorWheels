@@ -575,6 +575,12 @@ function updateAll(){
 		$("redButtonPrestigeButton").style.display = "block";
 		$("orangePrestigeAmount").html = getOrangePrestige();
 	}
+	else{
+		$("redButtonPrestigeButton").style.display="none";
+	}
+	if(user.orange.resets.gt(0)){
+		$("energyTabs").style.display = "";
+	}
 	//I don't know why the things below here are required, but something else is weird and
 	//these functions fix the weirdness.
 	user.red.limits.length = user.red.mults.length;
