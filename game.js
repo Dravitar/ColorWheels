@@ -157,23 +157,26 @@ function redCycleUpg() {
 }
 
 function redCycleMax() {
-	let num = user.totPower.log10().minus(4).div(50).times(8).plus(1).sqrt().plus(1).div(2).minus(1);
-	let canPurchaseTotal = num.times(50).floor();
-	let powerRequired = new Decimal.pow(10,num.times(num+1).times(50).plus(4));
-	user.red.tickMultPrice = powerRequired.times(Decimal.pow(10,num.ceil()));
-	user.totPower = user.totPower.minus(powerRequired);
-	let canPurchase = canPurchaseTotal.minus(user.red.tickMultCount);
-	let free = new Decimal($("freeCycleUpgrades").innerHTML);
-	if(free.gt(0)){
-		canPurchase = canPurchase.plus(free);
-		$("freeCycleUpgrades").innerHTML = 0;
+	if(user.totPower.gte(1e100)){
+		let num = user.totPower.log10().minus(4).div(50).times(8).plus(1).sqrt().plus(1).div(2).minus(1);
+		let canPurchaseTotal = num.times(50).floor();
+		let powerRequired = new Decimal.pow(10,num.times(num+1).times(50).plus(4));
+		user.red.tickMultPrice = powerRequired.times(Decimal.pow(10,num.ceil()));
+		user.totPower = user.totPower.minus(powerRequired);
+		let canPurchase = canPurchaseTotal.minus(user.red.tickMultCount);
+		let free = new Decimal($("freeCycleUpgrades").innerHTML);
+		if(free.gt(0)){
+			canPurchase = canPurchase.plus(free);
+			$("freeCycleUpgrades").innerHTML = 0;
+		}
+		let count = new Decimal(user.red.upgradeCount[6]);
+		user.red.tps = user.red.tps.times((Decimal.pow(new Decimal(1).div(0.9),count).times(canPurchase)));
+		user.red.tickMax = user.red.tickMax.times((Decimal.pow(0.9,count).times(canPurchase)));
+		let boost = Decimal.pow((new Decimal(1).div(0.9)),count).times(canPurchase).times(10);
+		$("cycleReducAmount").innerHTML = display(boost);
+		user.red.tickMultCount = user.red.tickMultCount.plus(canPurchase);
 	}
-	let count = new Decimal(user.red.upgradeCount[6]);
-	user.red.tps = user.red.tps.times((Decimal.pow(new Decimal(1).div(0.9),count).times(canPurchase)));
-	user.red.tickMax = user.red.tickMax.times((Decimal.pow(0.9,count).times(canPurchase)));
-	let boost = Decimal.pow((new Decimal(1).div(0.9)),count).times(canPurchase).times(10);
-	$("cycleReducAmount").innerHTML = display(boost);
-	user.red.tickMultCount = user.red.tickMultCount.plus(canPurchase);
+	else while(user.totPower.gte(user.red.tickMultPrice)) redCycleUpg();
 }
 	
 function checkButtonUpgrade(num) {
