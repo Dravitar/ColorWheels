@@ -133,7 +133,7 @@ function redCycleUpg() {
 	var price=user.red.tickMultPrice;
 	var free=new Decimal($("freeCycleUpgrades").innerHTML);
 	if(user.totPower.gte(price)||free.gt(0)) {
-		let count = new Decimal(user.red.upgradeCount[6]);
+		let count = new Decimal(user.red.upgradeCount[6]).plus(1);
 		if(free.lte(0)){user.totPower = user.totPower.minus(price);}
 		user.red.tickMax = user.red.tickMax.times(Decimal.pow(0.9,count));
 		let boost = Decimal.pow(1.1,count).times(10);
@@ -169,7 +169,7 @@ function redCycleMax() {
 			canPurchase = canPurchase.plus(free);
 			$("freeCycleUpgrades").innerHTML = 0;
 		}
-		let count = new Decimal(user.red.upgradeCount[6]);
+		let count = new Decimal(user.red.upgradeCount[6]).plus(1);
 		user.red.tps = user.red.tps.times((Decimal.pow(new Decimal(1).div(0.9),count).times(canPurchase)));
 		user.red.tickMax = user.red.tickMax.times((Decimal.pow(0.9,count).times(canPurchase)));
 		let boost = Decimal.pow((new Decimal(1).div(0.9)),count).times(canPurchase).times(10);
