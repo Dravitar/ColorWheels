@@ -160,7 +160,7 @@ function redCycleMax() {
 	let num = user.totPower.log10().minus(4).div(50).times(8).plus(1).sqrt().plus(1).div(2).minus(1);
 	let canPurchaseTotal = num.times(50).floor();
 	let powerRequired = new Decimal.pow(10,num.times(num+1).times(50).plus(4));
-	let user.red.tickMultPrice = powerRequired.times(Decimal.pow(10,num.ceil()));
+	user.red.tickMultPrice = powerRequired.times(Decimal.pow(10,num.ceil()));
 	user.totPower = user.totPower.minus(powerRequired);
 	let canPurchase = canPurchaseTotal.minus(user.red.tickMultCount);
 	let free = new Decimal($("freeCycleUpgrades").innerHTML);
