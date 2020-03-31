@@ -386,7 +386,7 @@ function maxEverything() {
 			maxRedMult(i);
 		}
 	}
-	redCycleMax();
+	if(user.totPower.gte(1e4)) redCycleMax();
 }
 
 function checkKey(event) {
@@ -397,7 +397,7 @@ function checkKey(event) {
 				maxRedMult(i);
 			}
 		}
-		redCycleMax();
+		if(user.totPower.gte(1e4)) redCycleMax();
 	}
 	if(event.key == "r"){
 		redReset();
