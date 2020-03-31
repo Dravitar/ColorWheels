@@ -83,7 +83,7 @@ function redClick(num) {
 		}
 		let old=user.red.clickedIndex+1;
 		user.red.clickedIndex=num-1;
-		if(old!==0){
+		if(old!==0||old==num){
 			user.red.mults[old-1]=user.red.clickedBoost;
 		}
 		user.red.clickedBoost=user.red.mults[num-1];
