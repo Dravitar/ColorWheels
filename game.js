@@ -171,7 +171,7 @@ function redCycleMax() {
 	let count = new Decimal(user.red.upgradeCount[6]);
 	user.red.tps = user.red.tps.times((Decimal.pow(new Decimal(1).div(0.9),count).times(canPurchase)));
 	user.red.tickMax = user.red.tickMax.times((Decimal.pow(0.9,count).times(canPurchase)));
-	let boost = Decimal.pow((Decimal(1).div(0.9)),count).times(canPurchase).times(10);
+	let boost = Decimal.pow((new Decimal(1).div(0.9)),count).times(canPurchase).times(10);
 	$("cycleReducAmount").innerHTML = display(boost);
 	user.red.tickMultCount = user.red.tickMultCount.plus(canPurchase);
 }
