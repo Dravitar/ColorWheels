@@ -368,7 +368,7 @@ function redReset() {
 }
 
 function redBigReset() {
-	if(getOrangePrestige().gte(0)){
+	if(getOrangePrestige().gt(0)){
 		for(i=2;i<user.red.mults.length+1;i++){
 			$("buttonSet"+i).remove();
 		}
