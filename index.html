@@ -17,14 +17,20 @@
 				<button id="mainTabButton" onClick="showTab('mainTab')" class="tabBtn">Buttons</button>
 				<button id="energyTabButton" onClick="showTab('energyTab')" style="display:none" class="tabBtn">Energy</button>
 				<div id="savedInfo" style="display:none; position:absolute">Game saved!</div>
-				<div id="powerAmount">You have <span id="powerAmount" style="font-size:x-large">0</span> total Power.</div>
-				<div id="redEnergyArea" style="display:none; color:darkRed">Total Red Energy: 
-					<span id="redEnergyAmount">0</span>
-                                        <button onClick="redReset()" class="multUpgrade">Red Reset</button>
+				<div id="topSection">
+					<button id="redPrestigeButton" onClick="redReset()" class="upgrade" style="display:none">
+						You have <span id="redEnergyAmount" style="color:darkRed">0</span> Red Energy.<br/>
+						You will gain <span id="redPrestigeAmount" style="color:darkRed">0</span> Red Energy on reset.
+					</button>
+					<p id="powerAmountArea">You have <span id="powerAmount" style="font-size:x-large">0</span> total Power.</p>
+					<button id="redButtonPrestigeButton" onClick="redBigReset()" class="upgrade" style="display:none">
+						You have <span id="orangeEnergyAmount" style="color:OrangeRed">0</span> Orange Energy.<br/>
+						You will gain <span id="orangePrestigeAmount" style="color:OrangeRed">0</span> Orange Energy on reset.
+					</button>
 				</div>
 				<div id="orangeEnergyArea" style="display:none; color:OrangeRed">Total Orange Energy: 
 					<span id="orangeEnergyAmount">0</span>
-					<button onClick="redBigReset()" class="multUpgrade">Orange Reset</button>
+					<button onClick="redBigReset()" class="multUpgrade">Orange Reset for <span id=</button>
 				</div>
                                 <button id="maxAllButton" onClick="maxEverything()" class="multUpgrade">Max All</button>
 				
@@ -75,14 +81,6 @@
 						Add another Red Button<br/>Cost: 100 Power</button>
 					<button id="maxRedButton" onClick="buyMaxRed()" class="multUpgrade">
 						Buy Max</button>
-					<button id="redPrestigeButton" onClick="redReset()" style="display:none" class="multUpgrade">
-						Reset your red buttons and gain 
-						<span id="redPrestigeAmount" style="color:darkRed">0 Energy</span>
-					</button>
-					<button id="redButtonPrestigeButton" onClick="redBigReset()" style="display:none" class="multUpgrade">
-						Reset everything <span style="color:darkRed">Red</span> and gain 
-						<span id="orangePrestigeAmount">1</span> <span style="color:OrangeRed">Energy</span>
-					</button>
 				</div>
 			</div>
 			<div id="energyTab" class="tab">
