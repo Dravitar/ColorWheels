@@ -568,7 +568,6 @@ function updateAll(){
 	}else{
 		update("redCycleUpgCost", display(user.red.tickMultPrice));
 	}
-	$("redPrestigeButton").style.opacity = getRedPrestige().gt(0)?1:0.6
 	$("redPrestigeAmount").innerHTML = display(getRedPrestige());
 	$("currentCPBBonus").innerHTML = user.red.upgradeCount[4];
 	update("currentMBBonus", display(user.red.upgradeCount[8].div(10).plus(1)));
