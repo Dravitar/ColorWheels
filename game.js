@@ -624,6 +624,7 @@ function updateAll(){
 		$("energyTabs").style.display = "";
 		$("orangeEnergyAmount").innerHTML = display(user.orange.energy);
                 $("orangeEnergyTabBtn").style.display = "";
+		$("orangeEnergyArea").style.display = "";
 	}
 	user.orange.upgrades.forEach(function(id){
 		let i = user.orange.upgrades.indexOf(id);
