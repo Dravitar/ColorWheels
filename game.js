@@ -474,11 +474,11 @@ function updateAll(){
 		$("cycleUpgBit").style.display = "";
 	}
 	if(user.red.energy.gt(0)){
-		$("redEnergyArea").style.display = "";
+		$("redPrestigeButton").style.display = "";
 		$("redEnergyAmount").innerHTML = display(user.red.energy);
 		$("tabs").style.display = "";
 	}
-	else { $("redEnergyArea").style.display = "none";}
+	else { $("redPrestigeButton").style.display = "none";}
 	var dispMult = display(getRedButtonTotalMult());
 	update("powerMultArea", "Button Mult: x"+dispMult);
 	if(user.red.tps.lt(10)){
@@ -613,9 +613,8 @@ function updateAll(){
 	**
 	*/
 	if(user.totPower.gte(new Decimal(1e308))){
-		$("redButtonPrestigeButton").style.display = "block";
+		$("redButtonPrestigeButton").style.display = "";
 		$("orangePrestigeAmount").innerHTML = display(getOrangePrestige());
-		$("orangeEnergyArea").style.display = "";
 	}
 	else{
 		$("redButtonPrestigeButton").style.display="none";
@@ -624,7 +623,7 @@ function updateAll(){
 		$("energyTabs").style.display = "";
 		$("orangeEnergyAmount").innerHTML = display(user.orange.energy);
                 $("orangeEnergyTabBtn").style.display = "";
-		$("orangeEnergyArea").style.display = "";
+		$("redButtonPrestigeButton").style.display = "";
 	}
 	user.orange.upgrades.forEach(function(id){
 		let i = user.orange.upgrades.indexOf(id);
