@@ -470,7 +470,7 @@ function updateAll(){
 	if(user.totPower.lt(1e4)){
 		$("cycleUpgBit").style.display = "none";
 	}
-	if(user.totPower.gte(1e4)||user.red.tickUpgradeCount.gt(0)){
+	if(user.totPower.gte(1e4)||user.red.tickMultCount.gt(0)){
 		$("cycleUpgBit").style.display = "";
 	}
 	if(user.red.resets.gt(0)){
