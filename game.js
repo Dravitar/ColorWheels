@@ -466,7 +466,7 @@ function importSave() {
 
 function updateAll(){
 	if(user.totPower.lt(0)) user.totPower = new Decimal(0);
-	update("powerAmount", "Total Power: "+display(user.totPower));
+	update("powerAmount", display(user.totPower));
 	if(user.totPower.lt(1e4)){
 		$("cycleUpgBit").style.display = "none";
 	}
