@@ -328,7 +328,7 @@ function breakUpgrade(num) {
 function getRedPrestige() {
 	if (user.totPower.gte(new Decimal(1e10))){
 		if(user.orange.upgradeCount[1].gt(0)){
-			return user.totPower.log10().minus(9).pow(user.red.upgradeCount[7].div(2.5).plus(2)).pow(1.5);
+			return user.totPower.log10().minus(9).pow(user.red.upgradeCount[7].div(2.5).plus(2)).pow(1.1);
 		} else{
 			return user.totPower.log10().minus(9).pow(user.red.upgradeCount[7].div(2.5).plus(2));
 		}
