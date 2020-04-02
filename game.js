@@ -470,10 +470,10 @@ function updateAll(){
 	if(user.totPower.lt(1e4)){
 		$("cycleUpgBit").style.display = "none";
 	}
-	if(user.totPower.gte(1e4)){
+	if(user.totPower.gte(1e4)||user.red.tickUpgradeCount.gt(0)){
 		$("cycleUpgBit").style.display = "";
 	}
-	if(user.red.energy.gt(0)){
+	if(user.red.resets.gt(0)){
 		$("redPrestigeButton").style.display = "";
 		$("redEnergyAmount").innerHTML = display(user.red.energy);
 		$("tabs").style.display = "";
@@ -550,7 +550,7 @@ function updateAll(){
 	} else {
 		$("addRedButton").style.display = "";
 	}
-	if(user.totPower.gte(1e10)){
+	if(user.totPower.gte(1e10)||user.red.resets.gt(0)){
 		$("redPrestigeButton").style.display = "";
 	} else {		
 		$("redPrestigeButton").style.display = "none";
