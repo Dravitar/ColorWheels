@@ -612,15 +612,16 @@ function updateAll(){
 	**
 	**
 	*/
+	$("orangePrestigeAmount").innerHTML = display(getOrangePrestige());
 	if(user.totPower.gte(new Decimal(1e308))){
 		$("redButtonPrestigeButton").style.display = "";
-		$("orangePrestigeAmount").innerHTML = display(getOrangePrestige());
 	}
 	else{
 		$("redButtonPrestigeButton").style.display="none";
 	}
 	if(user.orange.resets.gt(0)){
 		$("energyTabs").style.display = "";
+		$("energyTabButton").style.display = "";
 		$("orangeEnergyAmount").innerHTML = display(user.orange.energy);
                 $("orangeEnergyTabBtn").style.display = "";
 		$("redButtonPrestigeButton").style.display = "";
