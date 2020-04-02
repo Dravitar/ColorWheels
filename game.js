@@ -622,7 +622,6 @@ function updateAll(){
 	}
 	if(user.orange.resets.gt(0)){
 		$("energyTabs").style.display = "";
-		$("orangeEnergyArea").style.display = "";
 		$("orangeEnergyAmount").innerHTML = display(user.orange.energy);
                 $("orangeEnergyTabBtn").style.display = "";
 	}
