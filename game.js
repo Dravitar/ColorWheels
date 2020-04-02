@@ -552,6 +552,7 @@ function updateAll(){
 	}
 	if(user.totPower.gte(1e10)||user.red.resets.gt(0)){
 		$("redPrestigeButton").style.display = "";
+		$("redEnergyAmount").innerHTML = display(user.red.energy);
 	} else {		
 		$("redPrestigeButton").style.display = "none";
 	} if(user.totPower.gte(1e308)){
