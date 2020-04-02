@@ -157,7 +157,7 @@ function redCycleUpg() {
 }
 
 function redCycleMax() {
-	if(user.totPower.gte(1e100)){
+	if(user.totPower.gte(1e500)){
 		let num = user.totPower.log10().minus(4).div(50).times(8).plus(1).sqrt().plus(1).div(2).minus(1);
 		let canPurchaseTotal = num.times(50).floor();
 		let powerRequired = new Decimal.pow(10,num.times(num+1).times(50).plus(4));
