@@ -95,43 +95,59 @@
 				</div>
 				<div id="redAutosTab" class="subTabAutos">
 					<div id="buttonAutobuyer" style="display: inline-block">
-						<button id="autoB" onClick="checkUpgrade('red','autoB')" class="upgrade" style="display:block">
-							Unlock a <span style="color:darkRed">Red</span> Button Autobuyer.<br/>
-							Cost: <span id="autoBCost">100</span> Red <span style="color:darkRed">Energy</span>
+						<button id="autoB" onClick="checkAutoUpgrade('red','autoB')" class="upgrade" style="display:block">
+							Unlock a Red Button Mult Autobuyer.<br/>
+							Cost: <span id="autoBCost">100</span> Red <span style="color:darkRed">Energy</span><br/>
+							<input type = "checkbox" id = "autoBActive" />
+							<label for = "autoBActive">Active</label>
 						</button>
-						<button id="autoBSpeed" onClick="checkUpgrade('red','autoBSpeed')" class="upgrade" style="display:block">
+						<button id="autoBSpeed" onClick="checkAutoUpgrade('red','autoBSpeed')" class="upgrade" style="display:block">
 							Decrease the cooldown time of your Autobuyer.<br/>
 							Cost: <span id="autoBSpeedCost">125</span> Red <span style="color:darkRed">Energy</span>
 						</button>
-						<button id="autoBPower" onClick="checkUpgrade('red','autoBPower')" class="upgrade" style="display:block">
+						<button id="autoBPower" onClick="checkAutoUpgrade('red','autoBPower')" class="upgrade" style="display:block">
 							Increase the idle bonus of your Autobuyer.<br/>
-							Cost: <span id="autoBPowerCost">200</span> Red <span style="color:darkRed">Enegy</span>
+							Cost: <span id="autoBPowerCost">500</span> Red <span style="color:darkRed">Enegy</span>
 						</button>
 					</div>
 					<div id="cycleAutobuyer" style="display:inline-block">
-						<button id="autoC" onclick="checkUpgrade('red','autoC')" class="upgrade" style="display:block">
+						<button id="autoC" onclick="checkAutoUpgrade('red','autoC')" class="upgrade" style="display:block">
 							Unlock a Cycle Upgrade Autobuyer.<br/>
 							Cost: <span id="autoCCost">100</span> Red <span style="color:darkRed">Energy</span>
 						</button>
-						<button id="autoCSpeed" onClick="checkUpgrade('red','autoCSpeed')" class="upgrade" style="display:block">
+						<button id="autoCSpeed" onClick="checkAutoUpgrade('red','autoCSpeed')" class="upgrade" style="display:block">
 							Decrease the cooldown time of your Autobuyer.<br/>
 							Cost: <span id="autoCSpeedCost">125</span> Red <span style="color:darkRed">Energy</span>
 						</button>
-						<button id="autoCPower" onClick="checkUpgrade('red','autoCPower')" class="upgrade" style="display:block">
+						<button id="autoCPower" onClick="checkAutoUpgrade('red','autoCPower')" class="upgrade" style="display:block">
 							Slowly generate free Cycle Upgrades over time.<br/>
-							Cost: <span id="autoCPowerCost">200</span> Red <span style="color:darkRed">Energy</span>
+							Cost: <span id="autoCPowerCost">500</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+					</div>
+					<div id="newRedAutobuyer" style="display:inline-block">
+						<button id="autoN" onclick="checkAutoUpgrade('red','autoN')" class="upgrade" style="display:block">
+							Unlock a Red Button Autobuyer.<br/>
+							Cost: <span id="autoNCost">500></span> Red <span style="color:darkRed">Energy</span>
+						</button>
+						<button id="autoNSpeed" onclick="checkAutoUpgrade('red','autoNSpeed')" class="upgrade" style="display:block">
+							Decrease the cooldown time of your Autobuyer.<br/>
+							Cost: <span id="autoNSpeedCost">750</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+						<button id="autoNPower" onclick="checkAutoUpgrades('red','autoNPower')" class="upgrade" style="display:block">
+							Decrease the cost multiplier of buttons as the button amount rises.<br/>
+							Cost: <span id="autoNPowerCost">5e3</span> Red <span style="color:darkRed">Energy</span>
 						</button>
 					</div>
 					<div id="breakAutobuyer" style="display:inline-block">
-						<button id="autoBr" onClick="checkUpgrade('red','autoB')" class="upgrade" style="display:block">
+						<button id="autoBr" onClick="checkAutoUpgrade('red','autoB')" class="upgrade" style="display:block">
 							Unlock a Break Limit Autobuyer.<br/>
 							Cost: <span id="autoBrCost">5e3</span> Red <span style="color:darkRed">Energy</span>
 						</button>
-						<button id="autoBrSpeed" onClick="checkUpgrade('red','autoBrSpeed')" class="upgrade" style="display:block">
+						<button id="autoBrSpeed" onClick="checkAutoUpgrade('red','autoBrSpeed')" class="upgrade" style="display:block">
 							Decrease the cooldown time of your Autobuyer.<br/>
 							Cost: <span id="autoBrSpeedCost">1e4</span> Red <span style="color:darkRed">Energy</span>
 						</button>
-						<button id="autoBrPower" onClick="checkUpgrade('red','autoBrPower')" class="upgrade" style="display:block">
+						<button id="autoBrPower" onClick="checkAutoUpgrade('red','autoBrPower')" class="upgrade" style="display:block">
 							Decrease the cost multiplier of buttons as their limit rises.<br/>
 							Cost: <span id="autoBrPowerCost">1e5</span> Red <span style="color:darkRed">Energy</span>
 						</button>
