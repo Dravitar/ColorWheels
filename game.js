@@ -21,11 +21,37 @@ function getDefaultUser() {
 			brokenAmount: [new Decimal(0)],
 			clickedBoost: new Decimal(0),
 			clickedIndex: -1,//0    1    2    3    4     5    6     7     8    9    10
-			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB","SC"],
-			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
-			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(5e5) ,new Decimal(1e5) ,new Decimal(1e3)],
-			upgradeIncrease:[new Decimal(1e5) ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  ,new Decimal(2)   ,new Decimal(1e3) ,new Decimal(10)  ,new Decimal(1e3) ,new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)],
-			upgradeMax:     [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(9)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB","SC"
+					 //11	     12		13
+					"autoB","autoBSpeed","autoBPower",
+					 //14	     15		16
+					"autoC","autoCSpeec","autoCPower",
+					 //17	     18		19
+					"autoBr","autoBrSpeed","autoBrPower"],
+			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  
+					 ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) 
+					 ,new Decimal(5e5) ,new Decimal(1e5) ,new Decimal(1e3)
+					 ,new Decimal(100) ,new Decimal(125) ,new Decimal(200)
+					 ,new Decimal(100) ,new Decimal(125) ,new Decimal(200)
+					 ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(1e5)],
+			upgradeIncrease:[new Decimal(1e5) ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  
+					 ,new Decimal(2)   ,new Decimal(1e3) ,new Decimal(10)  ,new Decimal(1e3) 
+					 ,new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)
+					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)
+					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)
+					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)],
+			upgradeMax:     [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(9)   
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
                         indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -407,6 +433,10 @@ function checkKey(event) {
 	}
 }
 
+function automate(type) {
+	let speed = user.red.upgradeCount[12];
+}
+
 function showTab(tabName) { //Tab switching function
 	var tabs = document.getElementsByClassName('tab');
 	var tab;
@@ -420,8 +450,8 @@ function showTab(tabName) { //Tab switching function
 	}
 }
 
-function showSubTab(tabName) {
-	var subTabs = document.getElementsByClassName('subTab');
+function showSubTab(tabName, type) {
+	var subTabs = document.getElementsByClassName('subTab'+type);
 	var subTab;
 	for(var i=0;i<subTabs.length;i++){
 		subTab = subTabs.item(i);
