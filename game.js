@@ -771,3 +771,15 @@ function startCycle(){
 	setInterval(gameCycle, 10);
 	setInterval(save, 30000);
 }
+
+function why(){
+	load();
+	checkNewButtons();
+	user.red.upgrades.forEach(function(id){
+		let message = "";
+		if($(id+"Cost")==null){
+			message = id+"\n";
+		}
+		alert(message);
+	});
+}
