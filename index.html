@@ -15,6 +15,7 @@
 				<button id="menuTabButton" onClick="showTab('menuTab')" class="tabBtn">Menu</button>
 				<button id="statsTabButton" onClick="showTab('statsTab')" class="tabBtn">Stats</button>
 				<button id="mainTabButton" onClick="showTab('mainTab')" class="tabBtn">Buttons</button>
+				<button id="autoTabButton" onClick="showTab('autoTab')" class="tabBtn">Automation</button>
 				<button id="energyTabButton" onClick="showTab('energyTab')" style="display:none" class="tabBtn">Energy</button>
 				<div id="savedInfo" style="display:none; position:absolute">Game saved!</div>
 				<div id="topSection" style="display:flex; justify-content:center ">
@@ -83,15 +84,72 @@
 						Buy Max</button>
 				</div>
 			</div>
-			<div id="energyTab" class="tab">
-				<div id="energyTabs">
-					<button id="redEnergyTabBtn" onClick="showSubTab('redEnergyTab')" style="display:none" class="tabBtn">
+			<div id="autoTab" class="tab">
+				<div id="autoTabs">
+					<button id="redAutosTabBtn" onClick="showSub('redAutosTab','Autos')" style="display:none" class="tabBtn">
 						<span style="color:darkRed">Red</span>
 					</button>
-					<button id="orangeEnergyTabBtn" onClick="showSubTab('orangeEnergyTab')" style="display:none" class="tabBtn">
+					<button id="orangeAutosTabBtn" onClick="showSub('orangeAutosTab','Autos')" stye="display:none" class="tabBtn">
 						<span style="color:OrangeRed">Orange</span>
 					</button>
-				<div id="redEnergyTab" class="subTab"> 
+				</div>
+				<div id="redAutosTab" class="subTabAutos">
+					<div id="buttonAutobuyer" style="display: inline-block">
+						<button id="autoB" onClick="checkUpgrade('red','autoB')" class="upgrade" style="display:block">
+							Unlock a <span style="color:darkRed">Red</span> Button Autobuyer.<br/>
+							Cost: <span id="autoBCost">100</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+						<button id="autoBSpeed" onClick="checkUpgrade('red','autoBSpeed')" class="upgrade" style="display:block">
+							Decrease the cooldown time of your Autobuyer.<br/>
+							Cost: <span id="autoBSpeedCost">125</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+						<button id="autoBPower" onClick="checkUpgrade('red','autoBPower')" class="upgrade" style="display:block">
+							Increase the idle bonus of your Autobuyer.<br/>
+							Cost: <span id="autoBPowerCost">200</span> Red <span style="color:darkRed">Enegy</span>
+						</button>
+					</div>
+					<div id="cycleAutobuyer" style="display:inline-block">
+						<button id="autoC" onclick="checkUpgrade('red','autoC')" class="upgrade" style="display:block">
+							Unlock a Cycle Upgrade Autobuyer.<br/>
+							Cost: <span id="autoCCost">100</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+						<button id="autoCSpeed" onClick="checkUpgrade('red','autoCSpeed')" class="upgrade" style="display:block">
+							Decrease the cooldown time of your Autobuyer.<br/>
+							Cost: <span id="autoCSpeedCost">125</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+						<button id="autoCPower" onClick="checkUpgrade('red','autoCPower')" class="upgrade" style="display:block">
+							Slowly generate free Cycle Upgrades over time.<br/>
+							Cost: <span id="autoCPowerCost">200</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+					</div>
+					<div id="breakAutobuyer" style="display:inline-block">
+						<button id="autoBr" onClick="checkUpgrade('red','autoB')" class="upgrade" style="display:block">
+							Unlock a Break Limit Autobuyer.<br/>
+							Cost: <span id="autoBrCost">5e3</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+						<button id="autoBrSpeed" onClick="checkUpgrade('red','autoBrSpeed')" class="upgrade" style="display:block">
+							Decrease the cooldown time of your Autobuyer.<br/>
+							Cost: <span id="autoBRSpeedCost">1e4</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+						<button id="autoBrPower" onClick="checkUpgrade('red','autoBrPower')" class="upgrade" style="display:block">
+							Decrease the cost multiplier of buttons as their limit rises.<br/>
+							Cost: <span id="autoBrPower">1e5</span> Red <span style="color:darkRed">Energy</span>
+						</button>
+					</div>
+				</div>
+				<div id="orangeAutosTab" class="subTabAutos">
+				</div>
+			</div>
+			<div id="energyTab" class="tab">
+				<div id="energyTabs">
+					<button id="redEnergyTabBtn" onClick="showSub('redEnergyTab','Energy')" style="display:none" class="tabBtn">
+						<span style="color:darkRed">Red</span>
+					</button>
+					<button id="orangeEnergyTabBtn" onClick="showSubEnergy('orangeEnergyTab')" style="display:none" class="tabBtn">
+						<span style="color:OrangeRed">Orange</span>
+					</button>
+				</div>
+				<div id="redEnergyTab" class="subTabEnergy"> 
 					<div id="clickPowerSet" style="display:inline-block">
 						<button id="CP" onClick="checkUpgrade('red','CP')" class="upgrade" style="display:block">
 							Unlock Click Power. Give a boost to buttons you click directly.<br/>
@@ -151,7 +209,7 @@
 						</button>
 					</div>
 				</div>
-				<div id="orangeEnergyTab" class="subTab" style="display:none">
+				<div id="orangeEnergyTab" class="subTabEnergy" style="display:none">
 					<div id="buttonSet">
 						<button id="ORB" onClick="checkUpgrade('orange','ORB')" class="upgrade">
 							Orange resets boost red button multipliers.<br/>
