@@ -22,12 +22,9 @@ function getDefaultUser() {
 			clickedBoost: new Decimal(0),
 			clickedIndex: -1,//0    1    2    3    4     5    6     7     8    9    10
 			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB","SC",
-					 //11	     12		13
-					"autoB","autoBSpeed","autoBPower",
-					 //14	     15		16
-					"autoC","autoCSpeec","autoCPower",
-					 //17	     18		19
-					"autoBr","autoBrSpeed","autoBrPower"],
+					"autoB","autoBSpeed","autoBPower",//11 12 13
+					"autoC","autoCSpeec","autoCPower",//14 15 16
+					"autoBr","autoBrSpeed","autoBrPower"],//17 18 19
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   
 					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   
 					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
