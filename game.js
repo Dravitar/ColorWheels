@@ -21,34 +21,39 @@ function getDefaultUser() {
 			brokenAmount: [new Decimal(0)],
 			clickedBoost: new Decimal(0),
 			clickedIndex: -1,//0    1    2    3    4     5    6     7     8    9    10
-			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB","SC",
-					"autoB","autoBSpeed","autoBPower",//11 12 13
-					"autoC","autoCSpeed","autoCPower",//14 15 16
-					"autoBr","autoBrSpeed","autoBrPower"],//17 18 19
+			upgrades:       ["PB","CP","LB","BB","CPB","RB","CRB","ECU","MB","TPB","SC"],
 			upgradeCount:   [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   
 					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   
-					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
-					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
-					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
 					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
 			upgradePrices:  [new Decimal(1)   ,new Decimal(1)   ,new Decimal(10)  ,new Decimal(50)  
 					 ,new Decimal(100) ,new Decimal(10)  ,new Decimal(5e3) ,new Decimal(1e4) 
-					 ,new Decimal(5e5) ,new Decimal(1e5) ,new Decimal(1e3)
-					 ,new Decimal(100) ,new Decimal(125) ,new Decimal(200)
-					 ,new Decimal(100) ,new Decimal(125) ,new Decimal(200)
-					 ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(1e5)],
+					 ,new Decimal(5e5) ,new Decimal(1e5) ,new Decimal(1e3)],
 			upgradeIncrease:[new Decimal(1e5) ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(10)  
 					 ,new Decimal(2)   ,new Decimal(1e3) ,new Decimal(10)  ,new Decimal(1e3) 
-					 ,new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)
-					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)
-					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)
-					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)],
+					 ,new Decimal(3)   ,new Decimal(0)   ,new Decimal(10)],
 			upgradeMax:     [new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(9)   
 					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)   
-					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
+					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			automators:	["autoB","autoBSpeed","autoBPower",//1 2 3
+					"autoC","autoCSpeed","autoCPower",//4 5 6
+					"autoN","autoNSpeed","autoNPower",//7 8 9
+					"autoBr","autoBrSpeed","autoBrPower"],//10 11 12
+			automatorCount:	[new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
 					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
 					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)
 					 ,new Decimal(0)   ,new Decimal(0)   ,new Decimal(0)],
+			automatorPrices:[new Decimal(100) ,new Decimal(125) ,new Decimal(500)
+					 ,new Decimal(100) ,new Decimal(125) ,new Decimal(500)
+					 ,new Decimal(500) ,new Decimal(750) ,new Decimal(5e3)
+					 ,new Decimal(5e3) ,new Decimal(1e4) ,new Decimal(1e5)],
+			automatorIncrease:[new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)
+					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)
+					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)
+					 ,new Decimal(0)   ,new Decimal(1.5) ,new Decimal(2.5)],
+			automatorMax:	[new Decimal(1)    ,new Decimal(25)  ,new Decimal(0)
+					 ,new Decimal(1)   ,new Decimal(25)  ,new Decimal(0)
+					 ,new Decimal(1)   ,new Decimal(25)  ,new Decimal(0)
+					 ,new Decimal(1)   ,new Decimal(25)  ,new Decimal(0)],
                         indexLimit: new Decimal(10),
 			energy: new Decimal(0),
 			resets: new Decimal(0),
@@ -71,6 +76,9 @@ function getDefaultUser() {
                         energy: new Decimal(0),
 			resets: new Decimal(0),
 		},
+		automateTypes: 		["redButton","redCycle","redButtonLimit","redLimitBreak"],
+		automatorCurrentCycle: 	[0, 	      0, 	 0, 		  0],
+		automatorActive:	[false,	      false,	 false,		  false],
 		currentTab: "mainTab",
 		currentSubTab: "redEnergyTab",
 		lastTick: new Date().getTime(),
@@ -91,7 +99,15 @@ function gameCycle(){
 	let now = new Date().getTime();
 	let diff = now - user.lastTick;
 	user.red.tick += diff;
-	if(user.red.tick >= user.red.tickMax) process(Decimal.round(new Decimal(user.red.tick).div(user.red.tickMax)));
+	if(user.red.tick >= user.red.tickMax){
+		process(Decimal.round(new Decimal(user.red.tick).div(user.red.tickMax)));
+		for(i=0;i<user.automateTypes.length;i++){
+			if(user.automatorActive[i]){
+				automate(i);
+				user.automatorCurrentCycle[i] = user.automatorCurrentCycle[i]+1;
+			}
+		}
+	}
 	user.lastTick = now;
 	updateAll();
 }
@@ -430,8 +446,69 @@ function checkKey(event) {
 	}
 }
 
+function checkAutoUpgrade(color, dex) {
+	let index = user[color].automators.indexOf(dex);
+        var maxUpgrades=0;
+        if(user[color].automatorMax[index].gt(0)) maxUpgrades=user[color].automatorMax[index];
+	if(user[color].automatorIncrease[index]==0&&user[color].automatorCount[index]==1) {
+		$(dex).style.background="darkGreen";
+		return;
+	}
+	if(canBuyAutoUpgrade(color, index)&&(maxUpgrades==0||user[color].automatorCount[index].lt(maxUpgrades))){
+		user[color].energy = user[color].energy.minus(user[color].automatorPrices[index]);
+		user[color].automatorCount[index] = user[color].automatorCount[index].plus(1);
+		user[color].automatorPrices[index] = user[color].automatorPrices[index].times(user[color].automatorIncrease[index]);
+	}
+	updateAll();
+}
+
+function canBuyAutoUpgrade(color, index) {
+	return user[color].energy.gte(user[color].automatorPrices[index])
+}
+
 function automate(type) {
-	let speed = user.red.upgradeCount[12];
+	if(type=="redButton"){
+		let speed = Decimal.minus(26,user.red.automatorCount[1]);
+		if(speed.gt(1)&&user.red.automatorCurrentCycle[0].gte(speed)||speed.equals(1)){
+			for(i=user.red.mults.length;i>0;i--){
+				if(user.red.buttonsPurchased[i-1].lt(user.red.limits[i-1])){
+					maxRedMult(i);
+				}
+			}
+			user.red.automatorCurrentCycle[0] = 0;
+		}
+	} else if(type=="redCycle"){
+		let speed = Decimal.minus(26,user.red.automatorCount[4]);
+		if(speed.gt(1)&&user.red.automatorCurrentCycle[1].gte(speed)||speed.equals(1)){	
+			if(user.totPower.gte(1e4)) redCycleMax();
+			user.red.automatorCurrentCycle[1] = 0;
+		}
+	} else if(type=="redButtonLimit"){		
+		let speed = Decimal.minus(26,user.red.automatorCount[7]);
+		if(speed.gt(1)&&user.red.automatorCurrentCycle[2].gte(speed)||speed.equals(1)){	
+			buyMaxRed();
+			user.red.automatorCurrentCycle[2] = 0;
+		}
+	} else if(type=="redLimitBreak"){
+		let speed = Decimal.minus(26,user.red.automatorCount[10]);
+		if(speed.gt(1)&&user.red.automatorCurrentCycle[3].gte(speed)||speed.equals(1)){
+			let input = $("autoBrMaxValue").innerHTML;
+			let max = new Decimal(0);
+			if(input.indexOf("%")>0){
+				max = new Decimal(input.substring(0, input.length-1));
+				max = max.div(100).times(user.red.energy);
+			} else{
+				try{max = new Decimal(input);}
+				catch{alert(input+" is not a valid number.")}
+			}
+			for(i=user.red.mults.length-1;i>-1;i--){
+				while(user.red.breakPrice[i].lte(max)){
+					breakUpgrade(i);
+				}
+			}
+			user.red.automatorCurrentCycle[3] = 0;
+		}
+	}	
 }
 
 function showTab(tabName) { //Tab switching function
