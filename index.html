@@ -15,7 +15,7 @@
 				<button id="menuTabButton" onClick="showTab('menuTab')" class="tabBtn">Menu</button>
 				<button id="statsTabButton" onClick="showTab('statsTab')" class="tabBtn">Stats</button>
 				<button id="mainTabButton" onClick="showTab('mainTab')" class="tabBtn">Buttons</button>
-				<button id="autoTabButton" onClick="showTab('autoTab')" class="tabBtn">Automation</button>
+				<button id="autoTabButton" onClick="showTab('autoTab')" style="display:none" class="tabBtn">Automation</button>
 				<button id="energyTabButton" onClick="showTab('energyTab')" style="display:none" class="tabBtn">Energy</button>
 				<div id="savedInfo" style="display:none; position:absolute">Game saved!</div>
 				<div id="topSection" style="display:flex; justify-content:center ">
@@ -84,7 +84,7 @@
 						Buy Max</button>
 				</div>
 			</div>
-			<div id="autoTab" class="tab">
+			<div id="autoTab" class="tab" style="display:none">
 				<div id="autoTabs" style="display:none">
 					<button id="redAutosTabBtn" onClick="showSub('redAutosTab','Autos')" class="tabBtn">
 						<span style="color:darkRed">Red</span>
