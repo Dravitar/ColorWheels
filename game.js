@@ -466,6 +466,7 @@ function canBuyAutoUpgrade(color, index) {
 	return user[color].energy.gte(user[color].automatorPrices[index])
 }
 
+/*
 function automate(type) {
 	if(type=="redButton"){
 		let speed = Decimal.minus(26,user.red.automatorCount[1]);
@@ -510,7 +511,7 @@ function automate(type) {
 		}
 	}	
 }
-
+*/
 function showTab(tabName) { //Tab switching function
 	var tabs = document.getElementsByClassName('tab');
 	var tab;
