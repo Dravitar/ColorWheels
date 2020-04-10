@@ -126,7 +126,7 @@ function redClick(num) {
 		}
 		else {
 			if(user.red.clickedIndex>0){
-				user.red.mults[user.red.clickedIndex] = user.red.mults[user.red.clickedIndex].div(mid);
+				user.red.mults[user.red.clickedIndex-1] = user.red.mults[user.red.clickedIndex-1].div(mid);
 			}
 			user.red.clickedIndex = num;
 			user.red.mults[num-1]=user.red.mults[num-1].times(mid);
