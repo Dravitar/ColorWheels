@@ -120,15 +120,16 @@ function redClick(num) {
 			mid = mid.times(10);
 			what = what.minus(1);
 		}
-		let old=user.red.clickedIndex+1;
-		user.red.clickedIndex=num-1;
-		if(old!==0||old==num){
-			user.red.mults[old-1]=user.red.clickedBoost;
+		if(num==user.red.clickedIndex) {
+			user.red.clickedIndex = -1;
+			user.red.mults[num]=user.red.mults[num].div(mid);
 		}
-		user.red.clickedBoost=user.red.mults[num-1];
-		if(num!==old) {
-			user.red.mults[num-1]=user.red.mults[num-1].times(mid);
-			
+		else {
+			if(user.red.clickedIndex>0){
+				user.red.mults[user.red.clickedIndex] = user.red.mults[user.red.clickedIndex].div(mid);
+			}
+			user.red.clickedIndex = num;
+			user.red.mults[num]=user.red.mults[num].times(mid);
 		}
 	}
 }
@@ -222,9 +223,11 @@ function checkButtonUpgrade(num) {
 	var price=user.red.buttonPrice[num-1];
 	if(user.totPower.gte(price)&&user.red.limits[num-1].gt(user.red.mults[num-1])) {
 		user.totPower = user.totPower.minus(price);
-		if(user.red.clickedIndex+1 == num) {user.red.mults[num-1]=user.red.mults[num-1].div(Decimal.pow(10,user.red.upgradeCount[4]));}
+		if(user.red.clickedIndex == num) {
+			user.red.mults[num-1]=user.red.mults[num-1].div(Decimal.pow(10,user.red.upgradeCount[4]));
+		}
 		user.red.mults[num-1] = user.red.mults[num-1].plus(new Decimal(1));
-		if(user.red.clickedIndex+1 == num) {
+		if(user.red.clickedIndex == num) {
 			user.red.mults[num-1]=user.red.mults[num-1].times(Decimal.pow(10,user.red.upgradeCount[4]));
 		}
 		let priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
