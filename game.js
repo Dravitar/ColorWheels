@@ -122,14 +122,14 @@ function redClick(num) {
 		}
 		if(num==user.red.clickedIndex) {
 			user.red.clickedIndex = -1;
-			user.red.mults[num]=user.red.mults[num].div(mid);
+			user.red.mults[num-1]=user.red.mults[num-1].div(mid);
 		}
 		else {
 			if(user.red.clickedIndex>0){
 				user.red.mults[user.red.clickedIndex] = user.red.mults[user.red.clickedIndex].div(mid);
 			}
 			user.red.clickedIndex = num;
-			user.red.mults[num]=user.red.mults[num].times(mid);
+			user.red.mults[num-1]=user.red.mults[num-1].times(mid);
 		}
 	}
 }
