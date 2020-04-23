@@ -147,9 +147,9 @@ function getRedButtonTotalMult() {
 		if(user.orange.upgradeCount[0].gt(0)){
 			mult = mult.times(user.red.mults[i].pow(Decimal.plus(1,user.orange.resets.div(10))));
 		}
-		if(user.red.challenges[0]){
+		/*if(user.red.challenges[0]){
 			mult = mult.times(user.red.mults[i].div(i+1));
-		}
+		}*/
 		else { mult = mult.times(user.red.mults[i]);}
 	}
 	if(user.red.upgradeCount[0].gt(0)){ 
@@ -174,7 +174,7 @@ function testStuff() {
 }
 
 function redCycleUpg() {
-	if(user.red.challenges[1]) break;
+	//if(user.red.challenges[1]) break;
 	var price=user.red.tickMultPrice;
 	var free=new Decimal($("freeCycleUpgrades").innerHTML);
 	if(user.totPower.gte(price)||free.gt(0)) {
@@ -236,7 +236,7 @@ function checkButtonUpgrade(num) {
 			user.red.mults[num-1]=user.red.mults[num-1].times(Decimal.pow(10,user.red.upgradeCount[4]));
 		}
 		let priceIncrease;
-		if(user.red.challenges[2]) priceIncrease = new Decimal(num+1).log10().plus(1).times(1.2);
+		//if(user.red.challenges[2]) priceIncrease = new Decimal(num+1).log10().plus(1).times(1.2);
 		else priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
 		user.red.buttonPrice[num-1] = price.times(priceIncrease);
 		user.red.buttonsPurchased[num-1]=user.red.buttonsPurchased[num-1].plus(1);
@@ -270,7 +270,7 @@ function canBuyUpgrade(color, index) {
 }
 
 function checkAddRed() {
-	if(user.red.challenges[2]) break;
+	//if(user.red.challenges[2]) break;
 	if(user.red.index.lt(user.red.indexLimit)){
 		if(user.totPower.gte(user.red.addButtonPrice)){
 			user.totPower = user.totPower.minus(user.red.addButtonPrice)
@@ -360,7 +360,7 @@ function minimizeAll() {
 }
 
 function breakUpgrade(num) {
-	if(user.red.challenge[3]) break;
+	//if(user.red.challenge[3]) break;
 	let j = num-1;
 	if(user.red.energy.gte(user.red.breakPrice[j])) {
 		user.red.energy = user.red.energy.minus(user.red.breakPrice[j]);
