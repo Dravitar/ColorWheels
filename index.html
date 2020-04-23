@@ -15,6 +15,7 @@
 				<button id="menuTabButton" onClick="showTab('menuTab')" class="tabBtn">Menu</button>
 				<button id="statsTabButton" onClick="showTab('statsTab')" class="tabBtn">Stats</button>
 				<button id="mainTabButton" onClick="showTab('mainTab')" class="tabBtn">Buttons</button>
+				<button id="challengeTabButton" onClick="showTab('challengeTab')" style="display:none" class="tabBtn">Challenges</button>
 				<button id="autoTabButton" onClick="showTab('autoTab')" style="display:none" class="tabBtn">Automation</button>
 				<button id="energyTabButton" onClick="showTab('energyTab')" style="display:none" class="tabBtn">Energy</button>
 				<div id="savedInfo" style="display:none; position:absolute">Game saved!</div>
@@ -28,10 +29,6 @@
 						You have <span id="orangeEnergyAmount" style="color:OrangeRed">0</span> Orange Energy.<br/>
 						You will gain <span id="orangePrestigeAmount" style="color:OrangeRed">0</span> Orange Energy on reset.
 					</button>
-				</div>
-				<div id="orangeEnergyArea" style="display:none; color:OrangeRed">Total Orange Energy: 
-					<span id="orangeEnergyAmount">0</span>
-					<button onClick="redBigReset()" class="multUpgrade">Orange Reset for <span id=</button>
 				</div>
                                 <button id="maxAllButton" onClick="maxEverything()" class="maxAll">Max All</button>
 				
@@ -83,6 +80,33 @@
 					<button id="maxRedButton" onClick="buyMaxRed()" class="multUpgrade">
 						Buy Max</button>
 				</div>
+			</div>
+			<div id="challengeTab" class="tab" 
+			     style="display:none; width:1200px; height:350px; grid-template-columns:repeat(4,250px); grid-template-rows:150px,150px; grid-gap:50px">
+				<button id="challenge1" class="challengeArea" onclick="startChallenge(1)"
+					style="grid-row:1/2; grid-column:1/2">
+					All buttons give an additional detrimental multiplier equal to the reciprocal of its index, e.g. Button 2 gives x0.5 when purchased, Button 3 gives 0.33x.<br/>
+					Goal: XX Red Energy<br/>
+					Reward: Unlock Red Button Mult Autobuyer
+				</button>
+				<button id="challenge2" class="challengeArea" onclick="startChallenge(2)"
+					style="grid-row:1/2; grid-column:2/3">
+					Cycle Upgrades are useless.<br/>
+					Goal: XX Red Energy<br/>
+					Reward: Unlock Cycle Upgrade Autobuyer
+				</button>
+				<button id="challenge3" class="challengeArea" onclick="startChallenge(3)"
+					style="grid-row:1/2; grid-column:3/4">
+					You can't get more than 10 buttons, but limit breaks are much cheaper.<br/>
+					Goal: XX Red Energy<br/>
+					Reward: Unlock Red Button Autobuyer
+				</button>
+				<button id="challenge4" class="challengeArea" onclick="startChallenge(4)"
+					style="grid-row:1/2; grid-column:4/5">
+					You can't break button limits.<br/>
+					Goal: XX Red Energy<br/>
+					Reward: Unlock Limit Break Autobuyer
+				</button>
 			</div>
 			<div id="autoTab" class="tab" style="display:none">
 				<div id="autoTabs" style="display:none">
