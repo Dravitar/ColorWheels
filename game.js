@@ -237,7 +237,8 @@ function checkButtonUpgrade(num) {
 		}
 		let priceIncrease;
 		//if(user.red.challenges[2]) priceIncrease = new Decimal(num+1).log10().plus(1).times(1.2);
-		else priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
+		//else 
+		priceIncrease = new Decimal(num+1).log10().plus(1).times(1.5);
 		user.red.buttonPrice[num-1] = price.times(priceIncrease);
 		user.red.buttonsPurchased[num-1]=user.red.buttonsPurchased[num-1].plus(1);
 	}
