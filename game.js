@@ -446,7 +446,8 @@ function maxEverything() {
 			maxRedMult(i);
 		}
 	}
-	if(user.totPower.gte(1e4)) redCycleMax();
+	var free=new Decimal($("freeCycleUpgrades").innerHTML);
+	if(user.totPower.gte(1e4)||free.gt(0)) redCycleMax();
 }
 
 function checkKey(event) {
