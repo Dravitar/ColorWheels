@@ -440,6 +440,8 @@ function redBigReset() {
 }
 
 function maxEverything() {
+	let free = new Decimal($("freeCycleUpgrades").innerHTML);
+	if(user.totPower.gte(1e4)||free.gt(0)) redCycleMax();
 	buyMaxRed();
 	for(i=user.red.mults.length;i>0;i--){
 		if(user.red.buttonsPurchased[i-1].lt(user.red.limits[i-1])) {
@@ -447,7 +449,6 @@ function maxEverything() {
 		}
 	}
 	var free=new Decimal($("freeCycleUpgrades").innerHTML);
-	if(user.totPower.gte(1e4)||free.gt(0)) redCycleMax();
 }
 
 function checkKey(event) {
@@ -458,7 +459,8 @@ function checkKey(event) {
 				maxRedMult(i);
 			}
 		}
-		if(user.totPower.gte(1e4)) redCycleMax();
+		let free = new Decimal($("freeCycleUpgrades").innerHTML);
+		if(user.totPower.gte(1e4)||free.gt(0)) redCycleMax();
 	}
 	if(event.key == "r"){
 		redReset();
