@@ -448,7 +448,6 @@ function maxEverything() {
 			maxRedMult(i);
 		}
 	}
-	var free=new Decimal($("freeCycleUpgrades").innerHTML);
 }
 
 function checkKey(event) {
