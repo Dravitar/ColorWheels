@@ -202,6 +202,7 @@ function redCycleUpg() {
 }
 
 function redCycleMax() {
+	let free = new Decimal($("freeCycleUpgrades").innerHTML);
 	if(user.totPower.gte(1e500)){
 		let num = user.totPower.log10().minus(4).div(50).times(8).plus(1).sqrt().plus(1).div(2).minus(1);
 		let canPurchaseTotal = num.times(50).floor();
@@ -209,7 +210,6 @@ function redCycleMax() {
 		user.red.tickMultPrice = powerRequired.times(Decimal.pow(10,num.ceil()));
 		user.totPower = user.totPower.minus(powerRequired);
 		let canPurchase = canPurchaseTotal.minus(user.red.tickMultCount);
-		let free = new Decimal($("freeCycleUpgrades").innerHTML);
 		if(free.gt(0)){
 			canPurchase = canPurchase.plus(free);
 			$("freeCycleUpgrades").innerHTML = 0;
@@ -221,7 +221,7 @@ function redCycleMax() {
 		$("cycleReducAmount").innerHTML = display(boost);
 		user.red.tickMultCount = user.red.tickMultCount.plus(canPurchase);
 	}
-	else while(user.totPower.gte(user.red.tickMultPrice)) redCycleUpg();
+	else while(user.totPower.gte(user.red.tickMultPrice)||free.gt(0)) redCycleUpg();
 }
 	
 function checkButtonUpgrade(num) {
