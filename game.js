@@ -221,7 +221,8 @@ function redCycleMax() {
 		$("cycleReducAmount").innerHTML = display(boost);
 		user.red.tickMultCount = user.red.tickMultCount.plus(canPurchase);
 	}
-	else while(user.totPower.gte(user.red.tickMultPrice)||free.gt(0)) redCycleUpg();
+	else if(free.gt(0)) redCycleUpg();
+	else while(user.totPower.gte(user.red.tickMultPrice)) redCycleUpg();
 }
 	
 function checkButtonUpgrade(num) {
